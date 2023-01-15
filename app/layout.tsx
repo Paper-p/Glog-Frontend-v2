@@ -1,6 +1,6 @@
 'use client';
 
-import Header from 'components/common/header';
+import Header from 'ui/components/common/header';
 
 interface RootLayoutProps {
   children: React.ReactNode;
