@@ -3,9 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  compiler: {
-    emotion: true,
-  },
+
   reactStrictMode: true,
 };
 
