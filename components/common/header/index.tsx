@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 function Header() {
-  const [logged, _] = useState<boolean>(true);
+  const [logged, _] = useState<boolean>(false);
   const pathname = usePathname();
 
   const select = (currentPath: string) =>
@@ -35,7 +35,9 @@ function Header() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <p>로그인</p>
+            <Link href={'/login'}>
+              <p css={select('/login')}>로그인</p>
+            </Link>
             <p>회원가입</p>
           </React.Fragment>
         )}
