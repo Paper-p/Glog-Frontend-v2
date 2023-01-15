@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Logo from '../logo';
 import * as S from './style';
+import { css } from '@emotion/react';
+import Link from 'next/link';
 
 function Header() {
   const [logged, _] = useState<boolean>(true);
+  const pathname = usePathname();
+
+  const select = (currentPath: string) =>
+    currentPath === pathname && { color: '#E0E0E0 !important' };
 
   return (
     <S.HeaderLayout>
       <S.Elements className='left-part'>
-        <Logo width={90} height={25} />
+        <Link href={'/'}>
+          <Logo width={90} height={25} />
+        </Link>
         <S.Box>
-          <p>홈</p>
-          <p>게시물 작성</p>
+          <Link href={'/'}>
+            <p css={select('/')}>홈</p>
+          </Link>
+          <Link href={'/posting'}>
+            <p>게시물 작성</p>
+          </Link>
         </S.Box>
       </S.Elements>
       <S.Elements className='right-part'>

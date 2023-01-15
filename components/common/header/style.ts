@@ -14,15 +14,19 @@ export const Elements = styled.div`
   justify-content: space-between;
   gap: 8px;
 
+  & > * {
+    cursor: pointer;
+  }
+
   &.right-part {
     gap: 16px;
 
     p {
       font-family: 'Pretendard';
       font-style: normal;
-      font-weight: 700;
+      font-weight: 400;
       font-size: 17px;
-      color: #e0e0e0;
+      color: #9d9d9d;
     }
   }
 `;
@@ -43,8 +47,8 @@ export const Box = styled.div`
   p {
     font-family: 'Pretendard';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 17px;
-    color: #e0e0e0;
+    color: #9d9d9d;
   }
 `;
