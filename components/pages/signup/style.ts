@@ -1,17 +1,5 @@
 import styled from '@emotion/styled';
 
-export const SignupPageLayout = styled.section`
-  display: flex;
-  height: calc(100vh - 95px);
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SectionLayout = styled.section`
-  width: 366px;
-  margin-bottom: 5rem;
-`;
-
 export const SignupBox = styled.div`
   width: 100%;
   text-align: center;
