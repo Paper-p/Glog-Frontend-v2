@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Logo from '../logo';
+import Logo from '../../utils/logo';
 import * as S from './style';
 import { css } from '@emotion/react';
 import Link from 'next/link';
