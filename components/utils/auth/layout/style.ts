@@ -6,8 +6,3 @@ export const AuthPageLayout = styled.section`
   align-items: center;
   justify-content: center;
 `;
-
-export const AuthForm = styled.form`
-  width: 366px;
-  margin-bottom: 5rem;
-`;
