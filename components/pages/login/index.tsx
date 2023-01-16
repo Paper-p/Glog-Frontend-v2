@@ -5,7 +5,7 @@ import CommonButton from 'components/common/button';
 
 function LoginPage() {
   return (
-    <>
+    <S.LoginForm>
       <S.LogoToCenter>
         <Logo width={335} height={96} />
       </S.LogoToCenter>
@@ -17,7 +17,7 @@ function LoginPage() {
         needMargin={true}
       />
       <CommonButton className='needMargin'>로그인</CommonButton>
-    </>
+    </S.LoginForm>
   );
 }
 
