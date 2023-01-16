@@ -7,7 +7,7 @@ export const AuthPageLayout = styled.section`
   justify-content: center;
 `;
 
-export const AuthBox = styled.div`
+export const AuthForm = styled.form`
   width: 366px;
   margin-bottom: 5rem;
 `;
