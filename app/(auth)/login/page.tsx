@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { LoginPage } from 'components/pages';
 
 function Login() {
