@@ -1,5 +1,4 @@
 import Logo from 'components/common/logo';
-import React from 'react';
 import * as S from './style';
 import * as I from 'assets/svg';
 

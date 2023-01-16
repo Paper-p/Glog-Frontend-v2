@@ -38,7 +38,9 @@ function Header() {
             <Link href={'/login'}>
               <p css={select('/login')}>로그인</p>
             </Link>
-            <p>회원가입</p>
+            <Link href={'/signup'}>
+              <p css={select('/signup')}>회원가입</p>
+            </Link>
           </React.Fragment>
         )}
       </S.Elements>
