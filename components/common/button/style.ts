@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const AuthButton = styled.button`
+export const CommonButton = styled.button`
   width: 100%;
   height: 60px;
   background: linear-gradient(95.2deg, #17d56f 45.83%, #119e6d 93.3%);

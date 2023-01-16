@@ -5,9 +5,9 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-function AuthButton(props: ButtonProps) {
+function CommonButton(props: ButtonProps) {
   const { ...rest } = props;
-  return <S.AuthButton {...rest}>{props.children}</S.AuthButton>;
+  return <S.CommonButton {...rest}>{props.children}</S.CommonButton>;
 }
 
-export default AuthButton;
+export default CommonButton;
