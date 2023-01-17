@@ -18,5 +18,5 @@ export const WelcomeText = styled.p`
   font-size: 20px;
   color: #ffffff;
   text-align: center;
-  margin: 1.7rem 0 2.5rem 0;
+  margin: 1.7rem 0 1.8rem 0;
 `;
