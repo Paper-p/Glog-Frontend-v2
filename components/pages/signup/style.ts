@@ -12,6 +12,16 @@ export const Gif = styled.img`
   margin-bottom: 0.5rem;
 `;
 
+export const WelcomeText = styled.p`
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 2rem 0;
+`;
+
 export const Reference = styled.p`
   font-family: 'Pretendard';
   font-style: normal;
