@@ -1,7 +1,11 @@
 import * as s from './style';
 
-function AuthLayout() {
-  return <s.AuthPageLayout></s.AuthPageLayout>;
+interface AuthPageLayoutProps {
+  children: React.ReactNode;
+}
+
+function AuthLayout({ children }: AuthPageLayoutProps) {
+  return <s.AuthPageLayout>{children}</s.AuthPageLayout>;
 }
 
 export default AuthLayout;

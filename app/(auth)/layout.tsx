@@ -1,11 +1,13 @@
 'use client';
 
+import AuthPageLayout from 'components/utils/auth/layout';
+
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
-function AuthLayout({ children }: AuthLayoutProps) {
-  return <AuthLayout>{children}</AuthLayout>;
+function AuthPageLayout({ children }: AuthLayoutProps) {
+  return <AuthPageLayout>{children}</AuthPageLayout>;
 }
 
-export default AuthLayout;
+export default AuthPageLayout;
