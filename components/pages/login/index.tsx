@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
 import { LoginData } from 'types/auth.types';
+import tokenService from 'utils/tokenService';
+import auth from 'network/request/auth';
 
 function LoginPage() {
   const [valueError, setValueError] = useState<boolean>(false);
@@ -18,7 +20,18 @@ function LoginPage() {
   } = useForm<LoginData>();
 
   const onValid = async (data: LoginData) => {
-    console.log('Login with data');
+    try {
+      const res: any = await auth.signin(data);
+      tokenService.setUser(res.data);
+      console.log(res.data);
+    } catch (error: any) {
+      setError(
+        'userId',
+        { message: '아이디 혹은 비밀번호를 다시 확인해주세요' },
+        { shouldFocus: true }
+      );
+      setValueError(true);
+    }
   };
 
   const inValid = (error: any) => {
