@@ -4,6 +4,7 @@ import * as I from 'assets/svg';
 
 interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   icon: 'human' | 'lock';
+  error: boolean;
   needMargin: boolean;
 }
 
@@ -11,7 +12,7 @@ function AuthInput(props: InputProps) {
   const { ...rest } = props;
 
   return (
-    <S.InputWrapper needMargin={props.needMargin}>
+    <S.InputWrapper needMargin={props.needMargin} error={props.error}>
       <S.InputBox>
         {props.icon === 'human' && <I.HumanIcon />}
         {props.icon === 'lock' && <I.LockIcon />}

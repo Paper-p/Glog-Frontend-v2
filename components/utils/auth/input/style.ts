@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const InputWrapper = styled.div<{ needMargin: boolean }>`
+export const InputWrapper = styled.div<{ needMargin: boolean; error: boolean }>`
   display: flex;
   width: 100%;
   height: 52px;
@@ -8,6 +8,7 @@ export const InputWrapper = styled.div<{ needMargin: boolean }>`
   background: #252727;
   border-radius: 10px;
   margin-bottom: ${(e) => (e.needMargin ? '1rem' : '')};
+  filter: ${(e) => (e.error ? 'drop-shadow(0px 1px 7px #e45b3c)' : '')};
 `;
 
 export const InputBox = styled.div`
