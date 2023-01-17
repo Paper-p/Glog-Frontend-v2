@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
 import { SignupData } from 'types/auth.types';
+import auth from 'network/request/auth';
 
 function SignupPage() {
   const [valueError, setValueError] = useState<boolean>(false);
@@ -16,8 +17,59 @@ function SignupPage() {
     formState: { errors },
   } = useForm<SignupData>();
 
+  const checkNicknameValidation = async (nickname: string) => {
+    const check = async () => {
+      auth.checkNicknameValidation(nickname);
+    };
+
+    check().catch(() => {
+      setError(
+        'nickname',
+        { message: '이미 존재하는 닉네임이에요.' },
+        { shouldFocus: true }
+      );
+      setValueError(true);
+    });
+  };
+
+  const checkUseridValidation = async (userId: string) => {
+    const check = async () => {
+      await auth.checkUseridValidation(userId);
+    };
+
+    check().catch(() => {
+      setError(
+        'userId',
+        { message: '이미 존재하는 아이디에요.' },
+        { shouldFocus: true }
+      );
+      setValueError(true);
+    });
+  };
+
   const onValid = async (data: SignupData) => {
-    console.log('Signup with data');
+    if (data.password === data.confirmPassword) {
+      checkNicknameValidation(data.nickname).then(async () =>
+        checkUseridValidation(data.userId).then(async () => {
+          try {
+            await auth.signup({
+              nickname: data.nickname,
+              userId: data.userId,
+              password: data.password,
+            });
+          } catch {
+            setValueError(true);
+          }
+        })
+      );
+    } else {
+      setError(
+        'confirmPassword',
+        { message: '비밀번호가 일치하지 않습니다.' },
+        { shouldFocus: true }
+      );
+      setValueError(true);
+    }
   };
 
   const inValid = (error: any) => {
