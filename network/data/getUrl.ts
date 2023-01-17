@@ -6,4 +6,16 @@ export const authUrl = {
   login: () => {
     return 'auth/signin';
   },
+
+  signup: () => {
+    return 'auth/signup';
+  },
+
+  checkNicknameValidation: () => {
+    return '/auth/valid-name';
+  },
+
+  checkUseridValidation: () => {
+    return '/auth/valid-id';
+  },
 };
