@@ -5,11 +5,7 @@ import CommonButton from 'components/common/button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
-
-interface LoginType {
-  userId: string;
-  password: string;
-}
+import { LoginData } from 'types/auth.types';
 
 function LoginPage() {
   const [valueError, setValueError] = useState<boolean>(false);
@@ -19,9 +15,9 @@ function LoginPage() {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<LoginType>();
+  } = useForm<LoginData>();
 
-  const onValid = async (data: LoginType) => {
+  const onValid = async (data: LoginData) => {
     console.log('Login with data');
   };
 

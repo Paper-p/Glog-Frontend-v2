@@ -4,13 +4,7 @@ import CommonButton from 'components/common/button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
-
-interface SignupType {
-  nickname: string;
-  userId: string;
-  password: string;
-  confirmPassword: string;
-}
+import { SignupData } from 'types/auth.types';
 
 function SignupPage() {
   const [valueError, setValueError] = useState<boolean>(false);
@@ -20,9 +14,9 @@ function SignupPage() {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<SignupType>();
+  } = useForm<SignupData>();
 
-  const onValid = async (data: SignupType) => {
+  const onValid = async (data: SignupData) => {
     console.log('Signup with data');
   };
 
