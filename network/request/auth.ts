@@ -1,5 +1,5 @@
-import { authUrl } from 'axios/data/getUrl';
-import { instance } from 'axios/data/instance';
+import { authUrl } from 'network/data/getUrl';
+import { instance } from 'network/data/instance';
 import { LoginData } from 'types/auth.types';
 
 class Auth {

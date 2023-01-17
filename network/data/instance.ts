@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { REACT_APP_BASE_URL } from 'shared/config';
+import { NEXT_PUBLIC_BASE_URL } from 'shared/config';
 import TokenService from 'utils/tokenService';
 import { authUrl } from './getUrl';
 
 export const instance = axios.create({
-  baseURL: REACT_APP_BASE_URL,
+  baseURL: NEXT_PUBLIC_BASE_URL,
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type,Authorization',
