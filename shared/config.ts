@@ -1,1 +1,1 @@
-export const REACT_APP_BASE_URL = '';
+export const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
