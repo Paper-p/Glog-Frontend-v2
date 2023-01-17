@@ -6,6 +6,7 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   icon: 'human' | 'lock';
   error: boolean;
   needMargin: boolean;
+  register?: any;
 }
 
 function AuthInput(props: InputProps) {
@@ -16,7 +17,7 @@ function AuthInput(props: InputProps) {
       <S.InputBox>
         {props.icon === 'human' && <I.HumanIcon />}
         {props.icon === 'lock' && <I.LockIcon />}
-        <S.Input className={props.icon} {...rest} />
+        <S.Input className={props.icon} {...props.register} {...rest} />
       </S.InputBox>
     </S.InputWrapper>
   );
