@@ -2,7 +2,7 @@ import Logo from 'components/utils/logo';
 import * as S from './style';
 import AuthInput from 'components/utils/auth/input';
 import CommonButton from 'components/common/button';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
 
