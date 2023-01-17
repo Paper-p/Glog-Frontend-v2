@@ -1929,9 +1929,6 @@ __metadata:
     react-hook-form: ^7.41.5
     recoil: ^0.7.6
     typescript: 4.9.4
-  dependenciesMeta:
-    next@13.1.1:
-      unplugged: true
   languageName: unknown
   linkType: soft
 
