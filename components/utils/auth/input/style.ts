@@ -7,7 +7,7 @@ export const InputWrapper = styled.div<{ needMargin: boolean; error: boolean }>`
   align-items: center;
   background: #252727;
   border-radius: 10px;
-  margin-bottom: ${(e) => (e.needMargin ? '1rem' : '')};
+  margin-bottom: ${(e) => (e.needMargin ? '0.675rem' : '')};
   filter: ${(e) => (e.error ? 'drop-shadow(0px 1px 7px #e45b3c)' : '')};
 `;
 
