@@ -3,10 +3,6 @@ import styled from '@emotion/styled';
 export const LoginForm = styled.form`
   width: 366px;
   margin-bottom: 5rem;
-
-  button {
-    height: 52px;
-  }
 `;
 
 export const LogoToCenter = styled.div`
