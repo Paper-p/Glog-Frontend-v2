@@ -17,7 +17,12 @@ function AuthInput(props: InputProps) {
       <S.InputBox>
         {props.icon === 'human' && <I.HumanIcon />}
         {props.icon === 'lock' && <I.LockIcon />}
-        <S.Input className={props.icon} {...props.register} {...rest} />
+        <S.Input
+          className={props.icon}
+          {...props.register}
+          {...rest}
+          type={props.icon === 'lock' ? 'password' : 'text'}
+        />
       </S.InputBox>
     </S.InputWrapper>
   );
