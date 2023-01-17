@@ -8,4 +8,5 @@ export const ErrorText = styled.p<{ needMargin: boolean }>`
   color: #e83f28;
   padding-left: 10px;
   margin-bottom: ${(e) => (e.needMargin ? '0.675rem' : '')};
+  text-align: left;
 `;
