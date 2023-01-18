@@ -2,6 +2,7 @@
 
 import Header from 'components/common/header';
 import GlobalStyle from 'styles/global';
+import { ToastContainer } from 'react-toastify';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ function RootLayout({ children }: RootLayoutProps) {
     <html lang='ko'>
       <head />
       <body>
+        <ToastContainer />
         <GlobalStyle />
         <Header />
         {children}
