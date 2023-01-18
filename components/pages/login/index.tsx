@@ -7,10 +7,13 @@ import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
 import { LoginData } from 'types/auth.types';
 import tokenService from 'utils/tokenService';
+import { toast } from 'react-toastify';
 import auth from 'network/request/auth';
+import { useRouter } from 'next/navigation';
 
 function LoginPage() {
   const [valueError, setValueError] = useState<boolean>(false);
+  const router = useRouter();
 
   const {
     register,
@@ -21,10 +24,13 @@ function LoginPage() {
 
   const onValid = async (data: LoginData) => {
     try {
-      const res: any = await auth.signin(data);
-      tokenService.setUser(res.data);
-      console.log(res.data);
-    } catch (error: any) {
+      const response: any = await auth.signin(data);
+      toast.success('로그인에 성공했어요', {
+        autoClose: 2000,
+      });
+      tokenService.setUser(response.data);
+      router.push('/');
+    } catch {
       setError(
         'userId',
         { message: '아이디 혹은 비밀번호를 다시 확인해주세요' },
