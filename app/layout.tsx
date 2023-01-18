@@ -3,6 +3,7 @@
 import Header from 'components/common/header';
 import GlobalStyle from 'styles/global';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
