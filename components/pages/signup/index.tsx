@@ -5,10 +5,12 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AuthErrorText from 'components/utils/auth/error';
 import { SignupData } from 'types/auth.types';
+import { toast } from 'react-toastify';
 import auth from 'network/request/auth';
-
+import { useRouter } from 'next/navigation';
 function SignupPage() {
   const [valueError, setValueError] = useState<boolean>(false);
+  const router = useRouter();
 
   const {
     register,
@@ -17,51 +19,62 @@ function SignupPage() {
     formState: { errors },
   } = useForm<SignupData>();
 
-  const checkNicknameValidation = async (nickname: string) => {
-    const check = async () => {
-      auth.checkNicknameValidation(nickname);
+  async function signup(params: SignupData) {
+    const checkName = async () => {
+      try {
+        await auth.checkNicknameValidation(params.nickname);
+
+        checkId();
+      } catch {
+        setError(
+          'nickname',
+          { message: '이미 존재하는 이름이에요.' },
+          { shouldFocus: true }
+        );
+        setValueError(true);
+      }
     };
 
-    check().catch(() => {
-      setError(
-        'nickname',
-        { message: '이미 존재하는 닉네임이에요.' },
-        { shouldFocus: true }
-      );
-      setValueError(true);
-    });
-  };
+    const checkId = async () => {
+      try {
+        await auth.checkUseridValidation(params.userId);
 
-  const checkUseridValidation = async (userId: string) => {
-    const check = async () => {
-      await auth.checkUseridValidation(userId);
+        createUser();
+      } catch {
+        setError(
+          'userId',
+          { message: '이미 존재하는 아이디에요' },
+          { shouldFocus: true }
+        );
+        setValueError(true);
+      }
     };
 
-    check().catch(() => {
-      setError(
-        'userId',
-        { message: '이미 존재하는 아이디에요.' },
-        { shouldFocus: true }
-      );
-      setValueError(true);
-    });
-  };
+    const createUser = async () => {
+      try {
+        await auth.signup(params);
+
+        toast.success('회원가입을 성공했어요', {
+          autoClose: 2000,
+        });
+
+        router.push('/');
+      } catch {
+        setError(
+          'confirmPassword',
+          { message: '나중에 다시 시도해주세요' },
+          { shouldFocus: true }
+        );
+        setValueError(true);
+      }
+    };
+
+    checkName();
+  }
 
   const onValid = async (data: SignupData) => {
     if (data.password === data.confirmPassword) {
-      checkNicknameValidation(data.nickname).then(async () =>
-        checkUseridValidation(data.userId).then(async () => {
-          try {
-            await auth.signup({
-              nickname: data.nickname,
-              userId: data.userId,
-              password: data.password,
-            });
-          } catch {
-            setValueError(true);
-          }
-        })
-      );
+      signup(data);
     } else {
       setError(
         'confirmPassword',
