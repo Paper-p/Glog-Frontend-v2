@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import { HomePage } from 'components/pages';
 
 function Home() {
-  return <div>d</div>;
+  return <HomePage />;
 }
 
 export default Home;
