@@ -12,10 +12,20 @@ export const authUrl = {
   },
 
   checkNicknameValidation: () => {
-    return '/auth/valid-name';
+    return 'auth/valid-name';
   },
 
   checkUseridValidation: () => {
-    return '/auth/valid-id';
+    return 'auth/valid-id';
+  },
+};
+
+export const feedUrl = {
+  getNormalPostsList: () => {
+    return 'feed/list';
+  },
+
+  getHotPostsList: () => {
+    return 'feed/hot';
   },
 };
