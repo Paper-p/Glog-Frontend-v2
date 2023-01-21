@@ -1,1 +1,1 @@
-export { loggedAtom } from './container';
+export { dummyAtom } from './container';
