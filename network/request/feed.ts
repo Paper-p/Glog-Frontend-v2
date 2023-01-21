@@ -10,7 +10,7 @@ interface GetNormalPostsListData {
 class Feed {
   getNormalPostsList(params: GetNormalPostsListData) {
     try {
-      instance({
+      return instance({
         method: 'GET',
         url: feedUrl.getNormalPostsList(),
         params: {
@@ -27,7 +27,7 @@ class Feed {
 
   getHotPostsList() {
     try {
-      instance({
+      return instance({
         method: 'GET',
         url: feedUrl.getHotPostsList(),
         responseType: 'json',
