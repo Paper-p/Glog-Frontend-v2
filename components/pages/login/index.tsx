@@ -29,7 +29,7 @@ function LoginPage() {
         autoClose: 2000,
       });
       tokenService.setUser(response.data);
-      router.push('/');
+      router.replace('/');
     } catch {
       setError(
         'userId',

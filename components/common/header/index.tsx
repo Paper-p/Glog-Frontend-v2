@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { usePathname } from 'next/navigation';
 import Logo from '../../utils/logo';
 import * as S from './style';
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import tokenService from 'utils/tokenService';
 
 function Header() {
-  const [logged, _] = useState<boolean>(false);
   const pathname = usePathname();
 
   const select = (currentPath: string) =>
@@ -28,7 +28,7 @@ function Header() {
         </S.Box>
       </S.Elements>
       <S.Elements className='right-part'>
-        {logged ? (
+        {tokenService.getLocalAccessToken() ? (
           <React.Fragment>
             <p>오종진님</p>
             <S.UserProfileImage src='https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt361d06c667f47dac/60dad6580401cb0ebfa74b50/dbf90410e8ce567dd5ea7b1d2e6972627d587f4b.jpg' />
