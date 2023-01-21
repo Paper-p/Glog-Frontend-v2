@@ -9,7 +9,7 @@ function NormalPosts() {
   const [list, setList] = useState<any[]>([]);
 
   useEffect(() => {
-    const getHotPosts = async () => {
+    const getNormalPosts = async () => {
       try {
         const response: any = await feed.getNormalPostsList({
           page: 0,
@@ -21,7 +21,7 @@ function NormalPosts() {
       }
     };
 
-    getHotPosts();
+    getNormalPosts();
   }, []);
   return (
     <>
