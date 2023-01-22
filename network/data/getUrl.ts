@@ -29,3 +29,9 @@ export const feedUrl = {
     return 'feed/hot';
   },
 };
+
+export const userUrl = {
+  getUserMiniProfile: () => {
+    return 'user/profile';
+  },
+};
