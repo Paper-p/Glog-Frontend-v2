@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Logo from '../../utils/logo';
 import * as S from './style';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import tokenService from 'utils/tokenService';
+import user from 'network/request/user';
+
+interface MiniProfileData {
+  nickname: string;
+  profileImageUrl: string;
+  userId: string;
+}
 
 function Header() {
+  const [miniProfile, setMiniProfile] = useState<MiniProfileData>();
   const pathname = usePathname();
 
   const select = (currentPath: string) =>
     currentPath === pathname && { color: '#E0E0E0 !important' };
+
+  useEffect(() => {
+    const getUserMiniProfile = async () => {
+      try {
+        if (tokenService.getLocalAccessToken()) {
+          const res: any = await user.getUserMiniProfile();
+          setMiniProfile(res.data);
+        }
+      } catch (e: any) {
+        if (e.response.status) {
+          tokenService.removeUser();
+        }
+      }
+    };
+
+    getUserMiniProfile();
+  }, [tokenService.getLocalAccessToken()]);
 
   return (
     <S.HeaderLayout>
@@ -30,8 +55,8 @@ function Header() {
       <S.Elements className='right-part'>
         {tokenService.getLocalAccessToken() ? (
           <React.Fragment>
-            <p>오종진님</p>
-            <S.UserProfileImage src='https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt361d06c667f47dac/60dad6580401cb0ebfa74b50/dbf90410e8ce567dd5ea7b1d2e6972627d587f4b.jpg' />
+            <p>{miniProfile?.nickname}</p>
+            <S.UserProfileImage src={miniProfile?.profileImageUrl} />
           </React.Fragment>
         ) : (
           <React.Fragment>
