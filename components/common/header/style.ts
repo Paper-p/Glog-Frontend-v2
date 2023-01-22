@@ -6,6 +6,10 @@ export const HeaderLayout = styled.section`
   margin: 25px auto 0;
   justify-content: space-between;
   height: 70px;
+
+  @media screen and (max-width: 900px) {
+    width: 90%;
+  }
 `;
 
 export const Elements = styled.div`
@@ -25,7 +29,7 @@ export const Elements = styled.div`
       font-family: 'Pretendard';
       font-style: normal;
       font-weight: 400;
-      font-size: 17px;
+      font-size: 1.063em;
       color: #9d9d9d;
     }
   }
@@ -48,7 +52,7 @@ export const Box = styled.div`
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 1.063em;
     color: #9d9d9d;
   }
 `;
