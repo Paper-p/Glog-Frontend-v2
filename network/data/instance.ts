@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { NEXT_PUBLIC_BASE_URL } from 'shared/config';
-import TokenService from 'utils/tokenService';
+import tokenService from 'utils/tokenService';
 import { authUrl } from './getUrl';
 
 export const instance = axios.create({
@@ -17,7 +17,7 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(
   (config: any) => {
-    const token = TokenService.getLocalAccessToken();
+    const token = tokenService.getLocalAccessToken();
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + token;
     }
@@ -36,7 +36,8 @@ instance.interceptors.response.use(
     const error = err.response;
     if (error.status === 401 && !error.config.__isRetryRequest) {
       return getAuthToken().then((response: any) => {
-        TokenService.setUser(response.data);
+        console.log('new Token:', response.data);
+        tokenService.setUser(response.data);
         error.config.__isRetryRequest = true;
         return instance(error.config);
       });
@@ -53,8 +54,8 @@ function getAuthToken() {
     authTokenRequest = makeActualAuthenticationRequest();
     authTokenRequest
       .catch(function () {
-        TokenService.removeUser();
-        window.location.replace('/login');
+        tokenService.removeUser();
+        // window.location.replace('/login');
       })
       .then(resetAuthTokenRequest, resetAuthTokenRequest);
   }
@@ -63,12 +64,15 @@ function getAuthToken() {
 }
 
 function makeActualAuthenticationRequest() {
+  console.log('check refresh token:', tokenService.getLocalRefreshToken());
+
   return axios({
     method: 'PATCH',
     url: authUrl.tokenReissuance(),
     headers: {
-      RefreshToken: TokenService.getLocalRefreshToken(),
+      RefreshToken: tokenService.getLocalRefreshToken(),
     },
+    baseURL: NEXT_PUBLIC_BASE_URL,
   });
 }
 
