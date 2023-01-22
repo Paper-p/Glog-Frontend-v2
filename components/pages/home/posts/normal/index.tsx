@@ -3,7 +3,7 @@ import * as S from './style';
 import PostTypeBoard from 'components/utils/post/typeBoard';
 import feed from 'network/request/feed';
 import { useState, useEffect } from 'react';
-import React from 'react';
+import Link from 'next/link';
 
 function NormalPosts() {
   const [list, setList] = useState<any[]>([]);
@@ -28,9 +28,9 @@ function NormalPosts() {
       <PostTypeBoard>💻 게시물’s</PostTypeBoard>
       <S.NormalPostsLayout>
         {list.map((idx) => (
-          <React.Fragment key={idx.id}>
+          <Link key={idx.id} href={`/post/${idx.id}`}>
             <NormalPostItem list={idx} />
-          </React.Fragment>
+          </Link>
         ))}
       </S.NormalPostsLayout>
     </>
