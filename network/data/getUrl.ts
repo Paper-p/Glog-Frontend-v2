@@ -1,6 +1,6 @@
 export const authUrl = {
   tokenReissuance: () => {
-    return 'auth/refresh';
+    return 'auth';
   },
 
   login: () => {
