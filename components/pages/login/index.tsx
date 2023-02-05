@@ -4,7 +4,7 @@ import AuthInput from 'components/utils/auth/input';
 import CommonButton from 'components/common/button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import AuthErrorText from 'components/utils/auth/error';
+import AuthErrorText from 'components/utils/auth/errorText';
 import { LoginData } from 'types/auth.types';
 import tokenService from 'utils/tokenService';
 import { toast } from 'react-toastify';

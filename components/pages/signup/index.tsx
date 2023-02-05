@@ -3,7 +3,7 @@ import AuthInput from 'components/utils/auth/input';
 import CommonButton from 'components/common/button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import AuthErrorText from 'components/utils/auth/error';
+import AuthErrorText from 'components/utils/auth/errorText';
 import { SignupData } from 'types/auth.types';
 import { toast } from 'react-toastify';
 import auth from 'network/request/auth';
