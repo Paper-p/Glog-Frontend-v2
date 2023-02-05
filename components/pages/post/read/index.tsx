@@ -1,7 +1,7 @@
 import * as S from './style';
 import * as I from 'assets/svg';
 
-function PostPage() {
+function ReadPostPage() {
   return (
     <S.PostPageLayout>
       <S.PostTitle>asd</S.PostTitle>
@@ -35,4 +35,4 @@ function PostPage() {
   );
 }
 
-export default PostPage;
+export default ReadPostPage;
