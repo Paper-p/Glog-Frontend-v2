@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const PostPostTypeBoard = styled.div`
+export const PostsTypeBoard = styled.div`
   background-color: #33333399;
   width: fit-content;
   padding: 8px 13px;
