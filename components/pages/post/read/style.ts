@@ -104,3 +104,15 @@ export const Thumbnail = styled.img`
   width: 100%;
   margin-top: 3rem;
 `;
+
+export const Markdown = styled.div`
+  padding: 60px 0 20px 0;
+  .wmde-markdown {
+    background: #1a1b1e;
+    font-size: 17px;
+    color: #fff;
+  }
+  .wmde-markdown pre {
+    background: black;
+  }
+`;
