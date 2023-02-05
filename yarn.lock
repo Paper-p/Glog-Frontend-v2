@@ -2070,7 +2070,7 @@ __metadata:
     eslint-plugin-react: latest
     next: 13.1.1
     prettier: ^2.8.2
-    react: 18.2.0
+    react: latest
     react-dom: 18.2.0
     react-hook-form: ^7.41.5
     react-toastify: ^9.1.1
@@ -3064,7 +3064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
+"react@npm:latest":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
