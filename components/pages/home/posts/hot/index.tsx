@@ -1,5 +1,5 @@
 import SpecialPostItem from 'components/utils/post/item/special';
-import PostTypeBoard from 'components/utils/post/typeBoard';
+import PostsTypeBoard from 'components/utils/post/postsTypeBoard';
 import feed from 'network/request/feed';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -22,7 +22,7 @@ function HotPosts() {
   }, []);
   return (
     <>
-      <PostTypeBoard>🔥HOT’</PostTypeBoard>
+      <PostsTypeBoard>🔥HOT’</PostsTypeBoard>
       <S.HotPostsLayout>
         {list.map((idx) => (
           <Link key={idx.id} href={`/post/${idx.id}`}>
