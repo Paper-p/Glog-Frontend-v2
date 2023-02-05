@@ -1,6 +1,6 @@
 import * as S from './style';
 import { PostData } from 'types/post.types';
-import PostItemInformation from '../common/itemInfo';
+import PostItemInformation from '../information';
 
 interface NormalItemProps {
   list: PostData;
