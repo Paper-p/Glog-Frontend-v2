@@ -1,4 +1,4 @@
-import * as S from './style';
+import * as S from '../style';
 import * as I from 'assets/svg';
 import Image from 'next/image';
 
