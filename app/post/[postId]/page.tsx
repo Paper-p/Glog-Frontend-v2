@@ -1,9 +1,9 @@
 'use client';
 
-import { PostPage } from 'components/pages';
+import { ReadPostPage } from 'components/pages';
 
-function Post() {
-  return <PostPage />;
+function ReadPost() {
+  return <ReadPostPage />;
 }
 
-export default Post;
+export default ReadPost;
