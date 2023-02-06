@@ -101,18 +101,21 @@ export const Stat = styled.p`
 `;
 
 export const Thumbnail = styled.img`
-  width: 100%;
-  margin-top: 3rem;
+  max-width: 100%;
+  margin: 3rem auto 0;
+  display: block;
 `;
 
-export const Markdown = styled.div`
-  padding: 60px 0 20px 0;
-  .wmde-markdown {
-    background: #1a1b1e;
-    font-size: 17px;
-    color: #fff;
+export const ReadMarkdown = styled.div`
+  .w-md-editor-input {
+    display: none;
   }
-  .wmde-markdown pre {
-    background: black;
+  .w-md-editor-text {
+    display: none;
+  }
+  .w-md-editor-text-input {
+    display: none;
   }
 `;
+
+export const dummy = styled.div``;

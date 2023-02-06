@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const removeImports = require('next-remove-imports')();
-
 const nextConfig = {
   experimental: {
     appDir: true,
+    esmExternals: 'loose',
   },
   reactStrictMode: false,
 };
 
-module.exports = removeImports({
-  ...nextConfig,
-});
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const removeImports = require('next-remove-imports')();
+
+module.exports = removeImports(nextConfig);
