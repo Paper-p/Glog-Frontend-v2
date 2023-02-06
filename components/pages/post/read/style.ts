@@ -107,14 +107,11 @@ export const Thumbnail = styled.img`
 `;
 
 export const ReadMarkdown = styled.div`
-  .w-md-editor-input {
-    display: none;
-  }
-  .w-md-editor-text {
-    display: none;
-  }
-  .w-md-editor-text-input {
-    display: none;
+  .wmde-markdown {
+    background: #1a1b1e;
+    font-size: 17px;
+    color: #fff;
+    margin: 5rem 0 1.5rem;
   }
 `;
 

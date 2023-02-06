@@ -39,7 +39,7 @@ function ReadPostPage() {
         </S.PostStatBar>
       </S.PostInfoBox>
       <S.Thumbnail src='https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1208x347:1210x345)/origin-imgresizer.eurosport.com/2023/01/12/3524154-71830248-2560-1440.jpg' />
-      <S.ReadMarkdown>
+      <S.ReadMarkdown data-color-mode='dark'>
         <MarkdownPreview source={source} />
       </S.ReadMarkdown>
     </S.PostPageLayout>
