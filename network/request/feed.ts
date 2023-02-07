@@ -1,5 +1,6 @@
 import { feedUrl } from 'network/data/getUrl';
 import { instance } from 'network/data/instance';
+import tokenService from 'utils/tokenService';
 
 interface GetNormalPostsListData {
   size: number;
@@ -31,6 +32,23 @@ class Feed {
         method: 'GET',
         url: feedUrl.getHotPostsList(),
         responseType: 'json',
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  getPostByPostId(postId: number) {
+    try {
+      return instance({
+        method: 'GET',
+        url: feedUrl.getPostByPostId() + postId,
+        responseType: 'json',
+        headers: {
+          Authorization: tokenService.getLocalAccessToken()
+            ? 'Bearer ' + tokenService.getLocalAccessToken()
+            : '',
+        },
       });
     } catch (error) {
       return error;

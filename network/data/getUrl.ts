@@ -28,6 +28,10 @@ export const feedUrl = {
   getHotPostsList: () => {
     return 'feed/hot';
   },
+
+  getPostByPostId: () => {
+    return 'feed/';
+  },
 };
 
 export const userUrl = {
