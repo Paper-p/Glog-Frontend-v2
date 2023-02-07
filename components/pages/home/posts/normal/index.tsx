@@ -1,6 +1,6 @@
 import NormalPostItem from 'components/utils/post/item/normal';
 import * as S from './style';
-import PostsTypeBoard from 'components/utils/post/postsTypeBoard';
+import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ function NormalPosts() {
   }, []);
   return (
     <>
-      <PostsTypeBoard>💻 게시물’s</PostsTypeBoard>
+      <SignBoard>💻 게시물’s</SignBoard>
       <S.NormalPostsLayout>
         {list.map((idx) => (
           <Link key={idx.id} href={`/post/${idx.id}`}>
