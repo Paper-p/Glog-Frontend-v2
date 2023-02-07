@@ -1,4 +1,4 @@
-import SpecialPostItem from 'components/utils/post/item/special';
+import SpecialPostItem from 'components/utils/postItem/special';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
 import Link from 'next/link';
