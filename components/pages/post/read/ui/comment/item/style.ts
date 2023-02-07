@@ -150,5 +150,5 @@ export const Border = styled.div`
   width: 100%;
   height: 0px;
   border: 1px solid #484848;
-  margin-top: 15px;
+  margin-top: 13px;
 `;
