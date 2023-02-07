@@ -3,6 +3,13 @@ import styled from '@emotion/styled';
 export const PostPageLayout = styled.section`
   width: 60%;
   margin: 6rem auto 0;
+
+  @media screen and (max-width: 1350px) {
+    width: 70vw;
+  }
+  @media screen and (max-width: 900px) {
+    width: 92vw;
+  }
 `;
 
 export const PostTitle = styled.p`
