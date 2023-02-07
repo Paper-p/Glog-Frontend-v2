@@ -10,3 +10,21 @@ export interface PostData {
   isLiked: boolean;
   tagList: [string];
 }
+
+export interface DetailPostData extends PostData {
+  content: string;
+  comments: [
+    {
+      id: number;
+      author: {
+        userId: string;
+        nickname: string;
+        profileImageUrl: string;
+      };
+      content: string;
+      createdAt: Date;
+      isMine: boolean;
+    }
+  ];
+  isMine: boolean;
+}
