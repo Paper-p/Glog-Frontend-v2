@@ -59,8 +59,6 @@ export const ProfileImage = styled.img`
   border-radius: 40px;
 `;
 
-export const Wrapper = styled.div``;
-
 export const Name = styled.p`
   font-family: 'Pretendard';
   font-style: normal;
@@ -111,8 +109,50 @@ export const ReadMarkdown = styled.div`
     background: #1a1b1e;
     font-size: 17px;
     color: #fff;
-    margin: 5rem 0 1.5rem;
+    margin: 5rem 0 4rem;
   }
 `;
 
-export const dummy = styled.div``;
+export const TextareaLayout = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 15px 0 30px 0;
+  background: #27282b;
+  border-radius: 10px;
+  align-items: baseline;
+  justify-content: space-between;
+
+  button {
+    width: 3.4vw;
+    min-width: 60px;
+    height: 33.85px;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-top: 0px;
+  }
+  textarea {
+    width: 100%;
+    min-height: 70px;
+    background: #27282b;
+    color: #fff;
+    font-family: 'Pretendard';
+    font-size: 16px;
+    line-height: 1.75rem;
+    resize: none;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+  }
+`;
+
+export const NotLogged = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  height: 67.5px;
+  margin: 15px 0 30px 0;
+  background: #27282b;
+  color: #fff;
+  border-radius: 10px;
+`;
