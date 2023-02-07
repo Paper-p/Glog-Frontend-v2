@@ -3,3 +3,5 @@ export { HumanIcon } from './humanIcon';
 export { LockIcon } from './lockIcon';
 export { Hit } from './hit';
 export { Like } from './like';
+export { KebobButton } from './kebobButton';
+export { ControlIcon } from './controlIcon';
