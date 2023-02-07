@@ -2,10 +2,9 @@ import * as S from './style';
 import * as I from 'assets/svg';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import '@uiw/react-markdown-preview/markdown.css';
-import TextareaAutosize from 'react-textarea-autosize';
 import SignBoard from 'components/common/signBoard';
-import CommonButton from 'components/common/button';
-import tokenService from 'utils/tokenService';
+import CommentTextArea from '../comment/textarea';
+import CommentItem from '../comment/item';
 
 const source = `
 ## MarkdownPreview
@@ -47,19 +46,11 @@ function ReadPostPage() {
         <MarkdownPreview source={source} />
       </S.ReadMarkdown>
       <SignBoard>📖 댓글</SignBoard>
-      {tokenService.getLocalAccessToken() ? (
-        <S.TextareaLayout>
-          <div style={{ padding: '18px', width: '90%' }}>
-            <TextareaAutosize
-              name='content'
-              placeholder='댓글을 입력해주세요'
-            />
-          </div>
-          <CommonButton>등록</CommonButton>
-        </S.TextareaLayout>
-      ) : (
-        <S.NotLogged>댓글작성은 로그인이 필요해요</S.NotLogged>
-      )}
+      <CommentTextArea />
+      <CommentItem />
+      <CommentItem />
+      <CommentItem />
+      <CommentItem />
     </S.PostPageLayout>
   );
 }
