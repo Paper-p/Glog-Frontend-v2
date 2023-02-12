@@ -3,13 +3,23 @@ import useInputs from 'hooks/useInputs';
 import Link from 'next/link';
 import * as I from 'assets/svg';
 import * as S from './style';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
-function CommentItem() {
+interface CommentItemProps {
+  author: {
+    userId: string;
+    nickname: string;
+    profileImageUrl: string;
+  };
+  content: string;
+  createdAt: Date;
+  isMine: boolean;
+}
+
+function CommentItem(props: CommentItemProps) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [isMine, setIsMine] = useState<boolean>(true);
 
   const [{ edit }, onChange] = useInputs({
     edit: 'content',
@@ -34,17 +44,12 @@ function CommentItem() {
             <>
               <div>
                 <Link href={'/asd'}>
-                  <S.UserProfileImg
-                    src={
-                      'https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1208x347:1210x345)/origin-imgresizer.eurosport.com/2023/01/12/3524154-71830248-2560-1440.jpg'
-                    }
-                    alt=''
-                  />
+                  <S.UserProfileImg src={props.author.profileImageUrl} alt='' />
                 </Link>
               </div>
               <div>
-                <S.UserName>asd</S.UserName>
-                <S.UserComment>asd</S.UserComment>
+                <S.UserName>{props.author.nickname}</S.UserName>
+                <S.UserComment>{props.content}</S.UserComment>
               </div>
             </>
           )}
@@ -52,7 +57,7 @@ function CommentItem() {
         <S.CommentSideBox isClick={isClick}>
           {isEdit ? <></> : <S.CreatedAt>2022.12.21</S.CreatedAt>}
           <S.Icon isClick={isClick}>
-            {isMine ? (
+            {props.isMine ? (
               <>
                 <div onClick={() => setIsClick(!isClick)}>
                   {isClick ? <I.ControlIcon /> : <I.KebobButton />}

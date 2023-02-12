@@ -1,12 +1,15 @@
 import * as S from './style';
 
-function PostTags() {
+interface PostTagsProps {
+  tagList: string[] | undefined;
+}
+
+function PostTags({ tagList }: PostTagsProps) {
   return (
     <S.TagList>
-      <S.Tag>asd</S.Tag>
-      <S.Tag>asd</S.Tag>
-      <S.Tag>asd</S.Tag>
-      <S.Tag>asd</S.Tag>
+      {tagList?.map((tag) => (
+        <S.Tag key={tag}>{tag}</S.Tag>
+      ))}
     </S.TagList>
   );
 }

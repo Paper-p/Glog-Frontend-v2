@@ -2,15 +2,38 @@ import SignBoard from 'components/common/signBoard';
 import CommentItem from './item';
 import CommentTextArea from './textarea';
 
-function PostComment() {
+interface CommentsArrayType {
+  id: number;
+  author: {
+    userId: string;
+    nickname: string;
+    profileImageUrl: string;
+  };
+  content: string;
+  createdAt: Date;
+  isMine: boolean;
+}
+
+interface PostCommentProps {
+  comments: CommentsArrayType[] | undefined;
+}
+
+function PostComment(props: PostCommentProps) {
   return (
     <>
       <SignBoard>📖 댓글</SignBoard>
       <CommentTextArea />
-      <CommentItem />
-      <CommentItem />
-      <CommentItem />
-      <CommentItem />
+      <>
+        {props.comments?.map((comment) => (
+          <CommentItem
+            key={comment.id}
+            author={comment.author}
+            content={comment.content}
+            createdAt={comment.createdAt}
+            isMine={comment.isMine}
+          />
+        ))}
+      </>
     </>
   );
 }

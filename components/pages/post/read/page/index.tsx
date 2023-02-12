@@ -4,8 +4,9 @@ import '@uiw/react-markdown-preview/markdown.css';
 import PostComment from '../ui/comment';
 import PostTags from '../ui/tags';
 import PostInformation from '../ui/information';
-import { DetailPostData } from 'types/post.types';
 import { useEffect, useState } from 'react';
+import feed from 'network/request/feed';
+import { DetailPostData } from 'types/post.types';
 
 const source = `
 ## MarkdownPreview
@@ -13,27 +14,37 @@ const source = `
 > todo: React component preview markdown text.
 `;
 
-function ReadPostPage(postData: any) {
-  const [data, setData] = useState<DetailPostData>();
+function ReadPostPage({ postId }: { postId: string }) {
+  const [postData, setPostData] = useState<DetailPostData>();
 
   useEffect(() => {
-    if (postData) {
-      console.log(postData);
+    const getPostByPostId = async () => {
+      try {
+        const res: any = await feed.getPostByPostId(Number(postId));
+        setPostData(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
 
-      setData(postData.postData);
-    }
-  }, [postData]);
-
+    getPostByPostId();
+  }, []);
   return (
     <S.PostPageLayout>
-      <S.PostTitle>{data?.title}</S.PostTitle>
-      <PostTags />
-      <PostInformation />
-      <S.Thumbnail src='https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1208x347:1210x345)/origin-imgresizer.eurosport.com/2023/01/12/3524154-71830248-2560-1440.jpg' />
+      <S.PostTitle>{postData?.title}</S.PostTitle>
+      <PostTags tagList={postData?.tagList} />
+      <PostInformation
+        nickname={String(postData?.author.nickname)}
+        profileImageUrl={String(postData?.author.profileImageUrl)}
+        createdAt={postData?.createdAt}
+        likeCount={Number(postData?.likeCount)}
+        hit={Number(postData?.hit)}
+      />
+      <S.Thumbnail src={postData?.thumbnail} />
       <S.ReadMarkdown data-color-mode='dark'>
-        <MarkdownPreview source={source} />
+        <MarkdownPreview source={String(postData?.content)} />
       </S.ReadMarkdown>
-      <PostComment />
+      <PostComment comments={postData?.comments} />
     </S.PostPageLayout>
   );
 }
