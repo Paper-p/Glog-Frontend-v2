@@ -19,6 +19,37 @@ class Comment {
       return error;
     }
   }
+
+  updateComment(commentId: string, fixedComment: string) {
+    try {
+      return instance({
+        method: 'PATCH',
+        url: commentUrl.getCommentUrl() + commentId,
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+        data: {
+          content: fixedComment,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  deleteComment(commentId: string) {
+    try {
+      return instance({
+        method: 'DELETE',
+        url: commentUrl.getCommentUrl() + commentId,
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Comment();
