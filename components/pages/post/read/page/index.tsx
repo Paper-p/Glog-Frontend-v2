@@ -16,9 +16,10 @@ function ReadPostPage({ postId }: { postId: string }) {
     try {
       const res: any = await feed.getPostByPostId(postId);
       setPostData(res.data);
-      console.log(res.data);
-    } catch (e) {
-      console.log(e);
+    } catch (e: any) {
+      if (e.response.status === 404) {
+        // navigate to 404
+      }
     }
   };
 
