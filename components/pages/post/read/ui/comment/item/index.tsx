@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useMutation, useQueryClient } from 'react-query';
 import comment from 'network/request/comment';
+import { currentCommentIdAtom, deleteCommentModalAtom } from 'atoms';
+import { useRecoilState } from 'recoil';
 
 interface CommentItemProps {
   id: string;
@@ -23,6 +25,8 @@ interface CommentItemProps {
 function CommentItem(props: CommentItemProps) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [_, setCurrntCommentId] = useRecoilState(currentCommentIdAtom);
+  const [__, setDeleteCommentModal] = useRecoilState(deleteCommentModalAtom);
   const queryClient = useQueryClient();
 
   const [{ fixedComment }, onChange] = useInputs({
@@ -44,6 +48,11 @@ function CommentItem(props: CommentItemProps) {
       queryClient.invalidateQueries('post');
     },
   });
+
+  const onDeleteComment = () => {
+    setCurrntCommentId(props.id);
+    setDeleteCommentModal(true);
+  };
 
   useEffect(() => {
     if (isClick === false) {
@@ -91,7 +100,9 @@ function CommentItem(props: CommentItemProps) {
                     <S.EditText onClick={() => setIsEdit(true)}>
                       수정
                     </S.EditText>
-                    <S.RemoveText>삭제</S.RemoveText>
+                    <S.RemoveText onClick={() => onDeleteComment()}>
+                      삭제
+                    </S.RemoveText>
                   </S.CommentUpdate>
                 ) : (
                   <></>
