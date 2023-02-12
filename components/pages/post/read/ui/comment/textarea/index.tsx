@@ -15,7 +15,7 @@ function CommentTextArea({ postId }: { postId: string }) {
   const onAddComment = async () => {
     if (content !== '') {
       setNull('content');
-      return comment.addComment(postId, content);
+      return await comment.addComment(postId, content);
     }
   };
 
