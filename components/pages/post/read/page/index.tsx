@@ -8,12 +8,6 @@ import { useEffect, useState } from 'react';
 import feed from 'network/request/feed';
 import { DetailPostData } from 'types/post.types';
 
-const source = `
-## MarkdownPreview
-
-> todo: React component preview markdown text.
-`;
-
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
 
