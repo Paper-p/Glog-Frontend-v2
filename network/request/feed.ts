@@ -38,7 +38,7 @@ class Feed {
     }
   }
 
-  getPostByPostId(postId: number) {
+  getPostByPostId(postId: string) {
     try {
       return instance({
         method: 'GET',

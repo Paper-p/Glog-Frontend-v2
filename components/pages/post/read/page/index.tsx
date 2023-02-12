@@ -12,13 +12,9 @@ import { useQuery } from 'react-query';
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
 
-  useEffect(() => {
-    getPostByPostId();
-  }, []);
-
   const getPostByPostId = async () => {
     try {
-      const res: any = await feed.getPostByPostId(Number(postId));
+      const res: any = await feed.getPostByPostId(postId);
       setPostData(res.data);
       console.log(res.data);
     } catch (e) {
