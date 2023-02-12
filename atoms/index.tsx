@@ -1,1 +1,2 @@
-export { dummyAtom } from './container';
+export { deleteCommentModalAtom } from './container';
+export { currentCommentIdAtom } from './container';
