@@ -39,3 +39,9 @@ export const userUrl = {
     return 'user/profile';
   },
 };
+
+export const commentUrl = {
+  getCommentUrl: () => {
+    return 'comment/';
+  },
+};
