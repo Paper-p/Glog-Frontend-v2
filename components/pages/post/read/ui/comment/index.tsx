@@ -28,6 +28,7 @@ function PostComment(props: PostCommentProps) {
         {props.comments?.map((comment) => (
           <CommentItem
             key={comment.id}
+            id={String(comment.id)}
             author={comment.author}
             content={comment.content}
             createdAt={comment.createdAt}

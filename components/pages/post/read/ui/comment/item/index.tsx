@@ -5,8 +5,11 @@ import * as I from 'assets/svg';
 import * as S from './style';
 import { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import { useMutation, useQueryClient } from 'react-query';
+import comment from 'network/request/comment';
 
 interface CommentItemProps {
+  id: string;
   author: {
     userId: string;
     nickname: string;
@@ -20,9 +23,26 @@ interface CommentItemProps {
 function CommentItem(props: CommentItemProps) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
-  const [{ edit }, onChange] = useInputs({
-    edit: 'content',
+  const [{ fixedComment }, onChange] = useInputs({
+    fixedComment: props.content,
+  });
+
+  const onUpdateComment = async () => {
+    if (fixedComment !== '') {
+      setIsClick(false);
+      return await comment.updateComment(props.id, fixedComment);
+    }
+  };
+
+  const { mutate: updateComment } = useMutation(onUpdateComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('post');
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries('post');
+    },
   });
 
   useEffect(() => {
@@ -37,8 +57,12 @@ function CommentItem(props: CommentItemProps) {
         <S.UserBox>
           {isEdit ? (
             <S.EditTextarea>
-              <TextareaAutosize name='edit' onChange={onChange} value={edit} />
-              <Button>수정</Button>
+              <TextareaAutosize
+                name='fixedComment'
+                onChange={onChange}
+                value={fixedComment}
+              />
+              <Button onClick={() => updateComment()}>수정</Button>
             </S.EditTextarea>
           ) : (
             <>
