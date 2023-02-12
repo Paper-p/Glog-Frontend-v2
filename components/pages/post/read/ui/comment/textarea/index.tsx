@@ -12,14 +12,14 @@ function CommentTextArea({ postId }: { postId: string }) {
     content: '',
   });
 
-  const onCreateComment = async () => {
+  const onAddComment = async () => {
     if (content !== '') {
       setNull('content');
-      return comment.createComment(postId, content);
+      return comment.addComment(postId, content);
     }
   };
 
-  const { mutate: createComment } = useMutation(onCreateComment, {
+  const { mutate: addComment } = useMutation(onAddComment, {
     onSuccess: () => {
       queryClient.invalidateQueries('post');
     },
@@ -37,7 +37,7 @@ function CommentTextArea({ postId }: { postId: string }) {
               value={content}
             />
           </div>
-          <CommonButton onClick={() => createComment()}>등록</CommonButton>
+          <CommonButton onClick={() => addComment()}>등록</CommonButton>
         </S.CommentTextArea>
       ) : (
         <S.NotLogged>댓글작성은 로그인이 필요해요</S.NotLogged>

@@ -3,7 +3,7 @@ import { instance } from 'network/data/instance';
 import tokenService from 'utils/tokenService';
 
 class Comment {
-  createComment(postId: string, comment: string) {
+  addComment(postId: string, comment: string) {
     try {
       return instance({
         method: 'POST',
