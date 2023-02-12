@@ -5,6 +5,7 @@ import GlobalStyle from 'styles/global';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -18,10 +19,12 @@ function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body>
         <QueryClientProvider client={queryClient}>
-          <ToastContainer />
-          <GlobalStyle />
-          <Header />
-          {children}
+          <RecoilRoot>
+            <ToastContainer />
+            <GlobalStyle />
+            <Header />
+            {children}
+          </RecoilRoot>
         </QueryClientProvider>
       </body>
     </html>
