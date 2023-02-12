@@ -4,7 +4,7 @@ import '@uiw/react-markdown-preview/markdown.css';
 import PostComment from '../ui/comment';
 import PostTags from '../ui/tags';
 import PostInformation from '../ui/information';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import feed from 'network/request/feed';
 import { DetailPostData } from 'types/post.types';
 import { useQuery } from 'react-query';
