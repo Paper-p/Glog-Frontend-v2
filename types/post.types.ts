@@ -26,5 +26,10 @@ export interface DetailPostData extends PostData {
       isMine: boolean;
     }
   ];
+  author: {
+    userId: string;
+    nickname: string;
+    profileImageUrl: string;
+  };
   isMine: boolean;
 }
