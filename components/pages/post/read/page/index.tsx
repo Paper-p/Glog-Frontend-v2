@@ -7,22 +7,31 @@ import PostInformation from '../ui/information';
 import { useEffect, useState } from 'react';
 import feed from 'network/request/feed';
 import { DetailPostData } from 'types/post.types';
+import { useQuery } from 'react-query';
 
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
 
   useEffect(() => {
-    const getPostByPostId = async () => {
-      try {
-        const res: any = await feed.getPostByPostId(Number(postId));
-        setPostData(res.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
     getPostByPostId();
   }, []);
+
+  const getPostByPostId = async () => {
+    try {
+      const res: any = await feed.getPostByPostId(Number(postId));
+      setPostData(res.data);
+      console.log(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const postQuery = useQuery({
+    queryKey: 'post',
+    queryFn: getPostByPostId,
+    refetchOnWindowFocus: false,
+  });
+
   return (
     <S.PostPageLayout>
       <S.PostTitle>{postData?.title}</S.PostTitle>
@@ -34,11 +43,11 @@ function ReadPostPage({ postId }: { postId: string }) {
         likeCount={String(postData?.likeCount)}
         hit={String(postData?.hit)}
       />
-      <S.Thumbnail src={postData?.thumbnail} />
+      <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
       <S.ReadMarkdown data-color-mode='dark'>
         <MarkdownPreview source={String(postData?.content)} />
       </S.ReadMarkdown>
-      <PostComment comments={postData?.comments} />
+      <PostComment comments={postData?.comments} postId={postId} />
     </S.PostPageLayout>
   );
 }

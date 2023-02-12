@@ -16,13 +16,14 @@ interface CommentsArrayType {
 
 interface PostCommentProps {
   comments: CommentsArrayType[] | undefined;
+  postId: string;
 }
 
 function PostComment(props: PostCommentProps) {
   return (
     <>
       <SignBoard>📖 댓글</SignBoard>
-      <CommentTextArea />
+      <CommentTextArea postId={props.postId} />
       <>
         {props.comments?.map((comment) => (
           <CommentItem

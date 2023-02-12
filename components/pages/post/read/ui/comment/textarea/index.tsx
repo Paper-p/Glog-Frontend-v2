@@ -2,8 +2,29 @@ import CommonButton from 'components/common/button';
 import tokenService from 'utils/tokenService';
 import TextareaAutosize from 'react-textarea-autosize';
 import * as S from './style';
+import { useMutation, useQueryClient } from 'react-query';
+import useInputs from 'hooks/useInputs';
+import comment from 'network/request/comment';
 
-function CommentTextArea() {
+function CommentTextArea({ postId }: { postId: string }) {
+  const queryClient = useQueryClient();
+  const [{ content }, onChange, setNull] = useInputs({
+    content: '',
+  });
+
+  const onCreateComment = async () => {
+    if (content !== '') {
+      setNull('content');
+      return comment.createComment(postId, content);
+    }
+  };
+
+  const { mutate: createComment } = useMutation(onCreateComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('post');
+    },
+  });
+
   return (
     <>
       {tokenService.getLocalAccessToken() ? (
@@ -12,9 +33,11 @@ function CommentTextArea() {
             <TextareaAutosize
               name='content'
               placeholder='댓글을 입력해주세요'
+              onChange={onChange}
+              value={content}
             />
           </div>
-          <CommonButton>등록</CommonButton>
+          <CommonButton onClick={() => createComment()}>등록</CommonButton>
         </S.CommentTextArea>
       ) : (
         <S.NotLogged>댓글작성은 로그인이 필요해요</S.NotLogged>
