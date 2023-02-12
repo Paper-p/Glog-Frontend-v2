@@ -27,9 +27,9 @@ function NormalPosts() {
     <>
       <SignBoard>💻 게시물’s</SignBoard>
       <S.NormalPostsLayout>
-        {list.map((idx) => (
-          <Link key={idx.id} href={`/post/${idx.id}`}>
-            <NormalPostItem list={idx} />
+        {list.map((currentValue) => (
+          <Link key={currentValue.id} href={'/post/' + currentValue.id}>
+            <NormalPostItem list={currentValue} />
           </Link>
         ))}
       </S.NormalPostsLayout>

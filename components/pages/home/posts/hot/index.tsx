@@ -24,9 +24,9 @@ function HotPosts() {
     <>
       <SignBoard>🔥HOT’</SignBoard>
       <S.HotPostsLayout>
-        {list.map((idx) => (
-          <Link key={idx.id} href={`/post/${idx.id}`}>
-            <SpecialPostItem list={idx} />
+        {list.map((currentValue) => (
+          <Link key={currentValue.id} href={'/post/' + currentValue.id}>
+            <SpecialPostItem list={currentValue} />
           </Link>
         ))}
       </S.HotPostsLayout>
