@@ -9,6 +9,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import comment from 'network/request/comment';
 import { currentCommentIdAtom, deleteCommentModalAtom } from 'atoms';
 import { useRecoilState } from 'recoil';
+import { useDate } from 'hooks/useDate';
 
 interface CommentItemProps {
   id: string;
@@ -18,7 +19,7 @@ interface CommentItemProps {
     profileImageUrl: string;
   };
   content: string;
-  createdAt: Date;
+  createdAt: any;
   isMine: boolean;
 }
 
@@ -60,6 +61,8 @@ function CommentItem(props: CommentItemProps) {
     }
   }, [isClick]);
 
+  const formatDate = useDate(new Date(props.createdAt));
+
   return (
     <S.CommentItemLayout>
       <S.CommentItem>
@@ -88,7 +91,7 @@ function CommentItem(props: CommentItemProps) {
           )}
         </S.UserBox>
         <S.CommentSideBox isClick={isClick}>
-          {isEdit ? <></> : <S.CreatedAt>2022.12.21</S.CreatedAt>}
+          {isEdit ? <></> : <S.CreatedAt>{formatDate}</S.CreatedAt>}
           <S.Icon isClick={isClick}>
             {props.isMine ? (
               <>
