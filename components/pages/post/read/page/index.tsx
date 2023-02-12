@@ -37,8 +37,8 @@ function ReadPostPage({ postId }: { postId: string }) {
         nickname={String(postData?.author.nickname)}
         profileImageUrl={String(postData?.author.profileImageUrl)}
         createdAt={postData?.createdAt}
-        likeCount={Number(postData?.likeCount)}
-        hit={Number(postData?.hit)}
+        likeCount={String(postData?.likeCount)}
+        hit={String(postData?.hit)}
       />
       <S.Thumbnail src={postData?.thumbnail} />
       <S.ReadMarkdown data-color-mode='dark'>

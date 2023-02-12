@@ -5,8 +5,8 @@ interface PostInformationProps {
   nickname: string;
   profileImageUrl: string;
   createdAt: Date | undefined;
-  likeCount: number;
-  hit: number;
+  likeCount: string;
+  hit: string;
 }
 
 function PostInformation(props: PostInformationProps) {
