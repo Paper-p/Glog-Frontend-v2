@@ -62,13 +62,13 @@ export const UserPostsSection = styled.section`
   margin: auto;
 `;
 
-export const PostSignBoardBox = styled.div`
+export const SignBoardBox = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 25px;
 `;
 
-export const PostListBox = styled.div`
+export const PostList = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
