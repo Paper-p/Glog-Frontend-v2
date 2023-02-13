@@ -16,6 +16,21 @@ class User {
       return error;
     }
   }
+
+  getUserByUserId(nickname: string) {
+    try {
+      return instance({
+        method: 'GET',
+        url: 'user/' + nickname,
+        headers: {
+          Authorization:
+            tokenService && 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new User();
