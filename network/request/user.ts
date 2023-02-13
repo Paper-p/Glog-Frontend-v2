@@ -17,7 +17,7 @@ class User {
     }
   }
 
-  getUserByUserId(nickname: string) {
+  getUserByNickname(nickname: string) {
     try {
       return instance({
         method: 'GET',
