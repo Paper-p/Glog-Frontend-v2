@@ -1,19 +1,24 @@
 import SignBoard from 'components/common/signBoard';
 import user from 'network/request/user';
 import { useEffect, useState } from 'react';
+import { UserData } from 'types/user.type';
 import * as S from './style';
 
 function UserPage({ nickname }: { nickname: string }) {
   const [isMine, setIsMine] = useState<boolean>(true);
+  const [userData, setUserData] = useState<UserData>();
 
   useEffect(() => {
     const getUserByNickname = async () => {
       try {
-        const res: any = user.getUserByNickname(nickname);
+        const res: any = await user.getUserByNickname(nickname);
+        setUserData(res.data);
       } catch (e: any) {
         console.log(e);
       }
     };
+
+    getUserByNickname();
   }, []);
 
   return (
