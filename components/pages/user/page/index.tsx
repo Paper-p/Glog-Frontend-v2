@@ -1,10 +1,20 @@
 import SignBoard from 'components/common/signBoard';
-import HotPosts from 'components/pages/home/posts/hot';
-import { useState } from 'react';
+import user from 'network/request/user';
+import { useEffect, useState } from 'react';
 import * as S from './style';
 
-function UserPage() {
+function UserPage({ nickname }: { nickname: string }) {
   const [isMine, setIsMine] = useState<boolean>(true);
+
+  useEffect(() => {
+    const getUserByNickname = async () => {
+      try {
+        const res: any = user.getUserByNickname(nickname);
+      } catch (e: any) {
+        console.log(e);
+      }
+    };
+  }, []);
 
   return (
     <S.UserPageLayout>
