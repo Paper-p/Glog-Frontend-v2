@@ -54,6 +54,20 @@ class Feed {
       return error;
     }
   }
+
+  getPostsUserLiked() {
+    try {
+      return instance({
+        method: 'GET',
+        url: feedUrl.getPostsUserLiked(),
+        headers: {
+          Authorization: tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Feed();

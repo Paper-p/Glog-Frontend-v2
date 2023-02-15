@@ -32,6 +32,10 @@ export const feedUrl = {
   getPostByPostId: () => {
     return 'feed/';
   },
+
+  getPostsUserLiked: () => {
+    return 'feed/like';
+  },
 };
 
 export const userUrl = {
