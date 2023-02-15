@@ -6,7 +6,7 @@ export interface UserData {
   isMine: boolean;
 }
 
-interface FeedListData {
+export interface FeedListData {
   id: number;
   title: string;
   createdAt: Date;
