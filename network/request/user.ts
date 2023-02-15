@@ -24,7 +24,8 @@ class User {
         url: 'user/' + nickname,
         headers: {
           Authorization:
-            tokenService && 'Bearer ' + tokenService.getLocalAccessToken(),
+            tokenService.getLocalAccessToken() &&
+            'Bearer ' + tokenService.getLocalAccessToken(),
         },
       });
     } catch (error) {
