@@ -3,10 +3,10 @@ export interface PostData {
   title: string;
   createdAt: Date;
   thumbnail?: string;
-  previewContent: string;
+  previewContent?: string;
   hit: number;
   likeCount: number;
-  commentCount: number;
+  commentCount?: number;
   isLiked: boolean;
   tagList: [string];
 }
