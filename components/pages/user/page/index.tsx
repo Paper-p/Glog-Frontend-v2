@@ -14,7 +14,7 @@ function UserPage({ nickname }: { nickname: string }) {
         const res: any = await user.getUserByNickname(nickname);
         setUserData(res.data);
       } catch (e: any) {
-        console.log(e);
+        throw new Error(e);
       }
     };
 
@@ -28,7 +28,11 @@ function UserPage({ nickname }: { nickname: string }) {
         profileImageUrl={String(userData?.profileImageUrl)}
         isMine={Boolean(userData?.isMine)}
       />
-      <UserPostsSection />
+      <UserPostsSection
+        userPosts={userData?.feedList}
+        nickname={String(userData?.nickname)}
+        isMine={Boolean(userData?.isMine)}
+      />
     </S.UserPageLayout>
   );
 }
