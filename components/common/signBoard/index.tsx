@@ -1,12 +1,13 @@
 import React from 'react';
 import * as S from './style';
 
-interface SignBoardProps {
+interface SignBoardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-function SignBoard({ children }: SignBoardProps) {
-  return <S.SignBoard>{children}</S.SignBoard>;
+function SignBoard(props: SignBoardProps) {
+  const { ...rest } = props;
+  return <S.SignBoard {...rest}>{props.children}</S.SignBoard>;
 }
 
 export default SignBoard;

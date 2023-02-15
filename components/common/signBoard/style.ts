@@ -8,4 +8,14 @@ export const SignBoard = styled.div`
   border-radius: 10px;
   color: #969696;
   margin-bottom: 1rem;
+
+  &.deactivation {
+    cursor: pointer;
+  }
+
+  &.is-active {
+    cursor: pointer;
+    background-color: #6e6e75;
+    color: #282827;
+  }
 `;
