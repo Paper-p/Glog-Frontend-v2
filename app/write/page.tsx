@@ -1,3 +1,5 @@
+'use client';
+
 import { WritePostPage } from 'components/pages';
 
 function WritePost() {
