@@ -1,7 +1,7 @@
 import SignBoard from 'components/common/signBoard';
 import * as S from './style';
 import { FeedListData } from 'types/user.type';
-import SpecialPostItem from 'components/utils/postItem/special';
+import SpecialPostItem from 'components/utils/post/item/special';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import feed from 'network/request/feed';

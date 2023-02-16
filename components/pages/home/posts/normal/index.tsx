@@ -1,4 +1,4 @@
-import NormalPostItem from 'components/utils/postItem/normal';
+import NormalPostItem from 'components/utils/post/item/normal';
 import * as S from './style';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
