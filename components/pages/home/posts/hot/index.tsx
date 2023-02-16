@@ -26,7 +26,7 @@ function HotPosts() {
       <S.HotPostsLayout>
         {list.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <SpecialPostItem list={currentValue} />
+            <SpecialPostItem data={currentValue} />
           </Link>
         ))}
       </S.HotPostsLayout>

@@ -3,14 +3,14 @@ import { PostData } from 'types/post.types';
 import PostItemInformation from '../information';
 
 interface NormalItemProps {
-  list: PostData;
+  data: PostData;
 }
 
-function NormalPostItem({ list }: NormalItemProps) {
+function NormalPostItem({ data }: NormalItemProps) {
   return (
-    <S.NormalPostItemLayout backgroundImage={String(list.thumbnail)}>
+    <S.NormalPostItemLayout backgroundImage={String(data.thumbnail)}>
       <S.PaddingBox>
-        <PostItemInformation list={list} />
+        <PostItemInformation data={data} />
       </S.PaddingBox>
     </S.NormalPostItemLayout>
   );

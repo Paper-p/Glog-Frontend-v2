@@ -3,16 +3,16 @@ import { PostData } from 'types/post.types';
 import PostItemInformation from '../information';
 
 interface SpecialPostItemProps {
-  list: PostData;
+  data: PostData;
 }
 
-function SpecialPostItem({ list }: SpecialPostItemProps) {
+function SpecialPostItem({ data }: SpecialPostItemProps) {
   return (
     <S.SpecialPostItemLayout>
-      <S.BackgroundImage src={list.thumbnail} />
+      <S.BackgroundImage src={data.thumbnail} />
       <S.InformationWrapper>
         <S.PaddingBox>
-          <PostItemInformation list={list} />
+          <PostItemInformation data={data} />
         </S.PaddingBox>
       </S.InformationWrapper>
     </S.SpecialPostItemLayout>

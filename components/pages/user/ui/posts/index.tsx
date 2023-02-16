@@ -74,7 +74,7 @@ function UserPostsSection(props: UserPostsSectionProps) {
       <S.PostList>
         {posts?.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <SpecialPostItem list={currentValue} />
+            <SpecialPostItem data={currentValue} />
           </Link>
         ))}
       </S.PostList>
