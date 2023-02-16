@@ -1130,7 +1130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uiw/react-md-editor@npm:^3.20.2":
+"@uiw/react-md-editor@npm:^3.19.5":
   version: 3.20.2
   resolution: "@uiw/react-md-editor@npm:3.20.2"
   dependencies:
@@ -2449,7 +2449,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": latest
     "@uiw/react-markdown-preview": ^4.1.7
-    "@uiw/react-md-editor": ^3.20.2
+    "@uiw/react-md-editor": ^3.19.5
     axios: ^1.2.3
     babel-loader: ^9.1.2
     babel-plugin-transform-remove-imports: ^1.7.0
