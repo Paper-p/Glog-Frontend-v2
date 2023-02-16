@@ -1,5 +1,5 @@
-function CreatePostPage() {
+function WritePostPage() {
   return <></>;
 }
 
-export default CreatePostPage;
+export default WritePostPage;

@@ -1,7 +1,7 @@
-import { CreatePostPage } from 'components/pages';
+import { WritePostPage } from 'components/pages';
 
-function CreatePost() {
-  return <CreatePostPage />;
+function WritePost() {
+  return <WritePostPage />;
 }
 
-export default CreatePost;
+export default WritePost;
