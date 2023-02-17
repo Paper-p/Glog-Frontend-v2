@@ -9,7 +9,7 @@ interface SquarePostItemProps {
 function SquarePostItem({ data }: SquarePostItemProps) {
   return (
     <S.SquarePostItemLayout>
-      <S.BackgroundImage src={data.thumbnail} />
+      <S.BackgroundImage src={data?.thumbnail} />
       <S.InformationWrapper>
         <S.PaddingBox>
           <PostItemInformation data={data} />
