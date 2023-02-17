@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { PostingTemplateData } from 'types/post.types';
 
 export const deleteCommentModalAtom = atom({
   key: 'deleteCommentModal',
@@ -8,4 +9,14 @@ export const deleteCommentModalAtom = atom({
 export const currentCommentIdAtom = atom({
   key: 'currentCommentId',
   default: '0',
+});
+
+export const postingTempalteValueAtom = atom<PostingTemplateData>({
+  key: 'postingTempalteValueAtom',
+  default: {
+    title: '',
+    content: '',
+    thumbnail: '',
+    tags: [],
+  },
 });
