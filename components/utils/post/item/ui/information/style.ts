@@ -55,3 +55,26 @@ export const Stat = styled.p`
   color: #929292;
   margin: 0.1rem 0 0 0;
 `;
+
+export const PostControlSection = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100 !important;
+  cursor: pointer;
+`;
+
+export const PostControl = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+
+  & > p.update {
+    color: #18d570;
+  }
+
+  & > p.delete {
+    color: #e83f28;
+  }
+`;

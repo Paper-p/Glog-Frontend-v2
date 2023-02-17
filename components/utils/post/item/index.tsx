@@ -5,6 +5,7 @@ import SquarePostItem from './ui/shape/square';
 interface PostItemProps {
   shape: shapeType;
   data: PostData;
+  isMine?: boolean;
 }
 
 type shapeType = 'square' | 'rectangle';
