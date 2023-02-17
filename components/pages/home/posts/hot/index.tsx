@@ -1,4 +1,4 @@
-import SpecialPostItem from 'components/utils/post/item/special';
+import SquarePostItem from 'components/utils/post/item/ui/shape/square';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
 import Link from 'next/link';
@@ -26,7 +26,7 @@ function HotPosts() {
       <S.HotPostsLayout>
         {list.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <SpecialPostItem data={currentValue} />
+            <SquarePostItem data={currentValue} />
           </Link>
         ))}
       </S.HotPostsLayout>

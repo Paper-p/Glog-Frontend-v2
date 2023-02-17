@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const NormalPostItemLayout = styled.div<{ backgroundImage: string }>`
+export const RectanglePostItemLayout = styled.div<{ backgroundImage: string }>`
   height: 150px;
   border-radius: 10px;
   background-image: ${(e) =>

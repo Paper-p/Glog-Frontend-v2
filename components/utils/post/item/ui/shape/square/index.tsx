@@ -1,22 +1,22 @@
 import * as S from './style';
 import { PostData } from 'types/post.types';
-import PostItemInformation from '../information';
+import PostItemInformation from '../../information';
 
-interface SpecialPostItemProps {
+interface SquarePostItemProps {
   data: PostData;
 }
 
-function SpecialPostItem({ data }: SpecialPostItemProps) {
+function SquarePostItem({ data }: SquarePostItemProps) {
   return (
-    <S.SpecialPostItemLayout>
+    <S.SquarePostItemLayout>
       <S.BackgroundImage src={data.thumbnail} />
       <S.InformationWrapper>
         <S.PaddingBox>
           <PostItemInformation data={data} />
         </S.PaddingBox>
       </S.InformationWrapper>
-    </S.SpecialPostItemLayout>
+    </S.SquarePostItemLayout>
   );
 }
 
-export default SpecialPostItem;
+export default SquarePostItem;

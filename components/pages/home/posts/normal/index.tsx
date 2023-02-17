@@ -1,4 +1,4 @@
-import NormalPostItem from 'components/utils/post/item/normal';
+import RectanglePostItem from 'components/utils/post/item/ui/shape/rectangle';
 import * as S from './style';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
@@ -29,7 +29,7 @@ function NormalPosts() {
       <S.NormalPostsLayout>
         {list.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <NormalPostItem list={currentValue} />
+            <RectanglePostItem list={currentValue} />
           </Link>
         ))}
       </S.NormalPostsLayout>

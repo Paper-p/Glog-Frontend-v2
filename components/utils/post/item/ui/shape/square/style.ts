@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const SpecialPostItemLayout = styled.div`
+export const SquarePostItemLayout = styled.div`
   position: relative;
   height: 330px;
   border-radius: 10px;
