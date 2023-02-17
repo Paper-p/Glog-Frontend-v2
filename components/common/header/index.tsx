@@ -47,7 +47,7 @@ function Header() {
           <Link href={'/'}>
             <p css={select('/')}>홈</p>
           </Link>
-          <Link href={'/posting'}>
+          <Link href={'/write'}>
             <p>게시물 작성</p>
           </Link>
         </S.Box>
