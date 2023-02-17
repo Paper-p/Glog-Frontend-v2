@@ -71,13 +71,20 @@ function UserPostsSection(props: UserPostsSectionProps) {
           <SignBoard>💻 {props.nickname}님의 게시물’s</SignBoard>
         )}
       </S.SignBoardBox>
-      <S.PostList>
-        {posts?.map((currentValue) => (
-          <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <PostItem shape='square' data={currentValue} />
-          </Link>
-        ))}
-      </S.PostList>
+      {posts?.length === 0 ? (
+        <S.ThereAreNoPostsYet>
+          <S.Icon>👊</S.Icon>
+          <S.Text>아직 게시물이 없어요</S.Text>
+        </S.ThereAreNoPostsYet>
+      ) : (
+        <S.PostList>
+          {posts?.map((currentValue) => (
+            <Link key={currentValue.id} href={'/post/' + currentValue.id}>
+              <PostItem shape='square' data={currentValue} />
+            </Link>
+          ))}
+        </S.PostList>
+      )}
     </S.UserPostsSection>
   );
 }
