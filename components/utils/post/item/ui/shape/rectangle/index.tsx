@@ -8,7 +8,7 @@ interface RectanglePostItemProps {
 
 function RectanglePostItem({ data }: RectanglePostItemProps) {
   return (
-    <S.RectanglePostItemLayout backgroundImage={String(data.thumbnail)}>
+    <S.RectanglePostItemLayout backgroundImage={String(data?.thumbnail)}>
       <S.PaddingBox>
         <PostItemInformation data={data} />
       </S.PaddingBox>
