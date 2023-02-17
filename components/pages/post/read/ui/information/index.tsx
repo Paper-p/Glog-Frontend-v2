@@ -1,6 +1,7 @@
 import * as S from './style';
 import * as I from 'assets/svg';
 import { useDate } from 'hooks/useDate';
+import Link from 'next/link';
 
 interface PostInformationProps {
   nickname: string;
@@ -16,7 +17,9 @@ function PostInformation(props: PostInformationProps) {
   return (
     <S.PostInfoBox>
       <S.Author>
-        <S.ProfileImage src={props.profileImageUrl} />
+        <Link href={'/user/' + props.nickname}>
+          <S.ProfileImage src={props.profileImageUrl} />
+        </Link>
         <div>
           <S.Name>{props.nickname}</S.Name>
           <S.DatePostCreated>{formatDate}</S.DatePostCreated>

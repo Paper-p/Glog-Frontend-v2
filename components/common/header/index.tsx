@@ -56,7 +56,9 @@ function Header() {
         {tokenService.getLocalAccessToken() ? (
           <React.Fragment>
             <p>{miniProfile?.nickname}</p>
-            <S.UserProfileImage src={miniProfile?.profileImageUrl} />
+            <Link href={'/user/' + miniProfile?.nickname}>
+              <S.UserProfileImage src={miniProfile?.profileImageUrl} />
+            </Link>
           </React.Fragment>
         ) : (
           <React.Fragment>

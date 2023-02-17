@@ -81,7 +81,7 @@ function CommentItem(props: CommentItemProps) {
           ) : (
             <>
               <div>
-                <Link href={'/asd'}>
+                <Link href={'/user/' + props.author.nickname}>
                   <S.UserProfileImg src={props.author.profileImageUrl} alt='' />
                 </Link>
               </div>
