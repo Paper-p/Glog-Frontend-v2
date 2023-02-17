@@ -8,6 +8,13 @@ interface GetNormalPostsListData {
   keyword?: string;
 }
 
+interface CreatePostData {
+  title: string;
+  content: string;
+  thumbnail: string;
+  tags: string[];
+}
+
 class Feed {
   getNormalPostsList(params: GetNormalPostsListData) {
     try {
@@ -62,6 +69,26 @@ class Feed {
         url: feedUrl.getPostsUserLiked(),
         headers: {
           Authorization: tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  createPost(data: CreatePostData) {
+    try {
+      return instance({
+        method: 'POST',
+        url: 'feed',
+        data: {
+          title: data.title,
+          content: data.content,
+          thumbnail: data.thumbnail,
+          tags: data.tags,
+        },
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
         },
       });
     } catch (error) {
