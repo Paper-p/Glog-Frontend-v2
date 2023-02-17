@@ -1,14 +1,14 @@
 export interface PostData {
-  id: number;
+  id?: number;
   title: string;
-  createdAt: Date;
+  createdAt?: Date;
   thumbnail?: string;
   previewContent?: string;
   hit: number;
   likeCount: number;
   commentCount?: number;
-  isLiked: boolean;
-  tagList: [string];
+  isLiked?: boolean;
+  tagList?: [string];
 }
 
 export interface DetailPostData extends PostData {
