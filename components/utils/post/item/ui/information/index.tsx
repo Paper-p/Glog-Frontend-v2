@@ -3,6 +3,7 @@ import * as S from './style';
 import * as I from 'assets/svg';
 import Link from 'next/link';
 import { useState } from 'react';
+import { marked } from 'marked';
 
 interface ItemInformationProps {
   data: PostData;
@@ -16,7 +17,9 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
     <>
       <Link href={'/post/' + data.id}>
         <S.PostTitle>{data?.title}</S.PostTitle>
-        <S.PostContent>{data?.previewContent}</S.PostContent>
+        <S.PostContent>
+          {marked(String(data?.previewContent)).replace(/<[^>]+>/g, '')}
+        </S.PostContent>
       </Link>
       <S.PostStatBar>
         <S.StatWrapper>
