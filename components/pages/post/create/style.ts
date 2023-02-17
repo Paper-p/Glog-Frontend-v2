@@ -1,43 +1,31 @@
 import styled from '@emotion/styled';
 
-export const WritePostLayout = styled.div`
-  width: 72.5%;
-  margin: auto;
-  padding-bottom: 150px;
+export const NotLoggedInSection = styled.section`
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @media screen and (max-width: 1350px) {
-    width: 95vw;
+  & > div > button {
+    display: block;
+    width: 98%;
+    height: 45px;
+    margin: 1rem auto 1.5rem;
   }
 `;
-export const TitleBox = styled.div<{ isNull: boolean }>`
-  width: 100%;
-  height: 100px;
-  margin-top: 40px;
-  background: #1a1b1e;
-  border-bottom: 1px solid #484848;
-  border-radius: ${(e) => (e.isNull ? '10px' : '')};
-  padding: 10px;
-  box-sizing: border-box;
-  filter: ${(e) => (e.isNull ? 'drop-shadow(0px 1px 7px #e45b3c)' : '')};
+
+export const Icon = styled.p`
+  font-size: 8em;
+  text-align: center;
 `;
 
-export const TitleInput = styled.input`
-  width: 100%;
-  height: 100%;
-  font-size: 40px;
-  background: #1a1b1e;
-  border: none;
-  color: #ededed;
-  font-weight: 500;
-
-  &:focus {
-    outline: none;
-  }
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #252727 inset !important;
-    box-shadow: 0 0 0 30px #252727 inset !important;
-  }
+export const Text = styled.p`
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #d7d7d7;
+  text-align: center;
+  margin: 1rem 0 1.5rem;
 `;
