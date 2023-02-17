@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useMutation, useQueryClient } from 'react-query';
 import comment from 'network/request/comment';
-import { currentCommentIdAtom, deleteCommentModalAtom } from 'atoms';
+import { currentCommentIdAtom, modalsAtomFamily } from 'atoms';
 import { useRecoilState } from 'recoil';
 import { useDate } from 'hooks/useDate';
 
@@ -27,7 +27,9 @@ function CommentItem(props: CommentItemProps) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [_, setCurrntCommentId] = useRecoilState(currentCommentIdAtom);
-  const [__, setDeleteCommentModal] = useRecoilState(deleteCommentModalAtom);
+  const [__, setDeleteCommentModal] = useRecoilState(
+    modalsAtomFamily('deleteCommentModal')
+  );
   const queryClient = useQueryClient();
 
   const [{ fixedComment }, onChange] = useInputs({

@@ -8,14 +8,15 @@ import { useState } from 'react';
 import feed from 'network/request/feed';
 import { DetailPostData } from 'types/post.types';
 import { useQuery } from 'react-query';
-import { deleteCommentModalAtom } from 'atoms';
 import { useRecoilState } from 'recoil';
 import DeleteCommentModal from 'components/modals/modal/deleteComment';
+import { modalsAtomFamily } from 'atoms';
 
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
-  const [deleteCommentModal] = useRecoilState(deleteCommentModalAtom);
-
+  const [deleteCommentModal] = useRecoilState(
+    modalsAtomFamily('deleteCommentModal')
+  );
   const getPostByPostId = async () => {
     try {
       const res: any = await feed.getPostByPostId(postId);
