@@ -8,7 +8,7 @@ interface SquarePostItemProps {
   isMine?: boolean;
 }
 
-function SquarePostItem({ data }: SquarePostItemProps) {
+function SquarePostItem({ data, isMine }: SquarePostItemProps) {
   return (
     <S.SquarePostItemLayout>
       <Link href={'/post/' + data.id}>
@@ -16,7 +16,7 @@ function SquarePostItem({ data }: SquarePostItemProps) {
       </Link>
       <S.InformationWrapper>
         <S.PaddingBox>
-          <PostItemInformation data={data} />
+          <PostItemInformation data={data} isMine={isMine} />
         </S.PaddingBox>
       </S.InformationWrapper>
     </S.SquarePostItemLayout>

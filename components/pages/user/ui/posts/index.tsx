@@ -80,7 +80,11 @@ function UserPostsSection(props: UserPostsSectionProps) {
         <S.PostList>
           {posts?.map((currentValue) => (
             <React.Fragment key={currentValue.id}>
-              <PostItem shape='square' data={currentValue} />
+              <PostItem
+                shape='square'
+                data={currentValue}
+                isMine={props.isMine && activeSignBoard === '일반 게시물'}
+              />
             </React.Fragment>
           ))}
         </S.PostList>

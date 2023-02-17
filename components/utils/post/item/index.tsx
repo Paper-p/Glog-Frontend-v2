@@ -13,7 +13,9 @@ type shapeType = 'square' | 'rectangle';
 function PostItem(props: PostItemProps) {
   return (
     <>
-      {props.shape === 'square' && <SquarePostItem data={props.data} />}
+      {props.shape === 'square' && (
+        <SquarePostItem data={props.data} isMine={props.isMine} />
+      )}
       {props.shape === 'rectangle' && <RectanglePostItem data={props.data} />}
     </>
   );
