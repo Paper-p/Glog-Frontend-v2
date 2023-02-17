@@ -9,11 +9,7 @@ import PostingModal from 'components/modals/modal/posting';
 
 type posting = 'create' | 'update';
 
-interface PostingTemplateProps {
-  postingType: posting;
-}
-
-function PostingTemplate(props: PostingTemplateProps) {
+function PostingTemplate({ postingType }: { postingType: posting }) {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [postingTemplateValue, setPostingTemplateValue] = useRecoilState(
     postingTempalteValueAtom
@@ -60,7 +56,7 @@ function PostingTemplate(props: PostingTemplateProps) {
 
   return (
     <>
-      {postingModal && <PostingModal postingType={props.postingType} />}
+      {postingModal && <PostingModal postingType={postingType} />}
       <S.PostingTemplateLayout>
         <S.TitleBox titleError={titleError}>
           <S.TitleInput
@@ -73,7 +69,7 @@ function PostingTemplate(props: PostingTemplateProps) {
         <PostingTag />
         <PostingContent contentError={contentError} />
         <TemplateFooter
-          postingType={props.postingType}
+          postingType={postingType}
           errorMessage={errorMessage}
           onPublishing={templateValueNullCheck}
         />
