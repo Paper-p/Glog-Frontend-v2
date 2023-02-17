@@ -3,8 +3,9 @@ import TemplateFooter from './ui/footer';
 import PostingTag from './ui/tag';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
-import { postingTempalteValueAtom } from 'atoms';
+import { modalsAtomFamily, postingTempalteValueAtom } from 'atoms';
 import { useState } from 'react';
+import PostingModal from 'components/modals/modal/posting';
 
 type posting = 'create' | 'update';
 
@@ -17,6 +18,10 @@ function PostingTemplate(props: PostingTemplateProps) {
   const [postingTemplateValue, setPostingTemplateValue] = useRecoilState(
     postingTempalteValueAtom
   );
+  const [postingModal, setPostingModal] = useRecoilState(
+    modalsAtomFamily('postingModal')
+  );
+
   const [titleError, setTitleError] = useState<boolean>(false);
   const [contentError, setContentError] = useState<boolean>(false);
 
@@ -49,27 +54,31 @@ function PostingTemplate(props: PostingTemplateProps) {
       setTitleError(false);
       setContentError(false);
       setErrorMessage('');
+      setPostingModal(true);
     }
   };
 
   return (
-    <S.PostingTemplateLayout>
-      <S.TitleBox titleError={titleError}>
-        <S.TitleInput
-          name='title'
-          placeholder='제목을 입력해주세요'
-          onChange={onTitleChange}
-          type='text'
+    <>
+      {postingModal && <PostingModal postingType={props.postingType} />}
+      <S.PostingTemplateLayout>
+        <S.TitleBox titleError={titleError}>
+          <S.TitleInput
+            name='title'
+            placeholder='제목을 입력해주세요'
+            onChange={onTitleChange}
+            type='text'
+          />
+        </S.TitleBox>
+        <PostingTag />
+        <PostingContent contentError={contentError} />
+        <TemplateFooter
+          postingType={props.postingType}
+          errorMessage={errorMessage}
+          onPublishing={templateValueNullCheck}
         />
-      </S.TitleBox>
-      <PostingTag />
-      <PostingContent contentError={contentError} />
-      <TemplateFooter
-        postingType={props.postingType}
-        errorMessage={errorMessage}
-        onPublishing={templateValueNullCheck}
-      />
-    </S.PostingTemplateLayout>
+      </S.PostingTemplateLayout>
+    </>
   );
 }
 

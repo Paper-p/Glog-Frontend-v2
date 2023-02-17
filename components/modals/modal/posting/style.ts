@@ -5,6 +5,7 @@ export const WriteModal = styled.div`
   height: 400px;
   background: #252727;
   border-radius: 15px;
+
   @media screen and (max-width: 900px) {
     width: 600px;
   }
@@ -65,6 +66,19 @@ export const UploadThumbnail = styled.div`
     height: 45px;
     font-size: 17px;
     margin-top: 20px;
+    @media screen and (max-width: 900px) {
+      width: 524px;
+    }
+    @media screen and (max-width: 650px) {
+      width: 390px;
+    }
+  }
+`;
+
+export const PostItemSizeControl = styled.div`
+  & > div {
+    width: 682px;
+    margin: auto;
     @media screen and (max-width: 900px) {
       width: 524px;
     }
