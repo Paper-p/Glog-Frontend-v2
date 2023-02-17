@@ -5,3 +5,4 @@ export { Hit } from './hit';
 export { Like } from './like';
 export { KebobButton } from './kebobButton';
 export { ControlIcon } from './controlIcon';
+export { ImageUploadIcon } from './imageUploadIcon';
