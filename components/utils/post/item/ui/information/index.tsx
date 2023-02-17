@@ -27,7 +27,7 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
           <I.Hit />
           <S.Stat>{data?.hit}</S.Stat>
         </S.StatWrapper>
-        {true && (
+        {isMine && (
           <S.PostControlSection
             onClick={() => setIsKebobClicked((prevState) => !prevState)}
           >
