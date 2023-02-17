@@ -33,3 +33,15 @@ export interface DetailPostData extends PostData {
   };
   isMine: boolean;
 }
+
+export type postingTemplateTagType = {
+  id: number;
+  name: string;
+};
+
+export interface PostingTemplateData {
+  title: string;
+  content?: string;
+  thumbnail: string;
+  tags: postingTemplateTagType[];
+}
