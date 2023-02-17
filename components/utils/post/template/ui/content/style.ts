@@ -26,11 +26,12 @@ export const Tabs = styled.div`
   cursor: pointer;
 `;
 
-export const ContentBox = styled.div`
+export const ContentBox = styled.div<{ contentError: boolean }>`
   width: 100%;
   border-radius: 2px;
   border: 1px solid #767676;
   margin-top: 40px;
+  filter: ${(e) => (e.contentError ? 'drop-shadow(0px 1px 7px #e45b3c)' : '')};
 `;
 
 export const Markdown = styled.div`

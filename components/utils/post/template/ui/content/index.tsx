@@ -4,13 +4,18 @@ import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import dynamic from 'next/dynamic';
 import MarkdownPreview from '@uiw/react-markdown-preview';
+import { postingTempalteValueAtom } from 'atoms';
+import { useRecoilState } from 'recoil';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
   ssr: false,
 });
 
-function WritePostContent() {
+function PostingContent({ contentError }: { contentError: boolean }) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [postingTemplateValue, setPostingTemplateValue] = useRecoilState(
+    postingTempalteValueAtom
+  );
 
   const tabClickHandler = (index: number) => {
     setActiveIndex(index);
@@ -30,9 +35,16 @@ function WritePostContent() {
       tabContent: (
         <MDEditor
           hideToolbar={true}
+          onChange={(value) => {
+            setPostingTemplateValue((oldPostingTemplateValue) => ({
+              ...oldPostingTemplateValue,
+              content: value,
+            }));
+          }}
           textareaProps={{
             placeholder: '내용을 입력해주세요',
           }}
+          value={postingTemplateValue.content}
         />
       ),
     },
@@ -46,11 +58,15 @@ function WritePostContent() {
           미리보기
         </S.Tabs>
       ),
-      tabContent: <MarkdownPreview />,
+      tabContent: (
+        <div data-color-mode='dark'>
+          <MarkdownPreview source={String(postingTemplateValue.content)} />
+        </div>
+      ),
     },
   ];
   return (
-    <S.ContentBox>
+    <S.ContentBox contentError={contentError}>
       <S.Tabbar>
         {tabbar.map((idx) => {
           return idx.tabTitle;
@@ -63,4 +79,4 @@ function WritePostContent() {
   );
 }
 
-export default WritePostContent;
+export default PostingContent;
