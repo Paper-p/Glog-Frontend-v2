@@ -1,9 +1,9 @@
-import SquarePostItem from 'components/utils/post/item/ui/shape/square';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import * as S from './style';
+import PostItem from 'components/utils/post/item';
 
 function HotPosts() {
   const [list, setList] = useState<any[]>([]);
@@ -26,7 +26,7 @@ function HotPosts() {
       <S.HotPostsLayout>
         {list.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <SquarePostItem data={currentValue} />
+            <PostItem shape='square' data={currentValue} />
           </Link>
         ))}
       </S.HotPostsLayout>

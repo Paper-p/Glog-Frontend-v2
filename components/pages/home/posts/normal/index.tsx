@@ -1,9 +1,9 @@
-import RectanglePostItem from 'components/utils/post/item/ui/shape/rectangle';
 import * as S from './style';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import PostItem from 'components/utils/post/item';
 
 function NormalPosts() {
   const [list, setList] = useState<any[]>([]);
@@ -29,7 +29,7 @@ function NormalPosts() {
       <S.NormalPostsLayout>
         {list.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <RectanglePostItem list={currentValue} />
+            <PostItem shape='rectangle' data={currentValue} />
           </Link>
         ))}
       </S.NormalPostsLayout>

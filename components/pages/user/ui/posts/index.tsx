@@ -1,10 +1,10 @@
 import SignBoard from 'components/common/signBoard';
 import * as S from './style';
 import { FeedListData } from 'types/user.type';
-import SquarePostItem from 'components/utils/post/item/ui/shape/square';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import feed from 'network/request/feed';
+import PostItem from 'components/utils/post/item';
 
 interface UserPostsSectionProps {
   userPosts: FeedListData[] | undefined;
@@ -74,7 +74,7 @@ function UserPostsSection(props: UserPostsSectionProps) {
       <S.PostList>
         {posts?.map((currentValue) => (
           <Link key={currentValue.id} href={'/post/' + currentValue.id}>
-            <SquarePostItem data={currentValue} />
+            <PostItem shape='square' data={currentValue} />
           </Link>
         ))}
       </S.PostList>
