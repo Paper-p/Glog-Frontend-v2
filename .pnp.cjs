@@ -36,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:11.10.5"],\
             ["@next/font", "npm:13.1.1"],\
             ["@types/jest", "npm:29.2.5"],\
+            ["@types/marked", "npm:4.0.8"],\
             ["@types/node", "npm:18.11.18"],\
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.10"],\
@@ -51,6 +52,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:8.6.0"],\
             ["eslint-plugin-prettier", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:4.2.1"],\
             ["eslint-plugin-react", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:7.32.0"],\
+            ["marked", "npm:4.2.12"],\
             ["next", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:13.1.1"],\
             ["next-remove-imports", "npm:1.0.8"],\
             ["prettier", "npm:2.8.2"],\
@@ -1185,6 +1187,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.11-79462ae5ca-527bddfe62.zip/node_modules/@types/json-schema/",\
           "packageDependencies": [\
             ["@types/json-schema", "npm:7.0.11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/marked", [\
+        ["npm:4.0.8", {\
+          "packageLocation": "./.yarn/cache/@types-marked-npm-4.0.8-ecccac0208-68278fa7ac.zip/node_modules/@types/marked/",\
+          "packageDependencies": [\
+            ["@types/marked", "npm:4.0.8"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3229,6 +3240,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:11.10.5"],\
             ["@next/font", "npm:13.1.1"],\
             ["@types/jest", "npm:29.2.5"],\
+            ["@types/marked", "npm:4.0.8"],\
             ["@types/node", "npm:18.11.18"],\
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.10"],\
@@ -3244,6 +3256,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:8.6.0"],\
             ["eslint-plugin-prettier", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:4.2.1"],\
             ["eslint-plugin-react", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:7.32.0"],\
+            ["marked", "npm:4.2.12"],\
             ["next", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:13.1.1"],\
             ["next-remove-imports", "npm:1.0.8"],\
             ["prettier", "npm:2.8.2"],\
@@ -4172,6 +4185,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/markdown-table-npm-3.0.3-b24147eaf5-8fcd3d9018.zip/node_modules/markdown-table/",\
           "packageDependencies": [\
             ["markdown-table", "npm:3.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["marked", [\
+        ["npm:4.2.12", {\
+          "packageLocation": "./.yarn/cache/marked-npm-4.2.12-59aaa5afdc-bd551cd610.zip/node_modules/marked/",\
+          "packageDependencies": [\
+            ["marked", "npm:4.2.12"]\
           ],\
           "linkType": "HARD"\
         }]\
