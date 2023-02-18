@@ -4,6 +4,8 @@ import * as I from 'assets/svg';
 import Link from 'next/link';
 import { useState } from 'react';
 import { marked } from 'marked';
+import { currentIdsAtomFamily, modalsAtomFamily } from 'atoms';
+import { useRecoilState } from 'recoil';
 
 interface ItemInformationProps {
   data: PostData;
@@ -12,6 +14,17 @@ interface ItemInformationProps {
 
 function PostItemInformation({ data, isMine }: ItemInformationProps) {
   const [isKebobClicked, setIsKebobClicked] = useState<boolean>(false);
+  const [_, setDeletePostModal] = useRecoilState(
+    modalsAtomFamily('deletePostModal')
+  );
+  const [__, setCurrentPostId] = useRecoilState(
+    currentIdsAtomFamily('currentPostId')
+  );
+
+  const onDeleteButtonClick = () => {
+    setDeletePostModal(true);
+    setCurrentPostId(Number(data?.id));
+  };
 
   return (
     <>
@@ -40,7 +53,9 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
                 <Link href={'/update/' + data.id}>
                   <p className='update'>수정</p>
                 </Link>
-                <p className='delete'>삭제</p>
+                <p className='delete' onClick={onDeleteButtonClick}>
+                  삭제
+                </p>
                 <I.ControlIcon />
               </S.PostControl>
             )}
