@@ -6,6 +6,11 @@ export const currentCommentIdAtom = atom({
   default: '0',
 });
 
+export const currentIdsAtomFamily = atomFamily({
+  key: 'currentCommentId',
+  default: '0',
+});
+
 export const modalsAtomFamily = atomFamily({
   key: 'modalsAtomFamily',
   default: false,
