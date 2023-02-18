@@ -3,7 +3,6 @@ import CommonButton from 'components/common/button';
 import ModalLayout from 'components/modals/layout';
 import feed from 'network/request/feed';
 import { useMutation, useQueryClient } from 'react-query';
-import { toast } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 import * as S from './style';
 
