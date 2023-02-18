@@ -6,10 +6,9 @@ import { useRecoilState } from 'recoil';
 import { modalsAtomFamily, postingTempalteValueAtom } from 'atoms';
 import { useState } from 'react';
 import PostingModal from 'components/modals/modal/posting';
+import { PostingType } from 'types/post.types';
 
-type posting = 'create' | 'update';
-
-function PostingTemplate({ postingType }: { postingType: posting }) {
+function PostingTemplate({ postingType }: { postingType: PostingType }) {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [postingTemplateValue, setPostingTemplateValue] = useRecoilState(
     postingTempalteValueAtom

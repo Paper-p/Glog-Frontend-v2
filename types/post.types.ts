@@ -34,15 +34,30 @@ export interface DetailPostData extends PostData {
   isMine: boolean;
 }
 
-export type postingTemplateTagType = {
+export type TagType = {
   id: number;
   name: string;
 };
 
-export interface PostingTemplateData {
+interface DefaultPostingData {
   id?: number;
   title: string;
   content?: string;
   thumbnail: string;
-  tags: postingTemplateTagType[];
+}
+
+export interface PostingData extends DefaultPostingData {
+  tags: TagType[];
+}
+
+export interface RequestPostingData extends DefaultPostingData {
+  tags: string[];
+}
+
+export type PostingType = 'create' | 'update';
+
+export interface GetNormalPostsListData {
+  size: number;
+  page: number;
+  keyword?: string;
 }

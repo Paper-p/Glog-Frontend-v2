@@ -1,5 +1,5 @@
 import { atom, atomFamily } from 'recoil';
-import { PostingTemplateData } from 'types/post.types';
+import { PostingData } from 'types/post.types';
 
 export const currentCommentIdAtom = atom({
   key: 'currentCommentId',
@@ -11,7 +11,7 @@ export const modalsAtomFamily = atomFamily({
   default: false,
 });
 
-export const postingTempalteValueAtom = atom<PostingTemplateData>({
+export const postingTempalteValueAtom = atom<PostingData>({
   key: 'postingTempalteValueAtom',
   default: {
     title: '',

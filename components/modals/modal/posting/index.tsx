@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import PostItem from 'components/utils/post/item';
 import { modalsAtomFamily, postingTempalteValueAtom } from 'atoms';
 import { useRecoilState } from 'recoil';
-import { PostData } from 'types/post.types';
+import { PostData, PostingType } from 'types/post.types';
 import image from 'network/request/image';
 import { CommonButton } from 'components/common/button/style';
 import { marked } from 'marked';
@@ -13,9 +13,7 @@ import feed from 'network/request/feed';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
-type posting = 'create' | 'update';
-
-function PostingModal({ postingType }: { postingType: posting }) {
+function PostingModal({ postingType }: { postingType: PostingType }) {
   const router = useRouter();
   const setProfileImage = useRef<any>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');

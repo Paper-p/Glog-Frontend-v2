@@ -5,12 +5,8 @@ import feed from 'network/request/feed';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { TagType } from 'types/post.types';
 import * as S from './style';
-
-interface TagType {
-  id: number;
-  name: string;
-}
 
 function UpdatePostPage({ postId }: { postId: string }) {
   const [isOwner, setIsOwner] = useState<boolean>(false);

@@ -1,20 +1,11 @@
 import { feedUrl } from 'network/data/getUrl';
 import { instance } from 'network/data/instance';
+import {
+  GetNormalPostsListData,
+  PostingData,
+  RequestPostingData,
+} from 'types/post.types';
 import tokenService from 'utils/tokenService';
-
-interface GetNormalPostsListData {
-  size: number;
-  page: number;
-  keyword?: string;
-}
-
-interface PostRequestData {
-  id?: number;
-  title: string;
-  content: string;
-  thumbnail: string;
-  tags: string[];
-}
 
 class Feed {
   getNormalPostsList(params: GetNormalPostsListData) {
@@ -77,7 +68,7 @@ class Feed {
     }
   }
 
-  createPost(data: PostRequestData) {
+  createPost(data: RequestPostingData) {
     try {
       return instance({
         method: 'POST',
@@ -97,7 +88,7 @@ class Feed {
     }
   }
 
-  updatePost(data: PostRequestData) {
+  updatePost(data: RequestPostingData) {
     try {
       return instance({
         method: 'PATCH',
