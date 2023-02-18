@@ -8,7 +8,8 @@ interface GetNormalPostsListData {
   keyword?: string;
 }
 
-interface CreatePostData {
+interface PostRequestData {
+  id?: number;
   title: string;
   content: string;
   thumbnail: string;
@@ -76,11 +77,31 @@ class Feed {
     }
   }
 
-  createPost(data: CreatePostData) {
+  createPost(data: PostRequestData) {
     try {
       return instance({
         method: 'POST',
         url: 'feed',
+        data: {
+          title: data.title,
+          content: data.content,
+          thumbnail: data.thumbnail,
+          tags: data.tags,
+        },
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  updatePost(data: PostRequestData) {
+    try {
+      return instance({
+        method: 'PATCH',
+        url: 'feed/' + data.id,
         data: {
           title: data.title,
           content: data.content,
