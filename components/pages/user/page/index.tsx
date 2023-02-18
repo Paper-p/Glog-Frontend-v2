@@ -1,7 +1,8 @@
 import { modalsAtomFamily } from 'atoms';
 import DeletePostModal from 'components/modals/modal/deletePost';
 import user from 'network/request/user';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 import { useRecoilState } from 'recoil';
 import { UserData } from 'types/user.type';
 import UserPostsSection from '../ui/posts';
@@ -12,18 +13,19 @@ function UserPage({ nickname }: { nickname: string }) {
   const [userData, setUserData] = useState<UserData>();
   const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
 
-  useEffect(() => {
-    const getUserByNickname = async () => {
-      try {
-        const res: any = await user.getUserByNickname(nickname);
-        setUserData(res.data);
-      } catch (e: any) {
-        throw new Error(e);
-      }
-    };
+  const getUserByNickname = async () => {
+    try {
+      const res: any = await user.getUserByNickname(nickname);
+      setUserData(res.data);
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  };
 
-    getUserByNickname();
-  }, []);
+  useQuery({
+    queryKey: 'update',
+    queryFn: getUserByNickname,
+  });
 
   return (
     <S.UserPageLayout>
