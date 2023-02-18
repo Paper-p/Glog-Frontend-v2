@@ -107,6 +107,20 @@ class Feed {
       return error;
     }
   }
+
+  deletePost(postId: string) {
+    try {
+      return instance({
+        method: 'DELETE',
+        url: 'feed/' + postId,
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Feed();
