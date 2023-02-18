@@ -55,7 +55,7 @@ function CommentItem(props: CommentItemProps) {
   });
 
   const onDeleteComment = () => {
-    setCurrentCommentId(props.id);
+    setCurrentCommentId(Number(props.id));
     setDeleteCommentModal(true);
   };
 
