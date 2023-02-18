@@ -28,7 +28,7 @@ function ReadPostPage({ postId }: { postId: string }) {
     }
   };
 
-  const fetch = useQuery({
+  useQuery({
     queryKey: 'post',
     queryFn: getPostByPostId,
     refetchOnWindowFocus: false,
