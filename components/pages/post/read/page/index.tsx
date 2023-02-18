@@ -23,7 +23,7 @@ function ReadPostPage({ postId }: { postId: string }) {
       setPostData(res.data);
     } catch (e: any) {
       if (e.response.status === 404) {
-        // navigate to 404
+        throw new Error('없는 게시물입니다');
       }
     }
   };
