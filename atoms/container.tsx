@@ -1,14 +1,9 @@
 import { atom, atomFamily } from 'recoil';
 import { PostingData } from 'types/post.types';
 
-export const currentCommentIdAtom = atom({
-  key: 'currentCommentId',
-  default: '0',
-});
-
 export const currentIdsAtomFamily = atomFamily({
-  key: 'currentCommentId',
-  default: '0',
+  key: 'currentId',
+  default: 0,
 });
 
 export const modalsAtomFamily = atomFamily({
