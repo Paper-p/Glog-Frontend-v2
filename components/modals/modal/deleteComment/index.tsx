@@ -1,4 +1,4 @@
-import { modalsAtomFamily, currentCommentIdAtom } from 'atoms';
+import { modalsAtomFamily, currentIdsAtomFamily } from 'atoms';
 import CommonButton from 'components/common/button';
 import ModalLayout from 'components/modals/layout';
 import comment from 'network/request/comment';
@@ -7,7 +7,9 @@ import { useRecoilState } from 'recoil';
 import * as S from './style';
 
 function DeleteCommentModal() {
-  const [currntCommentId] = useRecoilState(currentCommentIdAtom);
+  const [currentCommentId] = useRecoilState(
+    currentIdsAtomFamily('currentCommentId')
+  );
   const [_, setDeleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
   );
@@ -15,7 +17,7 @@ function DeleteCommentModal() {
   const queryClient = useQueryClient();
 
   const onDeleteComment = async () => {
-    return comment.deleteComment(currntCommentId);
+    return comment.deleteComment(currentCommentId);
   };
 
   const { mutate: deleteComment } = useMutation(onDeleteComment, {

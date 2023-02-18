@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useMutation, useQueryClient } from 'react-query';
 import comment from 'network/request/comment';
-import { currentCommentIdAtom, modalsAtomFamily } from 'atoms';
+import { currentIdsAtomFamily, modalsAtomFamily } from 'atoms';
 import { useRecoilState } from 'recoil';
 import { useDate } from 'hooks/useDate';
 
@@ -26,7 +26,9 @@ interface CommentItemProps {
 function CommentItem(props: CommentItemProps) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [_, setCurrntCommentId] = useRecoilState(currentCommentIdAtom);
+  const [_, setCurrentCommentId] = useRecoilState(
+    currentIdsAtomFamily('currentCommentId')
+  );
   const [__, setDeleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
   );
@@ -53,7 +55,7 @@ function CommentItem(props: CommentItemProps) {
   });
 
   const onDeleteComment = () => {
-    setCurrntCommentId(props.id);
+    setCurrentCommentId(props.id);
     setDeleteCommentModal(true);
   };
 
