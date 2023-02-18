@@ -15,7 +15,7 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
 
   return (
     <>
-      <Link href={'/post/' + data.id}>
+      <Link href={'/post/' + data?.id}>
         <S.PostTitle>{data?.title}</S.PostTitle>
         <S.PostContent>
           {marked(String(data?.previewContent)).replace(/<[^>]+>/g, '')}
@@ -37,7 +37,9 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
             {!isKebobClicked && <I.KebobButton />}
             {isKebobClicked && (
               <S.PostControl>
-                <p className='update'>수정</p>
+                <Link href={'/update/' + data.id}>
+                  <p className='update'>수정</p>
+                </Link>
                 <p className='delete'>삭제</p>
                 <I.ControlIcon />
               </S.PostControl>

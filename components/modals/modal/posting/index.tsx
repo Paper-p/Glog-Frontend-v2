@@ -19,14 +19,15 @@ function PostingModal({ postingType }: { postingType: posting }) {
   const router = useRouter();
   const setProfileImage = useRef<any>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [thumbnailUploadLoading, setThumbnailUploadLoading] =
+    useState<boolean>(false);
   const [_, setPostingModal] = useRecoilState(modalsAtomFamily('postingModal'));
   const [postingTemplateValue, setPostingTemplateValue] = useRecoilState(
     postingTempalteValueAtom
   );
   const [contentPreview, setContentPreiview] = useState<string>('');
   const [onlyTagList, setOnlyTagList] = useState<string[]>([]);
-  const [isClick, setIsClick] = useState<boolean>(false);
+  const [requestStart, setRequestStart] = useState<boolean>(false);
   const [data, setData] = useState<PostData>();
 
   useEffect(() => {
@@ -37,18 +38,10 @@ function PostingModal({ postingType }: { postingType: posting }) {
       hit: 9999,
       likeCount: 9999,
     });
-  }, [postingTemplateValue]);
-
-  useEffect(() => {
     setContentPreiview(
       marked(String(postingTemplateValue.content)).replace(/<[^>]+>/g, '')
     );
-
-    if (isClick) {
-      makeRequest();
-      setIsClick(false);
-    }
-  }, [isClick]);
+  }, [postingTemplateValue]);
 
   const imgHandler = async (e: any) => {
     try {
@@ -60,18 +53,19 @@ function PostingModal({ postingType }: { postingType: posting }) {
         ...oldPostingTemplateValue,
         thumbnail: URL.createObjectURL(blob),
       }));
+
       const formData = new FormData();
       formData.append('image', e.target.files[0]);
-      setLoading(true);
+      setThumbnailUploadLoading(true);
 
       const res: any = await image.uploadImage(formData);
+
       setErrorMessage('');
       setPostingTemplateValue((oldPostingTemplateValue) => ({
         ...oldPostingTemplateValue,
         thumbnail: res.data.imageUrl,
       }));
-
-      setLoading(false);
+      setThumbnailUploadLoading(false);
     } catch {
       setErrorMessage('잘못된 이미지에요');
       setPostingTemplateValue((oldPostingTemplateValue) => ({
@@ -87,7 +81,7 @@ function PostingModal({ postingType }: { postingType: posting }) {
   };
 
   const posting = () => {
-    if (!loading) {
+    if (!thumbnailUploadLoading) {
       saveTagsWithoutTagId();
     }
   };
@@ -98,26 +92,56 @@ function PostingModal({ postingType }: { postingType: posting }) {
         return name;
       })
     );
-    setIsClick(true);
+    setRequestStart(true);
   };
+
+  useEffect(() => {
+    if (requestStart) {
+      makeRequest();
+      setRequestStart(false);
+    }
+  }, [requestStart]);
 
   const makeRequest = async () => {
     if (postingTemplateValue.thumbnail !== '') {
-      try {
-        await feed.createPost({
-          title: postingTemplateValue.title,
-          content: contentPreview,
-          thumbnail: postingTemplateValue.thumbnail,
-          tags: onlyTagList,
-        });
+      if (postingType === 'create') {
+        try {
+          await feed.createPost({
+            title: postingTemplateValue.title,
+            content: contentPreview,
+            thumbnail: postingTemplateValue.thumbnail,
+            tags: onlyTagList,
+          });
 
-        toast.success('게시물이 출간되었습니다', {
-          autoClose: 2000,
-        });
-        router.push('/');
-      } catch {
-        console.log();
+          toast.success('게시물이 출간되었습니다', {
+            autoClose: 2000,
+          });
+          router.push('/');
+          setPostingModal(false);
+        } catch (e: any) {
+          throw new Error(e);
+        }
+      } else if (postingType === 'update') {
+        try {
+          await feed.updatePost({
+            id: postingTemplateValue.id,
+            title: postingTemplateValue.title,
+            content: String(postingTemplateValue.content),
+            thumbnail: postingTemplateValue.thumbnail,
+            tags: onlyTagList,
+          });
+
+          toast.success('게시물이 수정되었습니다', {
+            autoClose: 2000,
+          });
+          router.push('/');
+          setPostingModal(false);
+        } catch (e: any) {
+          throw new Error(e);
+        }
       }
+    } else {
+      setErrorMessage('썸네일 이미지가 없어요');
     }
   };
 

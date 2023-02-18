@@ -64,6 +64,7 @@ function PostingTemplate({ postingType }: { postingType: posting }) {
             placeholder='제목을 입력해주세요'
             onChange={onTitleChange}
             type='text'
+            value={postingTemplateValue.title}
           />
         </S.TitleBox>
         <PostingTag />
