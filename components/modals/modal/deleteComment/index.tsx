@@ -17,7 +17,7 @@ function DeleteCommentModal() {
   const queryClient = useQueryClient();
 
   const onDeleteComment = async () => {
-    return comment.deleteComment(currentCommentId);
+    return comment.deleteComment(String(currentCommentId));
   };
 
   const { mutate: deleteComment } = useMutation(onDeleteComment, {
