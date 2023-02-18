@@ -40,6 +40,7 @@ export type postingTemplateTagType = {
 };
 
 export interface PostingTemplateData {
+  id?: number;
   title: string;
   content?: string;
   thumbnail: string;
