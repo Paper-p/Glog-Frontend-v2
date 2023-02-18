@@ -11,16 +11,19 @@ import { useQuery } from 'react-query';
 import { useRecoilState } from 'recoil';
 import DeleteCommentModal from 'components/modals/modal/deleteComment';
 import { modalsAtomFamily } from 'atoms';
+import { ReadPostPageSkeleton } from 'components/utils/skeleton';
 
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
   const [deleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
   );
+  const [loaded, setLoaded] = useState(false);
   const getPostByPostId = async () => {
     try {
       const res: any = await feed.getPostByPostId(postId);
       setPostData(res.data);
+      setLoaded(true);
     } catch (e: any) {
       if (e.response.status === 404) {
         throw new Error('없는 게시물입니다');
@@ -38,20 +41,26 @@ function ReadPostPage({ postId }: { postId: string }) {
     <>
       {deleteCommentModal && <DeleteCommentModal />}
       <S.PostPageLayout>
-        <S.PostTitle>{postData?.title}</S.PostTitle>
-        <PostTags tagList={postData?.tagList} />
-        <PostInformation
-          nickname={String(postData?.author.nickname)}
-          profileImageUrl={String(postData?.author.profileImageUrl)}
-          createdAt={postData?.createdAt}
-          likeCount={String(postData?.likeCount)}
-          hit={String(postData?.hit)}
-        />
-        <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
-        <S.ReadMarkdown data-color-mode='dark'>
-          <MarkdownPreview source={String(postData?.content)} />
-        </S.ReadMarkdown>
-        <PostComment comments={postData?.comments} postId={postId} />
+        {loaded ? (
+          <>
+            <S.PostTitle>{postData?.title}</S.PostTitle>
+            <PostTags tagList={postData?.tagList} />
+            <PostInformation
+              nickname={String(postData?.author.nickname)}
+              profileImageUrl={String(postData?.author.profileImageUrl)}
+              createdAt={postData?.createdAt}
+              likeCount={String(postData?.likeCount)}
+              hit={String(postData?.hit)}
+            />
+            <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
+            <S.ReadMarkdown data-color-mode='dark'>
+              <MarkdownPreview source={String(postData?.content)} />
+            </S.ReadMarkdown>
+            <PostComment comments={postData?.comments} postId={postId} />
+          </>
+        ) : (
+          <ReadPostPageSkeleton />
+        )}
       </S.PostPageLayout>
     </>
   );
