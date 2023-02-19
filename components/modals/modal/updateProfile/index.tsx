@@ -70,7 +70,7 @@ function UpdateProfileModal(props: UpdateProfileModalProps) {
         autoClose: 2000,
       });
       setUpdateProfileModal(false);
-      router.replace('/user/' + name);
+      router.push('/user/' + name);
       setError('');
     } catch (e: any) {
       setError('사용할 수 없는 이름입니다');

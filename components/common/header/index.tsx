@@ -42,7 +42,7 @@ function Header() {
     };
 
     getUserMiniProfile();
-  }, [tokenService.getLocalAccessToken()]);
+  }, [tokenService.getLocalAccessToken(), pathname]);
 
   return (
     <S.HeaderLayout>
