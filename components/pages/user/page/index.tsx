@@ -39,7 +39,12 @@ function UserPage({ nickname }: { nickname: string }) {
 
   return (
     <S.UserPageLayout>
-      {updateProfileModal && <UpdateProfileModal />}
+      {updateProfileModal && (
+        <UpdateProfileModal
+          nickname={userData?.nickname}
+          profileImageUrl={userData?.profileImageUrl}
+        />
+      )}
       {deletePostModal && <DeletePostModal />}
       <UserProfileSection
         nickname={String(userData?.nickname)}

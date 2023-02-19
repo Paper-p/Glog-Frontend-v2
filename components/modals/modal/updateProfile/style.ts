@@ -33,7 +33,7 @@ export const ImageChangeBox = styled.div`
   background: #1a1b1e;
   position: absolute;
   bottom: 10%;
-  left: 30.5%;
+  left: 25%;
   cursor: pointer;
   border-radius: 5px;
   p {
@@ -68,6 +68,7 @@ export const Nickname = styled.input<{ error: string }>`
   color: #eedfd2;
   border: ${(e) => (e.error ? '#e83f28 1px solid' : '#cccccc 1px solid')};
   filter: ${(e) => e.error && 'drop-shadow(0px 1px 7px #e45b3c)'};
+
   &:focus {
     outline: none;
   }
