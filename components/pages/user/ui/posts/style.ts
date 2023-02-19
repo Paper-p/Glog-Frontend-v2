@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 export const UserPostsSection = styled.section`
   width: 72.5vw;
   margin: auto;
+
+  @media screen and (max-width: 900px) {
+    width: 90vw;
+  }
 `;
 
 export const SignBoardBox = styled.div`
