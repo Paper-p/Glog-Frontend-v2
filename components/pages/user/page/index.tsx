@@ -10,7 +10,13 @@ import UserProfileSection from '../ui/profile';
 import * as S from './style';
 
 function UserPage({ nickname }: { nickname: string }) {
-  const [userData, setUserData] = useState<UserData>();
+  const [userData, setUserData] = useState<UserData>({
+    userId: '',
+    nickname: '익명의 개발자',
+    profileImageUrl: '',
+    feedList: [],
+    isMine: false,
+  });
   const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
 
   const getUserByNickname = async () => {
