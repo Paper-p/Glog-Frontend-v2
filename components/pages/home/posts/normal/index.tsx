@@ -11,10 +11,11 @@ function NormalPosts() {
   const page = useRef<number>(0);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const observerTargetEl = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState<boolean>(true);
   const [list, setList] = useState<any[]>([]);
 
   const getNormalPosts = async () => {
+    setLoaded(false);
     try {
       const response: any = await feed.getNormalPostsList({
         page: page.current,
@@ -23,7 +24,7 @@ function NormalPosts() {
 
       setList((prevPosts) => [...prevPosts, ...response.data.list]);
       setHasNextPage(response.data.list.length === 6);
-      setLoaded(false);
+      setLoaded(true);
       if (response.data.list.length) {
         page.current += 1;
       }
@@ -36,7 +37,7 @@ function NormalPosts() {
     if (!observerTargetEl.current || !hasNextPage) return;
 
     const io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !loaded) {
+      if (entries[0].isIntersecting && loaded) {
         getNormalPosts();
       }
     });
@@ -55,7 +56,7 @@ function NormalPosts() {
         ))}
         <div ref={observerTargetEl} />
       </S.NormalPostsLayout>
-      {loaded && <MainPageSkeleton />}
+      {!loaded && <MainPageSkeleton />}
     </>
   );
 }
