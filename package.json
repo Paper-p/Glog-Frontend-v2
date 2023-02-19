@@ -23,6 +23,7 @@
     "react-query": "^3.39.3",
     "react-textarea-autosize": "^8.4.0",
     "react-toastify": "^9.1.1",
+    "react-uuid": "^2.0.0",
     "recoil": "^0.7.6",
     "rehype-prism-plus": "^1.5.1"
   },

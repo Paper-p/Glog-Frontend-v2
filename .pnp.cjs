@@ -62,6 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-query", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:3.39.3"],\
             ["react-textarea-autosize", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:8.4.0"],\
             ["react-toastify", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:9.1.1"],\
+            ["react-uuid", "npm:2.0.0"],\
             ["recoil", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:0.7.6"],\
             ["rehype-prism-plus", "npm:1.5.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"]\
@@ -3266,6 +3267,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-query", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:3.39.3"],\
             ["react-textarea-autosize", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:8.4.0"],\
             ["react-toastify", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:9.1.1"],\
+            ["react-uuid", "npm:2.0.0"],\
             ["recoil", "virtual:150c031c6332edef8264c154553692ebd46a5776260c86bd51d2fc1db0b30af9ac7b114b82e733d166a4f00a5d2df5ecfdeebc4980c7b979f67826ee7006ebd4#npm:0.7.6"],\
             ["rehype-prism-plus", "npm:1.5.1"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"]\
@@ -5545,6 +5547,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/react",\
             "react-dom",\
             "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-uuid", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/react-uuid-npm-2.0.0-110e96194a-edfdd86ce5.zip/node_modules/react-uuid/",\
+          "packageDependencies": [\
+            ["react-uuid", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
