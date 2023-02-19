@@ -121,6 +121,34 @@ class Feed {
       return error;
     }
   }
+
+  postLike(postId: string) {
+    try {
+      return instance({
+        method: 'POST',
+        url: 'feed/like/' + postId,
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  postLikeCancellation(postId: string) {
+    try {
+      return instance({
+        method: 'DELETE',
+        url: 'feed/like/' + postId,
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Feed();
