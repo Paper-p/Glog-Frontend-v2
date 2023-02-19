@@ -7,3 +7,5 @@ export { KebobButton } from './kebobButton';
 export { ControlIcon } from './controlIcon';
 export { ImageUploadIcon } from './imageUploadIcon';
 export { EditIcon } from './editIcon';
+export { AfterPostLikedIcon } from './afterPostLikedIcon';
+export { BeforePostLikedIcon } from './beforePostLikedIcon';
