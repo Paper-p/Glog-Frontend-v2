@@ -1,3 +1,4 @@
+import { Nickname } from 'components/modals/modal/updateProfile/style';
 import { userUrl } from 'network/data/getUrl';
 import { instance } from 'network/data/instance';
 import tokenService from 'utils/tokenService';
@@ -26,6 +27,23 @@ class User {
           Authorization:
             tokenService.getLocalAccessToken() &&
             'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  updateUserProfileImage(imageUrl: string) {
+    try {
+      return instance({
+        method: 'PATCH',
+        url: '/user/profile-image',
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+        data: {
+          imageUrl: imageUrl,
         },
       });
     } catch (error) {
