@@ -6,15 +6,15 @@ import error from 'next/error';
 import { useRecoilState } from 'recoil';
 import { useState } from 'react';
 
-function EditProfileModal() {
-  const [_, setEditProfileModal] = useRecoilState(
-    modalsAtomFamily('editProfileModal')
+function UpdateProfileModal() {
+  const [_, setUpdateProfileModal] = useRecoilState(
+    modalsAtomFamily('updateProfileModal')
   );
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <ModalLayout setModal={setEditProfileModal}>
-      <S.EditProfileModalLayout onClick={(e) => e.stopPropagation()}>
+    <ModalLayout setModal={setUpdateProfileModal}>
+      <S.UpdateProfileModalLayout onClick={(e) => e.stopPropagation()}>
         <S.ProfileBox>
           <S.ImageBox>
             <S.ImageChangeBox>
@@ -51,9 +51,9 @@ function EditProfileModal() {
           <S.Exit>취소하기</S.Exit>
           <S.Edit>수정완료</S.Edit>
         </S.MoveBox>
-      </S.EditProfileModalLayout>
+      </S.UpdateProfileModalLayout>
     </ModalLayout>
   );
 }
 
-export default EditProfileModal;
+export default UpdateProfileModal;

@@ -9,8 +9,8 @@ interface UserProfileSectionProps {
 }
 
 function UserProfileSection(props: UserProfileSectionProps) {
-  const [_, setEditProfileModal] = useRecoilState(
-    modalsAtomFamily('editProfileModal')
+  const [_, setUpdateProfileModal] = useRecoilState(
+    modalsAtomFamily('updateProfileModal')
   );
   return (
     <S.UserProfileSection>
@@ -19,7 +19,7 @@ function UserProfileSection(props: UserProfileSectionProps) {
         <S.Name>{props.nickname}</S.Name>
         {props.isMine ? (
           <S.SectionThatOnlyWorksInMyPage>
-            <S.EditProfileButton onClick={() => setEditProfileModal(true)}>
+            <S.EditProfileButton onClick={() => setUpdateProfileModal(true)}>
               수정하기
             </S.EditProfileButton>
             <S.Logout>로그아웃</S.Logout>

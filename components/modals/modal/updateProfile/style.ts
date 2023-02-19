@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const EditProfileModalLayout = styled.div`
+export const UpdateProfileModalLayout = styled.div`
   width: 400px;
   height: max-content;
   background: #252727;

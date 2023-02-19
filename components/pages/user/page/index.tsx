@@ -1,6 +1,6 @@
 import { modalsAtomFamily } from 'atoms';
 import DeletePostModal from 'components/modals/modal/deletePost';
-import EditProfileModal from 'components/modals/modal/editProfile';
+import UpdateProfileModal from 'components/modals/modal/updateProfile';
 import user from 'network/request/user';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
@@ -11,8 +11,8 @@ import UserProfileSection from '../ui/profile';
 import * as S from './style';
 
 function UserPage({ nickname }: { nickname: string }) {
-  const [editProfileModal] = useRecoilState(
-    modalsAtomFamily('editProfileModal')
+  const [updateProfileModal] = useRecoilState(
+    modalsAtomFamily('updateProfileModal')
   );
   const [userData, setUserData] = useState<UserData>({
     userId: '',
@@ -39,7 +39,7 @@ function UserPage({ nickname }: { nickname: string }) {
 
   return (
     <S.UserPageLayout>
-      {editProfileModal && <EditProfileModal />}
+      {updateProfileModal && <UpdateProfileModal />}
       {deletePostModal && <DeletePostModal />}
       <UserProfileSection
         nickname={String(userData?.nickname)}
