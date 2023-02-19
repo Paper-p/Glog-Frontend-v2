@@ -50,6 +50,23 @@ class User {
       return error;
     }
   }
+
+  updateUserNickname(nickname: string) {
+    try {
+      return instance({
+        method: 'PATCH',
+        url: '/user/nickname',
+        headers: {
+          Authorization: 'Bearer ' + tokenService.getLocalAccessToken(),
+        },
+        data: {
+          nickname: nickname,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new User();
