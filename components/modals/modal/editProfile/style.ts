@@ -2,9 +2,10 @@ import styled from '@emotion/styled';
 
 export const EditProfileModalLayout = styled.div`
   width: 400px;
-  height: 340px;
+  height: max-content;
   background: #252727;
   border-radius: 15px;
+  padding: 35px 0;
 `;
 
 export const ProfileBox = styled.div`
