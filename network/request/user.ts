@@ -1,4 +1,3 @@
-import { Nickname } from 'components/modals/modal/updateProfile/style';
 import { userUrl } from 'network/data/getUrl';
 import { instance } from 'network/data/instance';
 import tokenService from 'utils/tokenService';
