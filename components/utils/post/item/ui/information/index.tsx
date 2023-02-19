@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { marked } from 'marked';
 import { currentIdsAtomFamily, modalsAtomFamily } from 'atoms';
 import { useRecoilState } from 'recoil';
+import { useRouter } from 'next/navigation';
 
 interface ItemInformationProps {
   data: PostData;
@@ -20,6 +21,7 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
   const [__, setCurrentPostId] = useRecoilState(
     currentIdsAtomFamily('currentPostId')
   );
+  const router = useRouter();
 
   const onDeleteButtonClick = () => {
     setDeletePostModal(true);
@@ -28,12 +30,12 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
 
   return (
     <>
-      <Link href={'/post/' + data?.id}>
+      <div onClick={() => router.push('/update/' + data?.id)}>
         <S.PostTitle>{data?.title}</S.PostTitle>
         <S.PostContent>
           {marked(String(data?.previewContent)).replace(/<[^>]+>/g, '')}
         </S.PostContent>
-      </Link>
+      </div>
       <S.PostStatBar>
         <S.StatWrapper>
           <I.Like />

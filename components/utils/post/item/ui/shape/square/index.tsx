@@ -2,6 +2,7 @@ import * as S from './style';
 import { PostData } from 'types/post.types';
 import PostItemInformation from '../../information';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface SquarePostItemProps {
   data: PostData;
@@ -9,11 +10,14 @@ interface SquarePostItemProps {
 }
 
 function SquarePostItem({ data, isMine }: SquarePostItemProps) {
+  const router = useRouter();
+
   return (
     <S.SquarePostItemLayout>
-      <Link href={'/post/' + data.id}>
-        <S.BackgroundImage src={data?.thumbnail} />
-      </Link>
+      <S.BackgroundImage
+        src={data?.thumbnail}
+        onClick={() => router.push('/post/' + data?.id)}
+      />
       <S.InformationWrapper>
         <S.PaddingBox>
           <PostItemInformation data={data} isMine={isMine} />
