@@ -7,9 +7,6 @@ import Link from 'next/link';
 import tokenService from 'utils/tokenService';
 import user from 'network/request/user';
 
-const DEFAULT_PROFILE_IMAGE_URL =
-  'https://glog-bucket.s3.ap-northeast-2.amazonaws.com/glog-bucket/person-circle.svg';
-
 interface MiniProfileData {
   nickname: string;
   profileImageUrl: string;
@@ -19,7 +16,7 @@ interface MiniProfileData {
 function Header() {
   const [miniProfile, setMiniProfile] = useState<MiniProfileData>({
     nickname: '',
-    profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
+    profileImageUrl: '/images/default-profileImage.svg',
     userId: '',
   });
   const pathname = usePathname();
