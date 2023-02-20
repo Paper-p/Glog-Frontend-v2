@@ -1,5 +1,6 @@
 import { modalsAtomFamily } from 'atoms';
 import DeletePostModal from 'components/modals/modal/deletePost';
+import LogoutModal from 'components/modals/modal/logout';
 import UpdateProfileModal from 'components/modals/modal/updateProfile';
 import user from 'network/request/user';
 import { useState } from 'react';
@@ -14,6 +15,9 @@ function UserPage({ nickname }: { nickname: string }) {
   const [updateProfileModal] = useRecoilState(
     modalsAtomFamily('updateProfileModal')
   );
+  const [logoutModal] = useRecoilState(modalsAtomFamily('logoutModal'));
+  const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
+
   const [userData, setUserData] = useState<UserData>({
     userId: '',
     nickname: '익명의 개발자',
@@ -21,7 +25,6 @@ function UserPage({ nickname }: { nickname: string }) {
     feedList: [],
     isMine: false,
   });
-  const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
 
   const getUserByNickname = async () => {
     try {
@@ -45,6 +48,7 @@ function UserPage({ nickname }: { nickname: string }) {
           profileImageUrl={userData?.profileImageUrl}
         />
       )}
+      {logoutModal && <LogoutModal />}
       {deletePostModal && <DeletePostModal />}
       <UserProfileSection
         nickname={String(userData?.nickname)}

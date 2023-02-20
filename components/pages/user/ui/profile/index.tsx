@@ -12,6 +12,8 @@ function UserProfileSection(props: UserProfileSectionProps) {
   const [_, setUpdateProfileModal] = useRecoilState(
     modalsAtomFamily('updateProfileModal')
   );
+  const [__, setLogoutModal] = useRecoilState(modalsAtomFamily('logoutModal'));
+
   return (
     <S.UserProfileSection>
       <div>
@@ -22,7 +24,7 @@ function UserProfileSection(props: UserProfileSectionProps) {
             <S.EditProfileButton onClick={() => setUpdateProfileModal(true)}>
               수정하기
             </S.EditProfileButton>
-            <S.Logout>로그아웃</S.Logout>
+            <S.Logout onClick={() => setLogoutModal(true)}>로그아웃</S.Logout>
           </S.SectionThatOnlyWorksInMyPage>
         ) : (
           <></>
