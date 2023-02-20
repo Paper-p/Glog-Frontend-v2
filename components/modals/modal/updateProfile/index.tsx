@@ -22,8 +22,6 @@ function UpdateProfileModal(props: UpdateProfileModalProps) {
   const [profileImage, setProfileImage] = useState<string>(
     props.profileImageUrl
   );
-  const loadingGif =
-    'https://raw.githubusercontent.com/Paper-p/Glog-Frontend/main/public/images/loading.gif';
   const setImage = useRef<any>(null);
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -99,7 +97,7 @@ function UpdateProfileModal(props: UpdateProfileModalProps) {
               <p>변경</p>
             </S.ImageChangeBox>
             {loading ? (
-              <S.ProfileImage src={loadingGif} />
+              <S.ProfileImage src={'/images/loading.gif'} />
             ) : (
               <S.ProfileImage src={profileImage} />
             )}
