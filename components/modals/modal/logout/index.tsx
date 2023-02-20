@@ -13,6 +13,7 @@ function LogoutModal() {
   const onLogout = () => {
     tokenService.removeUser();
     router.push('/');
+    setLogoutModal(false);
   };
 
   return (
