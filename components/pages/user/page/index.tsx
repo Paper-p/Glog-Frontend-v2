@@ -21,7 +21,7 @@ function UserPage({ nickname }: { nickname: string }) {
   const [userData, setUserData] = useState<UserData>({
     userId: '',
     nickname: '익명의 개발자',
-    profileImageUrl: '',
+    profileImageUrl: '/images/default-profileImage.svg',
     feedList: [],
     isMine: false,
   });
