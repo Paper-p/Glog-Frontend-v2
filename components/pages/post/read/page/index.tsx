@@ -16,7 +16,6 @@ import { ReadPostPageSkeleton } from 'components/utils/skeleton';
 
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
-  const [isLiked, setIsLiked] = useState<boolean>(false);
   const [deleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
   );
@@ -26,7 +25,6 @@ function ReadPostPage({ postId }: { postId: string }) {
     try {
       const res: any = await feed.getPostByPostId(postId);
       setPostData(res.data);
-      setIsLiked(res.data.isLiked);
       setLoaded(true);
     } catch (e: any) {
       if (e.response.status === 404) {
