@@ -1,6 +1,6 @@
 'use client';
 
-import NotFoundPage from 'components/pages/notFound';
+import { NotFoundPage } from 'components/pages';
 import { useSearchParams } from 'next/navigation';
 
 function NotFound() {
