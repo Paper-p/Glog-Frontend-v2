@@ -3,6 +3,7 @@ import DeletePostModal from 'components/modals/modal/deletePost';
 import LogoutModal from 'components/modals/modal/logout';
 import UpdateProfileModal from 'components/modals/modal/updateProfile';
 import user from 'network/request/user';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useRecoilState } from 'recoil';
@@ -15,6 +16,7 @@ function UserPage({ nickname }: { nickname: string }) {
   const [updateProfileModal] = useRecoilState(
     modalsAtomFamily('updateProfileModal')
   );
+  const router = useRouter();
   const [logoutModal] = useRecoilState(modalsAtomFamily('logoutModal'));
   const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
 
@@ -31,7 +33,9 @@ function UserPage({ nickname }: { nickname: string }) {
       const res: any = await user.getUserByNickname(nickname);
       setUserData(res.data);
     } catch (e: any) {
-      throw new Error(e);
+      if (e.response.status === 404) {
+        router.replace('/not-found?type=유저');
+      }
     }
   };
 
