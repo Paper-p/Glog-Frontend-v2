@@ -35,13 +35,6 @@ export const Elements = styled.div`
   }
 `;
 
-export const UserProfileImage = styled.img`
-  width: 35px;
-  height: 35px;
-  border-radius: 50px;
-  object-fit: cover;
-`;
-
 export const Box = styled.div`
   display: flex;
   align-items: center;

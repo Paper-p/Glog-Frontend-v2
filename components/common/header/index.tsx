@@ -6,6 +6,8 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 import tokenService from 'utils/tokenService';
 import user from 'network/request/user';
+import BeforeLoginSection from './section/beforeLogin';
+import AfterLoginSection from './section/afterLogin';
 
 interface MiniProfileData {
   nickname: string;
@@ -58,21 +60,12 @@ function Header() {
       </S.Elements>
       <S.Elements className='right-part'>
         {tokenService.getLocalAccessToken() ? (
-          <React.Fragment>
-            <p>{miniProfile?.nickname}</p>
-            <Link href={'/user/' + miniProfile?.nickname}>
-              <S.UserProfileImage src={miniProfile?.profileImageUrl} />
-            </Link>
-          </React.Fragment>
+          <AfterLoginSection
+            nickname={miniProfile?.nickname}
+            profileImageUrl={miniProfile?.profileImageUrl}
+          />
         ) : (
-          <React.Fragment>
-            <Link href={'/login'}>
-              <p css={select('/login')}>로그인</p>
-            </Link>
-            <Link href={'/signup'}>
-              <p css={select('/signup')}>회원가입</p>
-            </Link>
-          </React.Fragment>
+          <BeforeLoginSection />
         )}
       </S.Elements>
     </S.HeaderLayout>
