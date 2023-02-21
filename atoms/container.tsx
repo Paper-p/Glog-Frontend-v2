@@ -20,3 +20,8 @@ export const postingTempalteValueAtom = atom<PostingData>({
     tags: [],
   },
 });
+
+export const searchKeywordAtom = atom({
+  key: 'searchKeyword',
+  default: '',
+});
