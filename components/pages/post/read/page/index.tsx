@@ -14,6 +14,7 @@ import DeleteCommentModal from 'components/modals/modal/deleteComment';
 import { modalsAtomFamily } from 'atoms';
 import { ReadPostPageSkeleton } from 'components/utils/skeleton';
 import { useRouter } from 'next/navigation';
+import PostLike from '../ui/like';
 
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
@@ -21,7 +22,6 @@ function ReadPostPage({ postId }: { postId: string }) {
     modalsAtomFamily('deleteCommentModal')
   );
   const router = useRouter();
-  const queryClient = useQueryClient();
   const [loaded, setLoaded] = useState(false);
   const getPostByPostId = async () => {
     try {
@@ -41,53 +41,18 @@ function ReadPostPage({ postId }: { postId: string }) {
     refetchOnWindowFocus: false,
   });
 
-  const onPostLike = async () => {
-    return await feed.postLike(String(postData?.id));
-  };
-
-  const { mutate: postLike } = useMutation(onPostLike, {
-    onSettled: () => {
-      queryClient.invalidateQueries('post');
-    },
-  });
-
-  const onPostLikeCancle = async () => {
-    return await feed.postLikeCancellation(String(postData?.id));
-  };
-
-  const { mutate: postLikeCancle } = useMutation(onPostLikeCancle, {
-    onSettled: () => {
-      queryClient.invalidateQueries('post');
-    },
-  });
-
-  const onLikeIconClick = () => {
-    if (postData?.isLiked) {
-      postLikeCancle();
-    } else {
-      postLike();
-    }
-  };
-
   return (
     <>
       {deleteCommentModal && <DeleteCommentModal />}
       <S.PostPageLayout>
         {loaded ? (
           <>
-            <S.Wrapper>
+            <PostLike
+              isLiked={Boolean(postData?.isLiked)}
+              id={String(postData?.id)}
+            >
               <S.PostTitle>{postData?.title}</S.PostTitle>
-              <S.LikeIconBox
-                isLiked={postData?.isLiked}
-                onClick={onLikeIconClick}
-              >
-                {postData?.isLiked ? (
-                  <I.AfterPostLikedIcon />
-                ) : (
-                  <I.BeforePostLikedIcon />
-                )}
-              </S.LikeIconBox>
-            </S.Wrapper>
+            </PostLike>
             <PostTags tagList={postData?.tagList} />
             <PostInformation
               nickname={String(postData?.author.nickname)}
