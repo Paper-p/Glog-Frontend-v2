@@ -1,37 +1,53 @@
 import * as S from './style';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import PostItem from 'components/utils/post/item';
 import MainPageSkeleton from 'components/utils/skeleton/main';
 import uuid from 'react-uuid';
+import { useRecoilState } from 'recoil';
+import { searchAtom } from 'atoms';
 
 function NormalPosts() {
   const page = useRef<number>(0);
+  const [search, setSearch] = useRecoilState(searchAtom);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const observerTargetEl = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState<boolean>(true);
   const [list, setList] = useState<any[]>([]);
+  const [searchResultNone, setSearchResultNone] = useState<boolean>(false);
+  const [searchFailedText, setSearchFailedText] = useState<string>('');
 
-  const getNormalPosts = async () => {
+  const getNormalPosts = useCallback(async () => {
     setLoaded(false);
+
     try {
       const response: any = await feed.getNormalPostsList({
         page: page.current,
         size: 6,
+        keyword: search.keyword && search.keyword,
       });
+
+      if (search.keyword && response.data.list.length < 1) {
+        setSearchResultNone(true);
+        setSearchFailedText(`"${search.keyword}"`);
+      } else {
+        setSearchResultNone(false);
+        setSearchFailedText('');
+      }
 
       setList((prevPosts) => [...prevPosts, ...response.data.list]);
       setHasNextPage(response.data.list.length === 6);
       setLoaded(true);
+
       if (response.data.list.length) {
         page.current += 1;
       }
-    } catch (e) {
-      console.log(e);
+    } catch (e: any) {
+      throw new Error(e);
     }
-  };
+  }, [search]);
 
   useEffect(() => {
     if (!observerTargetEl.current || !hasNextPage) return;
@@ -45,6 +61,19 @@ function NormalPosts() {
     io.observe(observerTargetEl.current);
     return () => io.disconnect();
   }, [hasNextPage, getNormalPosts, loaded]);
+
+  useEffect(() => {
+    if (search.isSearchRequested) {
+      page.current = 0;
+      setList([]);
+      getNormalPosts();
+      setSearch((oldValue) => ({
+        ...oldValue,
+        isSearchRequested: false,
+      }));
+    }
+  }, [search.isSearchRequested]);
+
   return (
     <>
       <SignBoard>💻 게시물’s</SignBoard>
@@ -56,6 +85,12 @@ function NormalPosts() {
         ))}
         <div ref={observerTargetEl} />
       </S.NormalPostsLayout>
+      {searchResultNone && (
+        <S.SearchResultIsNone>
+          <S.SearchText>{searchFailedText}</S.SearchText>
+          <p>에 대한 검색결과가 없습니다</p>
+        </S.SearchResultIsNone>
+      )}
       {!loaded && <MainPageSkeleton />}
     </>
   );

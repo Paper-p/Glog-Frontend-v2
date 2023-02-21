@@ -1,17 +1,41 @@
 import * as S from './style';
 import * as I from 'assets/svg';
 import { useRecoilState } from 'recoil';
-import { searchKeywordAtom } from 'atoms';
+import { searchAtom } from 'atoms';
 
 function SearchBarSection() {
-  const [searchKeyword, setSearchKeyword] = useRecoilState(searchKeywordAtom);
+  const [search, setSearch] = useRecoilState(searchAtom);
+
+  const onSearchKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch((oldValue) => ({
+      ...oldValue,
+      keyword: e.target.value,
+    }));
+  };
+
+  const onSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      if (!e.nativeEvent.isComposing) {
+        e.preventDefault();
+        setSearch((oldValue) => ({
+          ...oldValue,
+          isSearchRequested: true,
+        }));
+      }
+    }
+  };
 
   return (
     <S.SearchBarLayout>
       <S.SearchIcon>
         <I.SearchIcon />
       </S.SearchIcon>
-      <S.SearchInput />
+      <S.SearchInput
+        placeholder='검색어를 입력해주세요'
+        value={search.keyword}
+        onChange={onSearchKeywordChange}
+        onKeyDown={onSearch}
+      />
     </S.SearchBarLayout>
   );
 }
