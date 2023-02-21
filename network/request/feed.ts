@@ -1,10 +1,6 @@
 import { feedUrl } from 'network/data/getUrl';
 import { instance } from 'network/data/instance';
-import {
-  GetNormalPostsListData,
-  PostingData,
-  RequestPostingData,
-} from 'types/post.types';
+import { GetNormalPostsListData, RequestPostingData } from 'types/post.types';
 import tokenService from 'utils/tokenService';
 
 class Feed {
