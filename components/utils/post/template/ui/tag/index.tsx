@@ -2,7 +2,7 @@ import { postingTempalteValueAtom } from 'atoms';
 import useInputs from 'hooks/useInputs';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
-import { PostingData, TagType } from 'types/post.types';
+import { TagType } from 'types/post.types';
 import * as S from './style';
 
 function PostingTag() {
