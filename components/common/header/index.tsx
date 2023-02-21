@@ -8,6 +8,7 @@ import tokenService from 'utils/tokenService';
 import user from 'network/request/user';
 import BeforeLoginSection from './section/beforeLogin';
 import AfterLoginSection from './section/afterLogin';
+import SearchBarSection from './section/searchBar';
 
 interface MiniProfileData {
   nickname: string;
@@ -58,6 +59,7 @@ function Header() {
           </Link>
         </S.Box>
       </S.Elements>
+      <S.Elements>{pathname === '/' && <SearchBarSection />}</S.Elements>
       <S.Elements className='right-part'>
         {tokenService.getLocalAccessToken() ? (
           <AfterLoginSection
