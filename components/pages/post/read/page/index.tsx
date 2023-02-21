@@ -13,12 +13,14 @@ import { useRecoilState } from 'recoil';
 import DeleteCommentModal from 'components/modals/modal/deleteComment';
 import { modalsAtomFamily } from 'atoms';
 import { ReadPostPageSkeleton } from 'components/utils/skeleton';
+import { useRouter } from 'next/navigation';
 
 function ReadPostPage({ postId }: { postId: string }) {
   const [postData, setPostData] = useState<DetailPostData>();
   const [deleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
   );
+  const router = useRouter();
   const queryClient = useQueryClient();
   const [loaded, setLoaded] = useState(false);
   const getPostByPostId = async () => {
@@ -28,7 +30,7 @@ function ReadPostPage({ postId }: { postId: string }) {
       setLoaded(true);
     } catch (e: any) {
       if (e.response.status === 404) {
-        throw new Error('없는 게시물입니다');
+        router.replace('/not-found?type=게시물');
       }
     }
   };
