@@ -9,3 +9,4 @@ export { ImageUploadIcon } from './imageUploadIcon';
 export { EditIcon } from './editIcon';
 export { AfterPostLikedIcon } from './afterPostLikedIcon';
 export { BeforePostLikedIcon } from './beforePostLikedIcon';
+export { SearchIcon } from './searchIcon';
