@@ -21,7 +21,10 @@ export const postingTempalteValueAtom = atom<PostingData>({
   },
 });
 
-export const searchKeywordAtom = atom({
-  key: 'searchKeyword',
-  default: '',
+export const searchAtom = atom({
+  key: 'search',
+  default: {
+    keyword: '',
+    isSearchRequested: false,
+  },
 });
