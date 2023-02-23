@@ -24,13 +24,13 @@ function NormalPosts() {
     setLoaded(false);
 
     try {
-      const response: any = await feed.getNormalPostsList({
+      const res: any = await feed.getNormalPostsList({
         page: page.current,
         size: 6,
         keyword: search.keyword && search.keyword,
       });
 
-      if (search.keyword && response.data.list.length < 1) {
+      if (search.keyword && res.data.list.length < 1) {
         setSearchResultNone(true);
         setSearchFailedText(`"${search.keyword}"`);
       } else {
@@ -38,11 +38,11 @@ function NormalPosts() {
         setSearchFailedText('');
       }
 
-      setList((prevPosts) => [...prevPosts, ...response.data.list]);
-      setHasNextPage(response.data.list.length === 6);
+      setList((prevPosts) => [...prevPosts, ...res.data.list]);
+      setHasNextPage(res.data.list.length === 6);
       setLoaded(true);
 
-      if (response.data.list.length) {
+      if (res.data.list.length) {
         page.current += 1;
       }
     } catch (e: any) {
