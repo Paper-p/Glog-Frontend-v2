@@ -14,11 +14,11 @@ export const Tag = styled.div`
   word-break: break-all;
   height: content;
   padding: 10px 18px;
-  background: #3a3b3d;
+  background: #26c576;
   border-radius: 10px;
   font-size: 0.88em;
   font-weight: bold;
-  color: #969696;
+  color: #000000;
   display: inline-flex;
   align-items: center;
   justify-content: center;

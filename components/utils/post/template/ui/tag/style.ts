@@ -43,11 +43,11 @@ export const TagListBox = styled.div`
 export const Tag = styled.div`
   height: content;
   padding: 10px 18px;
-  background: #3a3b3d;
+  background: #26c576;
   border-radius: 10px;
   font-size: 14px;
   font-weight: bold;
-  color: #969696;
+  color: #000000;
   display: inline-flex;
   align-items: center;
   justify-content: center;
