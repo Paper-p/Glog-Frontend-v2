@@ -26,7 +26,7 @@ function NormalPosts() {
     try {
       const res: any = await feed.getNormalPostsList({
         page: page.current,
-        size: 6,
+        size: 8,
         keyword: search.keyword && search.keyword,
       });
 
@@ -39,7 +39,7 @@ function NormalPosts() {
       }
 
       setList((prevPosts) => [...prevPosts, ...res.data.list]);
-      setHasNextPage(res.data.list.length === 6);
+      setHasNextPage(res.data.list.length === 8);
       setLoaded(true);
 
       if (res.data.list.length) {
