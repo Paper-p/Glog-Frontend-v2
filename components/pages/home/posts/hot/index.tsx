@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import * as S from './style';
 import PostItem from 'components/utils/post/item';
+import { PostData } from 'types/post.types';
 
 function HotPosts() {
-  const [list, setList] = useState<any[]>([]);
+  const [list, setList] = useState<PostData[]>([]);
 
   useEffect(() => {
     const getHotPosts = async () => {

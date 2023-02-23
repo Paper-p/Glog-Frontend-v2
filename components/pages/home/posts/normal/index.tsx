@@ -8,6 +8,7 @@ import MainPageSkeleton from 'components/utils/skeleton/main';
 import uuid from 'react-uuid';
 import { useRecoilState } from 'recoil';
 import { searchAtom } from 'atoms';
+import { PostData } from 'types/post.types';
 
 function NormalPosts() {
   const page = useRef<number>(0);
@@ -15,7 +16,7 @@ function NormalPosts() {
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const observerTargetEl = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState<boolean>(true);
-  const [list, setList] = useState<any[]>([]);
+  const [list, setList] = useState<PostData[]>([]);
   const [searchResultNone, setSearchResultNone] = useState<boolean>(false);
   const [searchFailedText, setSearchFailedText] = useState<string>('');
 
