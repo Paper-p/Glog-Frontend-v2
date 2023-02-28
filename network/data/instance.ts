@@ -55,7 +55,7 @@ function getAuthToken() {
     authTokenRequest
       .catch(function () {
         tokenService.removeUser();
-        // window.location.replace('/login');
+        window.location.replace('/login');
       })
       .then(resetAuthTokenRequest, resetAuthTokenRequest);
   }
