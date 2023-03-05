@@ -1,6 +1,10 @@
 'use client';
 
-import AuthLayout from 'components/utils/auth/layout';
+import dynamic from 'next/dynamic';
+
+const AuthLayout = dynamic(() => import('components/utils/auth/layout'), {
+  ssr: false,
+});
 
 interface AuthLayoutProps {
   children: React.ReactNode;

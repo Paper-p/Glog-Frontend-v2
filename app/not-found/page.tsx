@@ -1,7 +1,11 @@
 'use client';
 
-import { NotFoundPage } from 'components/pages';
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
+
+const NotFoundPage = dynamic(() => import('components/pages/notFound'), {
+  ssr: false,
+});
 
 function NotFound() {
   const searchParams = useSearchParams();
