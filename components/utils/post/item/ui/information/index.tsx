@@ -30,7 +30,7 @@ function PostItemInformation({ data, isMine }: ItemInformationProps) {
 
   return (
     <>
-      <div onClick={() => router.push('/update/' + data?.id)}>
+      <div onClick={() => router.push('/post/' + data?.id)}>
         <S.PostTitle>{data?.title}</S.PostTitle>
         <S.PostContent>
           {marked(String(data?.previewContent)).replace(/<[^>]+>/g, '')}
