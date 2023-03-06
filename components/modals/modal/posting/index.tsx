@@ -65,7 +65,7 @@ function PostingModal({ postingType }: { postingType: PostingType }) {
       }));
       setThumbnailUploadLoading(false);
     } catch {
-      setErrorMessage('잘못된 이미지에요');
+      setErrorMessage('파일이 너무 커요!');
       setPostingTemplateValue((oldPostingTemplateValue) => ({
         ...oldPostingTemplateValue,
         thumbnail: '',
