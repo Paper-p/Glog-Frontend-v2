@@ -8,7 +8,8 @@ export const UserProfileImage = styled.img`
 `;
 
 export const UserName = styled.p`
-  width: 130px;
+  width: 110px;
+  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
