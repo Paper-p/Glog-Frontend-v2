@@ -19,7 +19,7 @@ interface MiniProfileData {
 function Header() {
   const [miniProfile, setMiniProfile] = useState<MiniProfileData>({
     nickname: '',
-    profileImageUrl: '/images/default-profileImage.svg',
+    profileImageUrl: 'public/default-profileImage.svg',
     userId: '',
   });
   const pathname = usePathname();

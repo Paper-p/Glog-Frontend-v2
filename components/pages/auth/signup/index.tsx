@@ -91,7 +91,7 @@ function SignupPage() {
 
   return (
     <S.SignupForm onSubmit={handleSubmit(onValid, inValid)}>
-      <S.Gif src='/images/signup.gif' />
+      <S.Gif src='public/signup.gif' />
       <S.WelcomeText>당신의 시작을 환영해요!</S.WelcomeText>
       <AuthInput
         icon='human'
