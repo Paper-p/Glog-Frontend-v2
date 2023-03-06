@@ -106,7 +106,7 @@ function PostingModal({ postingType }: { postingType: PostingType }) {
         try {
           await feed.createPost({
             title: postingTemplateValue.title,
-            content: contentPreview,
+            content: postingTemplateValue.content,
             thumbnail: postingTemplateValue.thumbnail,
             tags: onlyTagList,
           });
