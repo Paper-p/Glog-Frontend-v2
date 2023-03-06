@@ -1,5 +1,4 @@
 import * as S from './style';
-import * as I from 'assets/svg';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import '@uiw/react-markdown-preview/markdown.css';
 import PostComment from '../ui/comment';
@@ -8,7 +7,7 @@ import PostInformation from '../ui/information';
 import { useState } from 'react';
 import feed from 'network/request/feed';
 import { DetailPostData } from 'types/post.types';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { useRecoilState } from 'recoil';
 import DeleteCommentModal from 'components/modals/modal/deleteComment';
 import { modalsAtomFamily } from 'atoms';
