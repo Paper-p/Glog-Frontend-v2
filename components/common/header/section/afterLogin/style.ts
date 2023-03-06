@@ -6,3 +6,10 @@ export const UserProfileImage = styled.img`
   border-radius: 50px;
   object-fit: cover;
 `;
+
+export const UserName = styled.p`
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
