@@ -36,7 +36,6 @@ instance.interceptors.response.use(
     const error = err.response;
     if (error.status === 401 && !error.config.__isRetryRequest) {
       return getAuthToken().then((response: any) => {
-        console.log('new Token:', response.data);
         tokenService.setUser(response.data);
         error.config.__isRetryRequest = true;
         return instance(error.config);
