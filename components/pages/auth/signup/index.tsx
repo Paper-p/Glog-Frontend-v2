@@ -58,7 +58,7 @@ function SignupPage() {
           autoClose: 2000,
         });
 
-        router.push('/');
+        router.push('/login');
       } catch {
         setError(
           'confirmPassword',
