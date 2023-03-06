@@ -15,6 +15,8 @@ export const ProfileImage = styled.img`
   border-radius: 200px;
   object-fit: cover;
   margin-bottom: 0.8rem;
+  margin: 0 auto 0.8rem;
+  display: block;
 `;
 
 export const Name = styled.p`
