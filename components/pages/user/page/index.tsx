@@ -49,29 +49,29 @@ function UserPage({ nickname }: { nickname: string }) {
     queryFn: getUserByNickname,
   });
 
-  return (
-    mounted && (
-      <S.UserPageLayout>
-        {updateProfileModal && (
-          <UpdateProfileModal
-            nickname={userData?.nickname}
-            profileImageUrl={userData?.profileImageUrl}
-          />
-        )}
-        {logoutModal && <LogoutModal />}
-        {deletePostModal && <DeletePostModal />}
-        <UserProfileSection
-          nickname={String(userData?.nickname)}
-          profileImageUrl={String(userData?.profileImageUrl)}
-          isMine={Boolean(userData?.isMine)}
+  return mounted ? (
+    <S.UserPageLayout>
+      {updateProfileModal && (
+        <UpdateProfileModal
+          nickname={userData?.nickname}
+          profileImageUrl={userData?.profileImageUrl}
         />
-        <UserPostsSection
-          userPosts={userData?.feedList}
-          nickname={String(userData?.nickname)}
-          isMine={Boolean(userData?.isMine)}
-        />
-      </S.UserPageLayout>
-    )
+      )}
+      {logoutModal && <LogoutModal />}
+      {deletePostModal && <DeletePostModal />}
+      <UserProfileSection
+        nickname={String(userData?.nickname)}
+        profileImageUrl={String(userData?.profileImageUrl)}
+        isMine={Boolean(userData?.isMine)}
+      />
+      <UserPostsSection
+        userPosts={userData?.feedList}
+        nickname={String(userData?.nickname)}
+        isMine={Boolean(userData?.isMine)}
+      />
+    </S.UserPageLayout>
+  ) : (
+    <></>
   );
 }
 

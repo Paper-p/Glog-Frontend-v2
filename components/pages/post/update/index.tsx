@@ -50,24 +50,24 @@ function UpdatePostPage({ postId }: { postId: string }) {
     getPostByPostId();
   }, []);
 
-  return (
-    mounted && (
-      <>
-        {isOwner ? (
-          <PostingTemplate postingType='update' />
-        ) : (
-          <S.IsNotOwnerSection>
-            <div>
-              <S.Icon>🧐</S.Icon>
-              <S.Text>다른 사람의 게시물은 수정할 수 없어요 </S.Text>
-              <CommonButton onClick={() => router.push('/')}>
-                돌아가기
-              </CommonButton>
-            </div>
-          </S.IsNotOwnerSection>
-        )}
-      </>
-    )
+  return mounted ? (
+    <>
+      {isOwner ? (
+        <PostingTemplate postingType='update' />
+      ) : (
+        <S.IsNotOwnerSection>
+          <div>
+            <S.Icon>🧐</S.Icon>
+            <S.Text>다른 사람의 게시물은 수정할 수 없어요 </S.Text>
+            <CommonButton onClick={() => router.push('/')}>
+              돌아가기
+            </CommonButton>
+          </div>
+        </S.IsNotOwnerSection>
+      )}
+    </>
+  ) : (
+    <></>
   );
 }
 
