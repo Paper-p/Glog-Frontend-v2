@@ -4,7 +4,7 @@ export const UserPostsSection = styled.section`
   width: 72.5vw;
   margin: auto;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1180px) {
     width: 90vw;
   }
 `;
@@ -18,8 +18,21 @@ export const SignBoardBox = styled.div`
 export const PostList = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  margin-bottom: 5rem;
+
+  @media screen and (max-width: 1630px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 930px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 `;
 
 export const ThereAreNoPostsYet = styled.div`

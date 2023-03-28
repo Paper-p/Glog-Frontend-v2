@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const SquarePostItemLayout = styled.div`
   position: relative;
+  width: 100%;
   height: 330px;
   border-radius: 10px;
   cursor: pointer;

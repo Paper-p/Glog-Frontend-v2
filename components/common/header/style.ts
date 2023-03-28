@@ -7,7 +7,7 @@ export const HeaderLayout = styled.section`
   justify-content: space-between;
   height: 70px;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1180px) {
     width: 90%;
   }
 `;

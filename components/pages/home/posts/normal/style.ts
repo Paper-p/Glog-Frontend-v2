@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const NormalPostsLayout = styled.section`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 
   @media screen and (max-width: 900px) {
