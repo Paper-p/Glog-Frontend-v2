@@ -21,12 +21,30 @@ function DeleteCommentModal() {
   };
 
   const { mutate: deleteComment } = useMutation(onDeleteComment, {
-    onSettled: () => {
+    onMutate: async (newData) => {
+      await queryClient.cancelQueries('post');
+
+      const snapshotOfPreviousData = queryClient.getQueryData('post');
+      queryClient.setQueryData('post', (oldData: any) => ({
+        newData,
+        ...oldData,
+      }));
+
+      return {
+        snapshotOfPreviousData,
+      };
+    },
+    onError: ({ snapshotOfPreviousData }) => {
+      queryClient.setQueryData('post', snapshotOfPreviousData);
+      setDeleteCommentModal(false);
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries('post');
       setDeleteCommentModal(false);
     },
-    onError: ({ previousData }) => {
-      queryClient.setQueryData('post', previousData);
+    onSettled: () => {
+      queryClient.invalidateQueries('post');
+      setDeleteCommentModal(false);
     },
   });
 

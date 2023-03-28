@@ -19,11 +19,28 @@ function PostLike(props: PostLikeProps) {
   };
 
   const { mutate: postLike } = useMutation(onPostLike, {
-    onSettled: () => {
+    onMutate: async (newPostData) => {
+      await queryClient.cancelQueries('post');
+
+      const snapshotOfPreviousData = queryClient.getQueryData('post');
+      queryClient.setQueryData('post', (oldPostData: any) => ({
+        newPostData,
+        ...oldPostData,
+      }));
+
+      return {
+        snapshotOfPreviousData,
+      };
+    },
+
+    onError: ({ snapshotOfPreviousData }) => {
+      queryClient.setQueryData('post', snapshotOfPreviousData);
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries('post');
     },
-    onError: ({ previousData }) => {
-      queryClient.setQueryData('post', previousData);
+    onSettled: () => {
+      queryClient.invalidateQueries('post');
     },
   });
 
@@ -32,11 +49,28 @@ function PostLike(props: PostLikeProps) {
   };
 
   const { mutate: postLikeCancle } = useMutation(onPostLikeCancle, {
-    onSettled: () => {
+    onMutate: async (newPostData) => {
+      await queryClient.cancelQueries('post');
+
+      const snapshotOfPreviousData = queryClient.getQueryData('post');
+      queryClient.setQueryData('post', (oldPostData: any) => ({
+        newPostData,
+        ...oldPostData,
+      }));
+
+      return {
+        snapshotOfPreviousData,
+      };
+    },
+
+    onError: ({ snapshotOfPreviousData }) => {
+      queryClient.setQueryData('post', snapshotOfPreviousData);
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries('post');
     },
-    onError: ({ previousData }) => {
-      queryClient.setQueryData('post', previousData);
+    onSettled: () => {
+      queryClient.invalidateQueries('post');
     },
   });
 

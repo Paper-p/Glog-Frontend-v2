@@ -19,12 +19,30 @@ function DeletePostModal() {
   };
 
   const { mutate: updateComment } = useMutation(onDeletePost, {
-    onSettled: () => {
+    onMutate: async (newData) => {
+      await queryClient.cancelQueries('update');
+
+      const snapshotOfPreviousData = queryClient.getQueryData('update');
+      queryClient.setQueryData('update', (oldData: any) => ({
+        newData,
+        ...oldData,
+      }));
+
+      return {
+        snapshotOfPreviousData,
+      };
+    },
+    onError: ({ snapshotOfPreviousData }) => {
+      queryClient.setQueryData('update', snapshotOfPreviousData);
+      setDeletePostModal(false);
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries('update');
       setDeletePostModal(false);
     },
-    onError: ({ previousData }) => {
-      queryClient.setQueryData('update', previousData);
+    onSettled: () => {
+      queryClient.invalidateQueries('update');
+      setDeletePostModal(false);
     },
   });
 
