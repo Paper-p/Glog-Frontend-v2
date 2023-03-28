@@ -4,7 +4,7 @@ import '@uiw/react-markdown-preview/markdown.css';
 import PostComment from '../ui/comment';
 import PostTags from '../ui/tags';
 import PostInformation from '../ui/information';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import feed from 'network/request/feed';
 import { DetailPostData } from 'types/post.types';
 import { useQuery } from 'react-query';
@@ -16,6 +16,12 @@ import { useRouter } from 'next/navigation';
 import PostLike from '../ui/like';
 
 function ReadPostPage({ postId }: { postId: string }) {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [postData, setPostData] = useState<DetailPostData>();
   const [deleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
@@ -41,36 +47,38 @@ function ReadPostPage({ postId }: { postId: string }) {
   });
 
   return (
-    <>
-      {deleteCommentModal && <DeleteCommentModal />}
-      <S.PostPageLayout>
-        {loaded ? (
-          <>
-            <PostLike
-              isLiked={Boolean(postData?.isLiked)}
-              id={String(postData?.id)}
-            >
-              <S.PostTitle>{postData?.title}</S.PostTitle>
-            </PostLike>
-            <PostTags tagList={postData?.tagList} />
-            <PostInformation
-              nickname={String(postData?.author.nickname)}
-              profileImageUrl={String(postData?.author.profileImageUrl)}
-              createdAt={postData?.createdAt}
-              likeCount={String(postData?.likeCount)}
-              hit={String(postData?.hit)}
-            />
-            <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
-            <S.ReadMarkdown data-color-mode='dark'>
-              <MarkdownPreview source={String(postData?.content)} />
-            </S.ReadMarkdown>
-            <PostComment comments={postData?.comments} postId={postId} />
-          </>
-        ) : (
-          <ReadPostPageSkeleton />
-        )}
-      </S.PostPageLayout>
-    </>
+    mounted && (
+      <>
+        {deleteCommentModal && <DeleteCommentModal />}
+        <S.PostPageLayout>
+          {loaded ? (
+            <>
+              <PostLike
+                isLiked={Boolean(postData?.isLiked)}
+                id={String(postData?.id)}
+              >
+                <S.PostTitle>{postData?.title}</S.PostTitle>
+              </PostLike>
+              <PostTags tagList={postData?.tagList} />
+              <PostInformation
+                nickname={String(postData?.author.nickname)}
+                profileImageUrl={String(postData?.author.profileImageUrl)}
+                createdAt={postData?.createdAt}
+                likeCount={String(postData?.likeCount)}
+                hit={String(postData?.hit)}
+              />
+              <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
+              <S.ReadMarkdown data-color-mode='dark'>
+                <MarkdownPreview source={String(postData?.content)} />
+              </S.ReadMarkdown>
+              <PostComment comments={postData?.comments} postId={postId} />
+            </>
+          ) : (
+            <ReadPostPageSkeleton />
+          )}
+        </S.PostPageLayout>
+      </>
+    )
   );
 }
 

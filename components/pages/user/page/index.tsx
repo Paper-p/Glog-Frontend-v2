@@ -4,7 +4,7 @@ import LogoutModal from 'components/modals/modal/logout';
 import UpdateProfileModal from 'components/modals/modal/updateProfile';
 import user from 'network/request/user';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useRecoilState } from 'recoil';
 import { UserData } from 'types/user.type';
@@ -19,6 +19,11 @@ function UserPage({ nickname }: { nickname: string }) {
   const router = useRouter();
   const [logoutModal] = useRecoilState(modalsAtomFamily('logoutModal'));
   const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [userData, setUserData] = useState<UserData>({
     userId: '',
@@ -45,26 +50,28 @@ function UserPage({ nickname }: { nickname: string }) {
   });
 
   return (
-    <S.UserPageLayout>
-      {updateProfileModal && (
-        <UpdateProfileModal
-          nickname={userData?.nickname}
-          profileImageUrl={userData?.profileImageUrl}
+    mounted && (
+      <S.UserPageLayout>
+        {updateProfileModal && (
+          <UpdateProfileModal
+            nickname={userData?.nickname}
+            profileImageUrl={userData?.profileImageUrl}
+          />
+        )}
+        {logoutModal && <LogoutModal />}
+        {deletePostModal && <DeletePostModal />}
+        <UserProfileSection
+          nickname={String(userData?.nickname)}
+          profileImageUrl={String(userData?.profileImageUrl)}
+          isMine={Boolean(userData?.isMine)}
         />
-      )}
-      {logoutModal && <LogoutModal />}
-      {deletePostModal && <DeletePostModal />}
-      <UserProfileSection
-        nickname={String(userData?.nickname)}
-        profileImageUrl={String(userData?.profileImageUrl)}
-        isMine={Boolean(userData?.isMine)}
-      />
-      <UserPostsSection
-        userPosts={userData?.feedList}
-        nickname={String(userData?.nickname)}
-        isMine={Boolean(userData?.isMine)}
-      />
-    </S.UserPageLayout>
+        <UserPostsSection
+          userPosts={userData?.feedList}
+          nickname={String(userData?.nickname)}
+          isMine={Boolean(userData?.isMine)}
+        />
+      </S.UserPageLayout>
+    )
   );
 }
 

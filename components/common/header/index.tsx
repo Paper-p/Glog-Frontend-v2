@@ -44,33 +44,41 @@ function Header() {
     getUserMiniProfile();
   }, [tokenService.getLocalAccessToken(), pathname]);
 
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <S.HeaderLayout>
-      <S.Elements className='left-part'>
-        <Link href={'/'}>
-          <Logo width={90} height={25} />
-        </Link>
-        <S.Box>
+    mounted && (
+      <S.HeaderLayout>
+        <S.Elements className='left-part'>
           <Link href={'/'}>
-            <p css={select('/')}>홈</p>
+            <Logo width={90} height={25} />
           </Link>
-          <Link href={'/write'}>
-            <p>게시물 작성</p>
-          </Link>
-        </S.Box>
-      </S.Elements>
-      <S.Elements>{pathname === '/' && <SearchBarSection />}</S.Elements>
-      <S.Elements className='right-part'>
-        {tokenService.getLocalAccessToken() ? (
-          <AfterLoginSection
-            nickname={miniProfile?.nickname}
-            profileImageUrl={miniProfile?.profileImageUrl}
-          />
-        ) : (
-          <BeforeLoginSection />
-        )}
-      </S.Elements>
-    </S.HeaderLayout>
+          <S.Box>
+            <Link href={'/'}>
+              <p css={select('/')}>홈</p>
+            </Link>
+            <Link href={'/write'}>
+              <p>게시물 작성</p>
+            </Link>
+          </S.Box>
+        </S.Elements>
+        <S.Elements>{pathname === '/' && <SearchBarSection />}</S.Elements>
+        <S.Elements className='right-part'>
+          {tokenService.getLocalAccessToken() ? (
+            <AfterLoginSection
+              nickname={miniProfile?.nickname}
+              profileImageUrl={miniProfile?.profileImageUrl}
+            />
+          ) : (
+            <BeforeLoginSection />
+          )}
+        </S.Elements>
+      </S.HeaderLayout>
+    )
   );
 }
 
