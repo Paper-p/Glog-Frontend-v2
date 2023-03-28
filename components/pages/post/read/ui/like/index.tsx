@@ -22,6 +22,9 @@ function PostLike(props: PostLikeProps) {
     onSettled: () => {
       queryClient.invalidateQueries('post');
     },
+    onError: ({ previousData }) => {
+      queryClient.setQueryData('post', previousData);
+    },
   });
 
   const onPostLikeCancle = async () => {
@@ -31,6 +34,9 @@ function PostLike(props: PostLikeProps) {
   const { mutate: postLikeCancle } = useMutation(onPostLikeCancle, {
     onSettled: () => {
       queryClient.invalidateQueries('post');
+    },
+    onError: ({ previousData }) => {
+      queryClient.setQueryData('post', previousData);
     },
   });
 

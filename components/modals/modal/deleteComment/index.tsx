@@ -25,6 +25,9 @@ function DeleteCommentModal() {
       queryClient.invalidateQueries('post');
       setDeleteCommentModal(false);
     },
+    onError: ({ previousData }) => {
+      queryClient.setQueryData('post', previousData);
+    },
   });
 
   return (
@@ -34,7 +37,10 @@ function DeleteCommentModal() {
         <S.Text>정말 댓글을 삭제하시겠습니까?</S.Text>
         <S.ButtonBox>
           <CommonButton onClick={() => deleteComment()}>확인</CommonButton>
-          <CommonButton onClick={() => setDeleteCommentModal(false)}>
+          <CommonButton
+            className='cancle'
+            onClick={() => setDeleteCommentModal(false)}
+          >
             취소
           </CommonButton>
         </S.ButtonBox>

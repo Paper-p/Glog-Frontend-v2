@@ -23,6 +23,9 @@ function DeletePostModal() {
       queryClient.invalidateQueries('update');
       setDeletePostModal(false);
     },
+    onError: ({ previousData }) => {
+      queryClient.setQueryData('update', previousData);
+    },
   });
 
   return (
