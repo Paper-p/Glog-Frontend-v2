@@ -46,39 +46,39 @@ function ReadPostPage({ postId }: { postId: string }) {
     refetchOnWindowFocus: false,
   });
 
-  return (
-    mounted && (
-      <>
-        {deleteCommentModal && <DeleteCommentModal />}
-        <S.PostPageLayout>
-          {loaded ? (
-            <>
-              <PostLike
-                isLiked={Boolean(postData?.isLiked)}
-                id={String(postData?.id)}
-              >
-                <S.PostTitle>{postData?.title}</S.PostTitle>
-              </PostLike>
-              <PostTags tagList={postData?.tagList} />
-              <PostInformation
-                nickname={String(postData?.author.nickname)}
-                profileImageUrl={String(postData?.author.profileImageUrl)}
-                createdAt={postData?.createdAt}
-                likeCount={String(postData?.likeCount)}
-                hit={String(postData?.hit)}
-              />
-              <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
-              <S.ReadMarkdown data-color-mode='dark'>
-                <MarkdownPreview source={String(postData?.content)} />
-              </S.ReadMarkdown>
-              <PostComment comments={postData?.comments} postId={postId} />
-            </>
-          ) : (
-            <ReadPostPageSkeleton />
-          )}
-        </S.PostPageLayout>
-      </>
-    )
+  return mounted ? (
+    <>
+      {deleteCommentModal && <DeleteCommentModal />}
+      <S.PostPageLayout>
+        {loaded ? (
+          <>
+            <PostLike
+              isLiked={Boolean(postData?.isLiked)}
+              id={String(postData?.id)}
+            >
+              <S.PostTitle>{postData?.title}</S.PostTitle>
+            </PostLike>
+            <PostTags tagList={postData?.tagList} />
+            <PostInformation
+              nickname={String(postData?.author.nickname)}
+              profileImageUrl={String(postData?.author.profileImageUrl)}
+              createdAt={postData?.createdAt}
+              likeCount={String(postData?.likeCount)}
+              hit={String(postData?.hit)}
+            />
+            <S.Thumbnail src={postData?.thumbnail} alt={'thumbnail image'} />
+            <S.ReadMarkdown data-color-mode='dark'>
+              <MarkdownPreview source={String(postData?.content)} />
+            </S.ReadMarkdown>
+            <PostComment comments={postData?.comments} postId={postId} />
+          </>
+        ) : (
+          <ReadPostPageSkeleton />
+        )}
+      </S.PostPageLayout>
+    </>
+  ) : (
+    <></>
   );
 }
 
