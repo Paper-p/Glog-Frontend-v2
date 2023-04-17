@@ -12,8 +12,11 @@ https://glog.kro.kr
 ```
 $ git clone https://github.com/Paper-p/Glog-Frontend-v2.git
 
+> install vscode extension ZipFS 
+
 $ yarn dlx @yarnpkg/sdks vscode
--> fix typescript version
+
+> fix typescript version -> Use Workspace Version
 
 $ yarn
 
