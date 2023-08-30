@@ -76,6 +76,8 @@ function NormalPosts() {
 
   useEffect(() => {
     if (!search.keyword) {
+      setList([]);
+      page.current = 0;
       getNormalPosts();
     }
   }, [search.keyword]);
