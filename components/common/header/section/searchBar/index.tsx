@@ -31,7 +31,7 @@ function SearchBarSection() {
         <I.SearchIcon />
       </S.SearchIcon>
       <S.SearchInput
-        placeholder='검색어를 입력해주세요'
+        placeholder='Enter를 입력해 검색해주세요'
         value={search.keyword}
         onChange={onSearchKeywordChange}
         onKeyDown={onSearch}
