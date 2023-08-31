@@ -22,7 +22,6 @@ function NormalPosts() {
 
   const getNormalPosts = useCallback(async () => {
     setLoaded(false);
-
     try {
       const res: any = await feed.getNormalPostsList({
         page: page.current,
@@ -75,6 +74,13 @@ function NormalPosts() {
     }
   }, [search.isSearchRequested]);
 
+  useEffect(() => {
+    if (!search.keyword) {
+      setList([]);
+      page.current = 0;
+      getNormalPosts();
+    }
+  }, [search.keyword]);
   return (
     <>
       <SignBoard>💻 게시물’s</SignBoard>

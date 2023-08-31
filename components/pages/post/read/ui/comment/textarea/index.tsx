@@ -20,7 +20,26 @@ function CommentTextArea({ postId }: { postId: string }) {
   };
 
   const { mutate: addComment } = useMutation(onAddComment, {
+    onMutate: async (newPostData) => {
+      await queryClient.cancelQueries('post');
+
+      const snapshotOfPreviousData = queryClient.getQueryData('post');
+      queryClient.setQueryData('post', (oldPostData: any) => ({
+        newPostData,
+        ...oldPostData,
+      }));
+
+      return {
+        snapshotOfPreviousData,
+      };
+    },
+    onError: ({ snapshotOfPreviousData }) => {
+      queryClient.setQueryData('post', snapshotOfPreviousData);
+    },
     onSuccess: () => {
+      queryClient.invalidateQueries('post');
+    },
+    onSettled: () => {
       queryClient.invalidateQueries('post');
     },
   });
