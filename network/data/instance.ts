@@ -63,8 +63,6 @@ function getAuthToken() {
 }
 
 function makeActualAuthenticationRequest() {
-  console.log('check refresh token:', tokenService.getLocalRefreshToken());
-
   return axios({
     method: 'PATCH',
     url: authUrl.tokenReissuance(),
