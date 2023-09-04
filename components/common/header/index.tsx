@@ -53,6 +53,8 @@ function Header() {
     getUserMiniProfile();
   }, [tokenService.getLocalAccessToken(), pathname]);
 
+  useEffect(() => setMount(true), []);
+
   return (
     <S.HeaderLayout>
       <S.Elements className='left-part'>
