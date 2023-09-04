@@ -3,9 +3,13 @@ import styled from '@emotion/styled';
 export const SquarePostItemLayout = styled.div`
   position: relative;
   width: 100%;
-  height: 330px;
+  height: 220px;
   border-radius: 10px;
   cursor: pointer;
+
+  @media screen and (max-width: 1500px) {
+    height: 250px;
+  }
 `;
 
 export const BackgroundImage = styled.img`
@@ -18,11 +22,11 @@ export const BackgroundImage = styled.img`
 export const InformationWrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: 145px;
+  height: 125px;
   bottom: 0;
   background: rgba(51, 51, 51, 0.7);
   backdrop-filter: blur(14px);
-  border-radius: 10px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;

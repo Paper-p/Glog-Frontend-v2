@@ -7,7 +7,7 @@ export const PostTitle = styled.p`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
-  font-size: 1.25em;
+  font-size: 1.05em;
   color: #ffffff;
 `;
 
@@ -21,7 +21,7 @@ export const PostContent = styled.p`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  font-size: 1em;
+  font-size: 0.95em;
   color: #85888d;
   margin-top: 0.5rem;
   transition: 0.1s;

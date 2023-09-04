@@ -4,7 +4,7 @@ export const SkeletonLayout = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 10px;
   margin-bottom: 0.5rem;
 
   @media screen and (max-width: 900px) {
@@ -36,7 +36,7 @@ export const SkeletonLayout = styled.div`
 `;
 
 export const Skeleton = styled.div`
-  height: 150px;
+  height: 130px;
   border-radius: 10px;
   -webkit-animation: skeleton-gradient 1.5s infinite ease-in-out;
   animation: skeleton-gradient 1.5s infinite ease-in-out;

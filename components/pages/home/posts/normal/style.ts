@@ -4,7 +4,7 @@ export const NormalPostsLayout = styled.section`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 10px;
   margin-bottom: 0.5rem;
   @media screen and (max-width: 900px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
