@@ -3,12 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+import { css } from '@emotion/react';
 
 function BeforeLoginSection() {
   const pathname = usePathname();
 
   const select = (currentPath: string) =>
-    currentPath === pathname && { color: '#E0E0E0 !important' };
+    currentPath === pathname &&
+    css`
+      color: #e0e0e0 !important;
+    `;
 
   return (
     <React.Fragment>
