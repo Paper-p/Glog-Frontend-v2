@@ -1,3 +1,7 @@
+/**@jsxImportSource @emotion/react */
+
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Logo from '../../utils/logo';
@@ -17,6 +21,7 @@ interface MiniProfileData {
 }
 
 function Header() {
+  const [mount, setMount] = useState<boolean>(false);
   const [miniProfile, setMiniProfile] = useState<MiniProfileData>({
     nickname: '',
     profileImageUrl: '/default-profileImage.svg',
@@ -25,7 +30,10 @@ function Header() {
   const pathname = usePathname();
 
   const select = (currentPath: string) =>
-    currentPath === pathname && { color: '#E0E0E0 !important' };
+    currentPath === pathname &&
+    css`
+      color: #e0e0e0 !important;
+    `;
 
   useEffect(() => {
     const getUserMiniProfile = async () => {
@@ -33,6 +41,7 @@ function Header() {
         if (tokenService.getLocalAccessToken()) {
           const res: any = await user.getUserMiniProfile();
           setMiniProfile(res.data);
+          setMount(true);
         }
       } catch (e: any) {
         if (e.response.status) {
@@ -51,25 +60,30 @@ function Header() {
           <Logo width={90} height={25} />
         </Link>
         <S.Box>
-          <Link href={'/'}>
-            <p css={select('/')}>홈</p>
+          <Link css={select('/')} href={'/'}>
+            홈
           </Link>
-          <Link href={'/write'}>
-            <p>게시물 작성</p>
+          <Link css={select('/write')} href={'/write'}>
+            게시물 작성
           </Link>
         </S.Box>
       </S.Elements>
       <S.Elements>{pathname === '/' && <SearchBarSection />}</S.Elements>
-      <S.Elements className='right-part'>
-        {tokenService.getLocalAccessToken() ? (
-          <AfterLoginSection
-            nickname={miniProfile?.nickname}
-            profileImageUrl={miniProfile?.profileImageUrl}
-          />
-        ) : (
-          <BeforeLoginSection />
-        )}
-      </S.Elements>
+
+      {mount ? (
+        <S.Elements className='right-part'>
+          {tokenService.getLocalAccessToken() ? (
+            <AfterLoginSection
+              nickname={miniProfile?.nickname}
+              profileImageUrl={miniProfile?.profileImageUrl}
+            />
+          ) : (
+            <BeforeLoginSection />
+          )}
+        </S.Elements>
+      ) : (
+        <div />
+      )}
     </S.HeaderLayout>
   );
 }

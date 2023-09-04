@@ -41,8 +41,7 @@ export const Box = styled.div`
   justify-content: space-between;
   gap: 16px;
 
-  p {
-    font-family: 'Pretendard';
+  a {
     font-style: normal;
     font-weight: 400;
     font-size: 1.063em;
