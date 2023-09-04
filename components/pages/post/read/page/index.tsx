@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import '@uiw/react-markdown-preview/markdown.css';

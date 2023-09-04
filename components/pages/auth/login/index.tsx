@@ -1,3 +1,5 @@
+'use client';
+
 import Logo from 'components/utils/logo';
 import * as S from './style';
 import AuthInput from 'components/utils/auth/input';

@@ -1,3 +1,5 @@
+'use client';
+
 import { postingTempalteValueAtom } from 'atoms';
 import CommonButton from 'components/common/button';
 import PostingTemplate from 'components/utils/post/template';

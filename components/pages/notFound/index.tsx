@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 
 function NotFoundPage({ notFoundType }: { notFoundType: string | null }) {

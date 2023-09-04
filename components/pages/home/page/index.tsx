@@ -1,3 +1,5 @@
+'use client';
+
 import { searchAtom } from 'atoms';
 import { useRecoilState } from 'recoil';
 import HotPosts from '../posts/hot';

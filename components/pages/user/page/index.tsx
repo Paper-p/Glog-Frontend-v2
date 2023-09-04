@@ -1,3 +1,5 @@
+'use client';
+
 import { modalsAtomFamily } from 'atoms';
 import DeletePostModal from 'components/modals/modal/deletePost';
 import LogoutModal from 'components/modals/modal/logout';

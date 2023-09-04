@@ -1,3 +1,5 @@
+'use client';
+
 import CommonButton from 'components/common/button';
 import PostingTemplate from 'components/utils/post/template';
 import Link from 'next/link';
@@ -6,13 +8,7 @@ import tokenService from 'utils/tokenService';
 import * as S from './style';
 
 function WritePostPage() {
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return mounted ? (
+  return (
     <>
       {tokenService.getLocalAccessToken() ? (
         <PostingTemplate postingType='create' />
@@ -30,8 +26,6 @@ function WritePostPage() {
         </S.NotLoggedInSection>
       )}
     </>
-  ) : (
-    <></>
   );
 }
 

@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
