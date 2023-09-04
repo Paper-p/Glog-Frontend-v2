@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import '@uiw/react-markdown-preview/markdown.css';
@@ -16,12 +18,6 @@ import { useRouter } from 'next/navigation';
 import PostLike from '../ui/like';
 
 function ReadPostPage({ postId }: { postId: string }) {
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const [postData, setPostData] = useState<DetailPostData>();
   const [deleteCommentModal] = useRecoilState(
     modalsAtomFamily('deleteCommentModal')
@@ -46,7 +42,7 @@ function ReadPostPage({ postId }: { postId: string }) {
     refetchOnWindowFocus: false,
   });
 
-  return mounted ? (
+  return (
     <>
       {deleteCommentModal && <DeleteCommentModal />}
       <S.PostPageLayout>
@@ -77,8 +73,6 @@ function ReadPostPage({ postId }: { postId: string }) {
         )}
       </S.PostPageLayout>
     </>
-  ) : (
-    <></>
   );
 }
 

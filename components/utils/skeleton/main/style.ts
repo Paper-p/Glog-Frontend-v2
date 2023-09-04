@@ -3,8 +3,9 @@ import styled from '@emotion/styled';
 export const SkeletonLayout = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 0.5rem;
 
   @media screen and (max-width: 900px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -35,7 +36,7 @@ export const SkeletonLayout = styled.div`
 `;
 
 export const Skeleton = styled.div`
-  height: 150px;
+  height: 130px;
   border-radius: 10px;
   -webkit-animation: skeleton-gradient 1.5s infinite ease-in-out;
   animation: skeleton-gradient 1.5s infinite ease-in-out;

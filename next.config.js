@@ -5,9 +5,6 @@ const nextConfig = {
     esmExternals: 'loose',
   },
   reactStrictMode: false,
-  compiler: {
-    emotion: true,
-  },
 };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

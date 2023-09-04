@@ -1,10 +1,15 @@
-'use client';
+import { WritePostPage } from 'components/pages';
+import { Metadata } from 'next';
 
-import dynamic from 'next/dynamic';
-
-const WritePostPage = dynamic(() => import('components/pages/post/create'), {
-  ssr: false,
-});
+export const metadata: Metadata = {
+  description: '커뮤니티에 글을 출판하세요.',
+  title: { absolute: 'Glog | 글쓰기' },
+  openGraph: {
+    title: 'Glog | 글쓰기',
+    description: '커뮤니티에 글을 출판하세요.',
+    url: 'https://glog.kro.kr/write',
+  },
+};
 
 function WritePost() {
   return <WritePostPage />;

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const RectanglePostItemLayout = styled.div<{ backgroundImage: string }>`
   width: 100%;
-  height: 150px;
+  height: 130px;
   border-radius: 10px;
   background-image: ${(e) =>
     `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${e.backgroundImage})`};

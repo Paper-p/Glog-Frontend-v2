@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
@@ -15,7 +17,7 @@ function NormalPosts() {
   const [search, setSearch] = useRecoilState(searchAtom);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const observerTargetEl = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState<boolean>(true);
+  const [loaded, setLoaded] = useState<boolean>(false);
   const [list, setList] = useState<PostData[]>([]);
   const [searchResultNone, setSearchResultNone] = useState<boolean>(false);
   const [searchFailedText, setSearchFailedText] = useState<string>('');

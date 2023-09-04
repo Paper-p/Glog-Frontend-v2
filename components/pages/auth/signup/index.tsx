@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 import AuthInput from 'components/utils/auth/input';
 import CommonButton from 'components/common/button';

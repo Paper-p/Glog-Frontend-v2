@@ -1,3 +1,5 @@
+'use client';
+
 import SignBoard from 'components/common/signBoard';
 import feed from 'network/request/feed';
 import Link from 'next/link';

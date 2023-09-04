@@ -1,3 +1,5 @@
+'use client';
+
 import { modalsAtomFamily } from 'atoms';
 import DeletePostModal from 'components/modals/modal/deletePost';
 import LogoutModal from 'components/modals/modal/logout';
@@ -19,11 +21,6 @@ function UserPage({ nickname }: { nickname: string }) {
   const router = useRouter();
   const [logoutModal] = useRecoilState(modalsAtomFamily('logoutModal'));
   const [deletePostModal] = useRecoilState(modalsAtomFamily('deletePostModal'));
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const [userData, setUserData] = useState<UserData>({
     userId: '',
@@ -49,7 +46,7 @@ function UserPage({ nickname }: { nickname: string }) {
     queryFn: getUserByNickname,
   });
 
-  return mounted ? (
+  return (
     <S.UserPageLayout>
       {updateProfileModal && (
         <UpdateProfileModal
@@ -70,8 +67,6 @@ function UserPage({ nickname }: { nickname: string }) {
         isMine={Boolean(userData?.isMine)}
       />
     </S.UserPageLayout>
-  ) : (
-    <></>
   );
 }
 

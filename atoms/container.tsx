@@ -1,3 +1,5 @@
+'use client';
+
 import { atom, atomFamily } from 'recoil';
 import { PostingData } from 'types/post.types';
 

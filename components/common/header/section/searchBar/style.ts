@@ -9,7 +9,7 @@ export const SearchBarLayout = styled.section`
   align-items: center;
   gap: 10px;
 
-  @media screen and (max-width: 1240px) {
+  @media screen and (max-width: 1300px) {
     width: 320px;
   }
 

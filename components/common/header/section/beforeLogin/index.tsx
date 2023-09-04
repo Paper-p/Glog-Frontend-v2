@@ -1,7 +1,8 @@
+/**@jsxImportSource @emotion/react */
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { css } from '@emotion/react';
 
 function BeforeLoginSection() {
   const pathname = usePathname();
@@ -11,11 +12,11 @@ function BeforeLoginSection() {
 
   return (
     <React.Fragment>
-      <Link href={'/login'}>
-        <p css={select('/login')}>로그인</p>
+      <Link css={select('/login')} href={'/login'}>
+        로그인
       </Link>
-      <Link href={'/signup'}>
-        <p css={select('/signup')}>회원가입</p>
+      <Link css={select('/signup')} href={'/signup'}>
+        회원가입
       </Link>
     </React.Fragment>
   );

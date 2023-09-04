@@ -25,6 +25,10 @@ export const HotPostsSkeletonItem = styled.div`
   }
   -webkit-animation: skeleton-gradient 1.5s infinite ease-in-out;
   animation: skeleton-gradient 1.5s infinite ease-in-out;
-  height: 330px;
+  height: 220px;
   border-radius: 10px;
+
+  @media screen and (max-width: 1500px) {
+    height: 250px;
+  }
 `;

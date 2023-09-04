@@ -4,12 +4,8 @@ export const HotPostsLayout = styled.section`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 10px;
   margin-bottom: 5rem;
-
-  @media screen and (max-width: 1630px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 
   @media screen and (max-width: 930px) {
     grid-template-columns: repeat(2, 1fr);
