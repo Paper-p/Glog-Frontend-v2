@@ -15,7 +15,7 @@ export const SquarePostItemLayout = styled.div`
 export const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 15px;
   object-fit: cover;
 `;
 
@@ -26,7 +26,7 @@ export const InformationWrapper = styled.div`
   bottom: 0;
   background: rgba(51, 51, 51, 0.7);
   backdrop-filter: blur(14px);
-  border-radius: 7px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
