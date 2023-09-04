@@ -1,13 +1,15 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-const ReadPostPage = dynamic(() => import('components/pages/post/read/page'), {
-  ssr: false,
-});
+import { ReadPostPage } from 'components/pages';
+import Head from './head';
 
 function ReadPost({ params }: { params: { postId: string } }) {
-  return <ReadPostPage postId={params.postId} />;
+  return (
+    <>
+      <Head />
+      <ReadPostPage postId={params.postId} />;{' '}
+    </>
+  );
 }
 
 export default ReadPost;

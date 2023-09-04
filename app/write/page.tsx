@@ -1,13 +1,15 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-const WritePostPage = dynamic(() => import('components/pages/post/create'), {
-  ssr: false,
-});
+import { WritePostPage } from 'components/pages';
+import Head from './head';
 
 function WritePost() {
-  return <WritePostPage />;
+  return (
+    <>
+      <Head />
+      <WritePostPage />
+    </>
+  );
 }
 
 export default WritePost;

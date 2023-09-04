@@ -1,13 +1,15 @@
-'use client';
+`use client`;
 
-import dynamic from 'next/dynamic';
-
-const SignupPage = dynamic(() => import('components/pages/auth/signup'), {
-  ssr: false,
-});
+import { SignupPage } from 'components/pages';
+import Head from './head';
 
 function Signup() {
-  return <SignupPage />;
+  return (
+    <>
+      <Head />
+      <SignupPage />
+    </>
+  );
 }
 
 export default Signup;

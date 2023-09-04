@@ -1,13 +1,15 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-const UpdatePostPage = dynamic(() => import('components/pages/post/update'), {
-  ssr: false,
-});
+import { UpdatePostPage } from 'components/pages';
+import Head from './head';
 
 function UpdatePost({ params }: { params: { postId: string } }) {
-  return <UpdatePostPage postId={params.postId} />;
+  return (
+    <>
+      <Head />
+      <UpdatePostPage postId={params.postId} />;
+    </>
+  );
 }
 
 export default UpdatePost;
