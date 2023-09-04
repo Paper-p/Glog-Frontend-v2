@@ -9,12 +9,12 @@ interface AfterLoginSectionProps {
 
 function AfterLoginSection(props: AfterLoginSectionProps) {
   return (
-    <React.Fragment>
+    <>
       <S.UserName>{props.nickname}</S.UserName>
       <Link href={'/user/' + props.nickname}>
         <S.UserProfileImage src={props.profileImageUrl} />
       </Link>
-    </React.Fragment>
+    </>
   );
 }
 
