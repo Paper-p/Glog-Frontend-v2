@@ -25,8 +25,7 @@ export const Elements = styled.div`
   &.right-part {
     gap: 9px;
 
-    p {
-      font-family: 'Pretendard';
+    a {
       font-style: normal;
       font-weight: 400;
       font-size: 1.063em;
