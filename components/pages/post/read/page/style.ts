@@ -25,7 +25,6 @@ export const LikeIconBox = styled.div<{ isLiked: boolean | undefined }>`
   transform: ${(e) => e.isLiked && 'rotate(360deg)'};
 
   & > svg {
-    margin-bottom: -36px;
     height: 100%;
     width: 100%;
   }
@@ -35,7 +34,7 @@ export const PostTitle = styled.p`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
-  font-size: 3em;
+  font-size: 2.8em;
   color: #ffffff;
 `;
 
