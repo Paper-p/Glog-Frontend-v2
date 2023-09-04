@@ -7,17 +7,14 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { TagType } from 'types/post.types';
 import * as S from './style';
+import { toast } from 'react-toastify';
 
 function UpdatePostPage({ postId }: { postId: string }) {
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const [_, setPostingTemplateValue] = useRecoilState(postingTempalteValueAtom);
   const router = useRouter();
 
-  const [mounted, setMounted] = useState<boolean>(false);
-
   useEffect(() => {
-    setMounted(true);
-
     const getPostByPostId = async () => {
       try {
         const res: any = await feed.getPostByPostId(postId);
@@ -42,15 +39,16 @@ function UpdatePostPage({ postId }: { postId: string }) {
         };
 
         setPostingTemplateValue(data);
-      } catch (e: any) {
-        console.log(e);
+      } catch (e) {
+        toast.error('다시 시도해주세요');
+        router.replace('/');
       }
     };
 
     getPostByPostId();
   }, []);
 
-  return mounted ? (
+  return (
     <>
       {isOwner ? (
         <PostingTemplate postingType='update' />
@@ -66,8 +64,6 @@ function UpdatePostPage({ postId }: { postId: string }) {
         </S.IsNotOwnerSection>
       )}
     </>
-  ) : (
-    <></>
   );
 }
 

@@ -44,13 +44,7 @@ function Header() {
     getUserMiniProfile();
   }, [tokenService.getLocalAccessToken(), pathname]);
 
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return mounted ? (
+  return (
     <S.HeaderLayout>
       <S.Elements className='left-part'>
         <Link href={'/'}>
@@ -77,8 +71,6 @@ function Header() {
         )}
       </S.Elements>
     </S.HeaderLayout>
-  ) : (
-    <></>
   );
 }
 
