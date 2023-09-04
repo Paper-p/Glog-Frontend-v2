@@ -1,24 +1,27 @@
-import { NotFoundPage } from 'components/pages';
-import { Metadata } from 'next';
-import { useSearchParams } from 'next/navigation';
+'use client';
 
-export const metadata: Metadata = {
-  description: '잘못된 접근입니다.',
-  title: { absolute: 'Glog | NotFound' },
-  openGraph: {
-    title: 'Glog | NotFound',
-    description: '잘못된 접근입니다.',
-  },
-};
+import { NotFoundPage } from 'components/pages';
+import { useSearchParams } from 'next/navigation';
+import Head from './head';
 
 function NotFound() {
   const searchParams = useSearchParams();
   const type404 = ['유저', '게시물'];
 
   if (type404.includes(String(searchParams.get('type')))) {
-    return <NotFoundPage notFoundType={searchParams.get('type')} />;
+    return (
+      <>
+        <Head />
+        <NotFoundPage notFoundType={searchParams.get('type')} />
+      </>
+    );
   } else {
-    return <NotFoundPage notFoundType={'페이지'} />;
+    return (
+      <>
+        <Head />
+        <NotFoundPage notFoundType={'페이지'} />
+      </>
+    );
   }
 }
 
