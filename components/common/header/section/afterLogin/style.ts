@@ -13,4 +13,5 @@ export const UserName = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #e0e0e0;
 `;
