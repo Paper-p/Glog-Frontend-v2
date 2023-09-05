@@ -25,7 +25,6 @@ export const Input = styled.input`
   margin-left: 5px;
   border: 0;
   outline: none;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
