@@ -8,7 +8,6 @@ export const CommonButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 800;
   font-size: 18px;

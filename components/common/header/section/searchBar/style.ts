@@ -33,7 +33,6 @@ export const SearchInput = styled.input`
   background: none;
   border: 0;
   outline: none;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
