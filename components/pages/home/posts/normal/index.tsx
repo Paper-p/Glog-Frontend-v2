@@ -55,7 +55,7 @@ function NormalPosts() {
     if (!observerTargetEl.current || !hasNextPage) return;
 
     const io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && loaded) {
+      if (entries[0].isIntersecting && loaded && !search.keyword) {
         getNormalPosts();
       }
     });
@@ -83,6 +83,7 @@ function NormalPosts() {
       getNormalPosts();
     }
   }, [search.keyword]);
+
   return (
     <>
       <SignBoard>💻 게시물’s</SignBoard>
