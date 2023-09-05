@@ -12,6 +12,7 @@ import tokenService from 'utils/tokenService';
 import { toast } from 'react-toastify';
 import auth from 'network/request/auth';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 function LoginPage() {
   const [valueError, setValueError] = useState<boolean>(false);
@@ -75,6 +76,9 @@ function LoginPage() {
         {errors.password?.message}
       </AuthErrorText>
       <CommonButton className='needMargin'>로그인</CommonButton>
+      <S.GoSignUpText>
+        <Link href={'/signup'}>아이디가 아직 없나요?</Link>
+      </S.GoSignUpText>
     </S.LoginForm>
   );
 }
