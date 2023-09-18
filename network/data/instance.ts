@@ -53,8 +53,10 @@ function getAuthToken() {
     authTokenRequest = makeActualAuthenticationRequest();
     authTokenRequest
       .catch(function () {
-        tokenService.removeUser();
-        window.location.replace('/login');
+        if (tokenService.getLocalAccessToken()) {
+          tokenService.removeUser();
+          window.location.replace('/login');
+        }
       })
       .then(resetAuthTokenRequest, resetAuthTokenRequest);
   }
