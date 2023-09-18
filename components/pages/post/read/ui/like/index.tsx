@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './style';
 import * as I from 'assets/svg';
 import feed from 'network/request/feed';
@@ -12,6 +12,7 @@ interface PostLikeProps {
 }
 
 function PostLike(props: PostLikeProps) {
+  const mountRef = useRef(1);
   const queryClient = useQueryClient();
   const [liked, setLiked] = useState<boolean>(props.isLiked);
 
@@ -65,13 +66,15 @@ function PostLike(props: PostLikeProps) {
   });
 
   useEffect(() => {
-    if (liked) {
-      postLikeCancle();
+    if (mountRef.current > 1) {
+      if (liked) {
+        postLike();
+      }
+      if (!liked) {
+        postLikeCancle();
+      }
     }
-    if (!liked) {
-      postLike();
-    }
-  }, [liked]);
+  }, [liked, mountRef.current]);
 
   return (
     <>
@@ -80,9 +83,12 @@ function PostLike(props: PostLikeProps) {
           {props.children}
           <S.LikeIconBox
             isLiked={liked}
-            onClick={() => setLiked((prevLiked) => !prevLiked)}
+            onClick={() => {
+              setLiked((prevLiked) => !prevLiked);
+              mountRef.current++;
+            }}
           >
-            {liked ? <I.BeforePostLikedIcon /> : <I.AfterPostLikedIcon />}
+            {liked ? <I.AfterPostLikedIcon /> : <I.BeforePostLikedIcon />}
           </S.LikeIconBox>
         </S.Wrapper>
       ) : (
