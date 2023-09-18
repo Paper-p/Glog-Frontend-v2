@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import * as I from 'assets/svg';
 import feed from 'network/request/feed';
@@ -13,6 +13,7 @@ interface PostLikeProps {
 
 function PostLike(props: PostLikeProps) {
   const queryClient = useQueryClient();
+  const [liked, setLiked] = useState<boolean>(props.isLiked);
 
   const onPostLike = async () => {
     return await feed.postLike(props.id);
@@ -23,10 +24,7 @@ function PostLike(props: PostLikeProps) {
       await queryClient.cancelQueries('post');
 
       const snapshotOfPreviousData = queryClient.getQueryData('post');
-      queryClient.setQueryData('post', (oldPostData: any) => ({
-        newPostData,
-        ...oldPostData,
-      }));
+      queryClient.setQueryData('post', newPostData);
 
       return {
         snapshotOfPreviousData,
@@ -36,9 +34,7 @@ function PostLike(props: PostLikeProps) {
     onError: ({ snapshotOfPreviousData }) => {
       queryClient.setQueryData('post', snapshotOfPreviousData);
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries('post');
-    },
+
     onSettled: () => {
       queryClient.invalidateQueries('post');
     },
@@ -53,10 +49,7 @@ function PostLike(props: PostLikeProps) {
       await queryClient.cancelQueries('post');
 
       const snapshotOfPreviousData = queryClient.getQueryData('post');
-      queryClient.setQueryData('post', (oldPostData: any) => ({
-        newPostData,
-        ...oldPostData,
-      }));
+      queryClient.setQueryData('post', newPostData);
 
       return {
         snapshotOfPreviousData,
@@ -66,33 +59,30 @@ function PostLike(props: PostLikeProps) {
     onError: ({ snapshotOfPreviousData }) => {
       queryClient.setQueryData('post', snapshotOfPreviousData);
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries('post');
-    },
     onSettled: () => {
       queryClient.invalidateQueries('post');
     },
   });
 
-  const onLikeIconClick = () => {
-    if (props.isLiked) {
+  useEffect(() => {
+    if (liked) {
       postLikeCancle();
-    } else {
+    }
+    if (!liked) {
       postLike();
     }
-  };
+  }, [liked]);
 
   return (
     <>
       {tokenService.getLocalAccessToken() ? (
         <S.Wrapper>
           {props.children}
-          <S.LikeIconBox isLiked={props.isLiked} onClick={onLikeIconClick}>
-            {props.isLiked ? (
-              <I.AfterPostLikedIcon />
-            ) : (
-              <I.BeforePostLikedIcon />
-            )}
+          <S.LikeIconBox
+            isLiked={liked}
+            onClick={() => setLiked((prevLiked) => !prevLiked)}
+          >
+            {liked ? <I.BeforePostLikedIcon /> : <I.AfterPostLikedIcon />}
           </S.LikeIconBox>
         </S.Wrapper>
       ) : (
