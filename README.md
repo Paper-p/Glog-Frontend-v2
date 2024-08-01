@@ -1,6 +1,5 @@
 ### **GLOG**
 > Glog는 개발 지식을 공유하는 커뮤니티 서비스입니다.
-https://glog.kro.kr
 
 ![MacBook_Air_-_7](https://user-images.githubusercontent.com/81551906/231045644-6f26db66-963d-48ee-96f8-e5e82edd54b3.png)
 
